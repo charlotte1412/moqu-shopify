@@ -1,0 +1,180 @@
+<style>
+.projects-section { padding: 0 80px 100px; }
+    .projects-intro {
+      max-width: 700px;
+      margin-bottom: 48px;
+    }
+    .projects-intro h2 {
+      font-size: clamp(24px, 2.8vw, 34px);
+      font-weight: 700;
+      color: #1a1a18;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
+    .projects-intro p {
+      font-size: 15.5px;
+      color: #7e7a74;
+      line-height: 1.72;
+      margin-bottom: 12px;
+    }
+
+    /* ── PROJECT GALLERY ── */
+    .pg-rows { display: flex; flex-direction: column; gap: 12px; }
+    .pg-row {
+      display: flex;
+      gap: 12px;
+      height: 360px;
+    }
+    .pg-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      display: block;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .pg-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .pg-item:hover img { transform: scale(1.05); }
+    .pg-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(14,9,4,0.58);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .pg-item:hover .pg-overlay { opacity: 1; }
+    .pg-caption {
+      position: absolute;
+      bottom: 0; left: 0;
+      padding: 28px 30px 34px;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+    .pg-item:hover .pg-caption { transform: translateY(0); opacity: 1; }
+    .pg-title {
+      display: block;
+      font-family: 'MuseoModerno', sans-serif;
+      font-size: clamp(14px, 1.6vw, 20px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.22;
+      margin-bottom: 10px;
+    }
+    .pg-link-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent, #c8772a);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .cta-text-center {
+      text-align: center;
+      padding: 80px 80px 100px;
+      background: #fcfbf7;
+    }
+    .cta-text-center p { font-size: 16px; color: #9a9690; margin-bottom: 28px; }
+
+    @media (max-width: 1100px) {
+      .projects-section { padding: 0 40px 80px; }
+      .cta-text-center { padding: 60px 40px 80px; }
+    }
+    @media (max-width: 760px) {
+      .projects-section { padding: 0 24px 60px; }
+      .cta-text-center { padding: 48px 24px 60px; }
+      .pg-row { flex-direction: column; height: auto; gap: 10px; }
+      .pg-item { flex: 1 1 auto !important; height: 220px; }
+      .pg-caption { padding: 16px 18px 20px; }
+      .projects-intro { margin-bottom: 32px; }
+    }
+</style>
+
+<div class="page-header">
+  <h1 class="page-title reveal">Projekte</h1>
+  <p class="page-lead reveal reveal-d1">
+    Seit über 30 Jahren gestalten wir Räume, die bleiben – mit Erfahrung im Möbelbau,
+    Innenausbau und in der individuellen Raumgestaltung. Was als Idee beginnt, wird bei uns zu
+    einem durchdachten Konzept und schließlich zu einem Projekt mit Substanz.
+  </p>
+</div>
+
+<section class="projects-section">
+  <div class="projects-intro reveal">
+    <h2>Unsere Projekte im Überblick</h2>
+    <p>Erleben Sie unsere Auswahl an maßgefertigten Möbelstücken, Innenausbauten und innovativen Einrichtungslösungen, die unseren Sinn für Details und hochwertige Handwerkskunst widerspiegeln.</p>
+    <p style="margin-top:8px; font-size:14px; color:#b0aca6; font-style:italic;">Jedes Projekt ist ein Unikat — maßgefertigt für die individuellen Bedürfnisse unserer Kunden.</p>
+  </div>
+
+  <div class="pg-rows" id="project-grid">
+    <!-- Rendered by JS / fallback static -->
+    <div class="pg-row">
+      <a class="pg-item reveal" href="/pages/projekte" style="flex:2.2">
+        <img src="https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=80" alt="Büromöbel" loading="lazy" />
+        <div class="pg-overlay"></div>
+        <div class="pg-caption">
+          <span class="pg-title">Moderne Büromöbel für effizientes Arbeiten</span>
+          <span class="pg-link-label">Zum Projekt →</span>
+        </div>
+      </a>
+      <a class="pg-item reveal reveal-d1" href="/pages/projekte" style="flex:1.8">
+        <img src="https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=80" alt="Schlafzimmer" loading="lazy" />
+        <div class="pg-overlay"></div>
+        <div class="pg-caption">
+          <span class="pg-title">Individuelle Schlafzimmermöbel</span>
+          <span class="pg-link-label">Zum Projekt →</span>
+        </div>
+      </a>
+    </div>
+    <div class="pg-row">
+      <a class="pg-item reveal" href="/pages/projekte" style="flex:1.4">
+        <img src="https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=80" alt="Innenausbau" loading="lazy" />
+        <div class="pg-overlay"></div>
+        <div class="pg-caption">
+          <span class="pg-title">Kreative Lösungen für kleine Räume</span>
+          <span class="pg-link-label">Zum Projekt →</span>
+        </div>
+      </a>
+      <a class="pg-item reveal reveal-d1" href="/pages/projekte" style="flex:2.6">
+        <img src="https://images.unsplash.com/photo-1764076327046-fe35f955cba1?w=900&q=80" alt="Esszimmer" loading="lazy" />
+        <div class="pg-overlay"></div>
+        <div class="pg-caption">
+          <span class="pg-title">Elegante Esszimmermöbel</span>
+          <span class="pg-link-label">Zum Projekt →</span>
+        </div>
+      </a>
+    </div>
+    <div class="pg-row">
+      <a class="pg-item reveal" href="/pages/projekte" style="flex:1.7">
+        <img src="https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=80" alt="Wohnzimmer" loading="lazy" />
+        <div class="pg-overlay"></div>
+        <div class="pg-caption">
+          <span class="pg-title">Moderne Möbel für jedes Zuhause</span>
+          <span class="pg-link-label">Zum Projekt →</span>
+        </div>
+      </a>
+      <a class="pg-item reveal reveal-d1" href="/pages/projekte" style="flex:1.3">
+        <img src="https://images.unsplash.com/photo-1552836514-bbf70221e437?w=900&q=80" alt="Gastronomie" loading="lazy" />
+        <div class="pg-overlay"></div>
+        <div class="pg-caption">
+          <span class="pg-title">Gastronomie-Einrichtungen</span>
+          <span class="pg-link-label">Zum Projekt →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta reveal">
+  <div>
+    <p class="cta-label">Bereit loszulegen?</p>
+    <h2 class="cta-title">Lass uns dein Projekt besprechen.</h2>
+  </div>
+  <a href="/pages/kontakt" class="btn-orange">Kontakt aufnehmen &nbsp;→</a>
+</section>

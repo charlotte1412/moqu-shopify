@@ -1,0 +1,4 @@
+<section class="page-header"><h1 class="page-title">{{ product.title | default: 'Produkt' }}</h1></section>
+<section style="padding: 40px 80px 80px; max-width: 1000px; margin: 0 auto;">
+  {% if product %}<div>{{ product.description }}</div>{% else %}<p>Produkt nicht verfügbar.</p>{% endif %}
+</section>

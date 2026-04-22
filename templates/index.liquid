@@ -1,0 +1,608 @@
+<style>
+/* ── HERO ── */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroBgIn {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1); }
+    }
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 620px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 80px 100px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      animation: heroBgIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(10,7,4,0.30) 0%,
+        rgba(10,7,4,0.10) 55%,
+        rgba(10,7,4,0.02) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+    .hero-title {
+      font-size: clamp(48px, 6.5vw, 88px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.04;
+      margin-bottom: 22px;
+      letter-spacing: -1.5px;
+      animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 38px;
+      line-height: 1.55;
+      animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+    }
+    .hero-content .btn-orange {
+      animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+    }
+
+    /* ── KEYWORDS ── */
+    .keywords-section {
+      background: #fcfbf7;
+      padding: 80px 80px 40px;
+    }
+    .kw-icons-row {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .kw-icon-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      min-height: 100px;
+      opacity: 0;
+      transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1);
+    }
+    .kw-icon-item.kw-visible {
+      opacity: 1;
+    }
+    .kw-icon-item svg {
+      width: 68px;
+      height: 68px;
+      stroke: var(--icon-color, var(--accent, #c8772a));
+      stroke-width: 0.85;
+      fill: none;
+      overflow: visible;
+    }
+    /* pathLength="1" normalises dasharray – enables draw-on-hover */
+    .kw-icon-item svg [pathLength] {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+      opacity: 0.2;
+      transition: opacity 0.4s ease;
+    }
+    .kw-icon-item:hover svg [pathLength] { opacity: 1; }
+    @keyframes kwDraw {
+      from { stroke-dashoffset: 1; }
+      to   { stroke-dashoffset: 0; }
+    }
+    .kw-icon-item:hover svg [pathLength]:nth-child(1) { animation: kwDraw 0.5s 0.00s ease both; }
+    .kw-icon-item:hover svg [pathLength]:nth-child(2) { animation: kwDraw 0.5s 0.08s ease both; }
+    .kw-icon-item:hover svg [pathLength]:nth-child(3) { animation: kwDraw 0.5s 0.16s ease both; }
+    .kw-icon-item:hover svg [pathLength]:nth-child(4) { animation: kwDraw 0.5s 0.24s ease both; }
+    .kw-icon-item:hover svg [pathLength]:nth-child(5) { animation: kwDraw 0.5s 0.32s ease both; }
+    .kw-icon-item:hover svg [pathLength]:nth-child(6) { animation: kwDraw 0.5s 0.40s ease both; }
+    .kw-icon-item:hover svg [pathLength]:nth-child(7) { animation: kwDraw 0.5s 0.48s ease both; }
+    .kw-icon-label {
+      font-size: 12.5px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1a1a18;
+      white-space: nowrap;
+      transition: color 0.35s ease;
+    }
+    .kw-icon-item:hover .kw-icon-label { color: var(--accent, #c8772a); }
+    a.kw-icon-item { text-decoration: none; }
+
+    /* ── QUALITY ── */
+    .quality {
+      background: #fcfbf7;
+      padding: 40px 80px 80px;
+    }
+    .quality-intro {
+      max-width: 660px;
+      margin-bottom: 64px;
+    }
+    .moqu-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--accent, #c8772a);
+      margin-bottom: 22px;
+    }
+    .moqu-kanji {
+      font-family: serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1;
+      text-transform: none;
+    }
+    .moqu-divider { flex: 0 0 22px; height: 1px; background: currentColor; opacity: 0.35; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 44px 32px 48px;
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+      transition: border-color 0.25s, box-shadow 0.3s, transform 0.3s;
+    }
+    .card:hover {
+      border-color: rgba(200,119,42,0.22);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+    }
+    .card-num {
+      display: block;
+      font-family: 'MuseoModerno', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent, #c8772a);
+      letter-spacing: 3.5px;
+      margin-bottom: 26px;
+    }
+    .card-icon {
+      position: absolute;
+      right: -16px;
+      bottom: -16px;
+      width: 150px;
+      height: 150px;
+      color: rgba(200,119,42,0.07);
+      stroke-width: 0.75;
+      fill: none;
+      stroke: currentColor;
+      pointer-events: none;
+    }
+    .card-title {
+      font-size: 23px;
+      font-weight: 600;
+      color: #1a1a18;
+      margin-bottom: 14px;
+      line-height: 1.18;
+      position: relative;
+      z-index: 1;
+    }
+    .card-body {
+      font-size: 14.5px;
+      color: #8a8680;
+      line-height: 1.72;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── ABOUT BANNER ── */
+    .about-banner {
+      position: relative;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .about-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center 30%;
+    }
+    .about-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(18,12,6,0.54);
+    }
+    .about-content {
+      position: relative;
+      z-index: 1;
+    }
+    .about-label {
+      font-size: 11px;
+      letter-spacing: 3.5px;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .about-title {
+      font-size: clamp(30px, 4vw, 50px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.18;
+      margin-bottom: 30px;
+      letter-spacing: -0.5px;
+    }
+
+    /* ── GALLERY ── */
+    .gallery {
+      background: #fcfbf7;
+      padding: 80px 80px 90px;
+    }
+    .gallery-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 36px;
+    }
+    .gallery-header .section-heading { margin-bottom: 0; }
+    .gallery-rows { display: flex; flex-direction: column; gap: 12px; }
+    .gallery-row {
+      display: flex;
+      gap: 12px;
+      height: 300px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: block;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .g-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,24,18,0.70) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .g-overlay { opacity: 1; }
+    .g-caption {
+      position: absolute;
+      bottom: 0; left: 0;
+      padding: 20px;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .gallery-item:hover .g-caption { transform: translateY(0); opacity: 1; }
+    .g-cat { display: none; }
+    .g-title { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -0.2px; }
+
+    /* ── JOBS ── */
+    .jobs {
+      background: #eceae6;
+      padding: 80px 80px 100px;
+    }
+    .jobs-header { margin-bottom: 48px; }
+    .jobs-sub { font-size: 15px; color: #9a9690; margin-top: 8px; }
+    .job-list { display: flex; flex-direction: column; gap: 14px; }
+    .job-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 26px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: box-shadow 0.25s, border-color 0.25s;
+      border: 1px solid rgba(0,0,0,0.04);
+      text-decoration: none;
+      color: inherit;
+    }
+    .job-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.09); border-color: rgba(200,119,42,0.15); }
+    .job-title { font-size: 17px; font-weight: 600; color: #3a3530; margin-bottom: 5px; }
+    .job-desc { font-size: 13.5px; color: #908c86; }
+    .job-arrow { font-size: 18px; color: #c8c4be; flex-shrink: 0; margin-left: 24px; transition: color 0.2s; }
+    .job-card:hover .job-arrow { color: var(--accent, #c8772a); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .hero { padding: 0 40px 80px; }
+      .keywords-section { padding: 64px 40px 32px; }
+      .kw-icon-item svg { width: 52px; height: 52px; }
+      .quality, .gallery, .jobs { padding-left: 40px; padding-right: 40px; }
+      .quality { padding-top: 32px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .hero { padding: 0 24px 60px; min-height: 520px; }
+      .hero-title { font-size: clamp(30px, 8.5vw, 48px); letter-spacing: -0.5px; }
+      .hero-sub { font-size: 15.5px; }
+      .quality, .jobs { padding-left: 24px; padding-right: 24px; }
+      .gallery { padding: 56px 24px 64px; }
+      .jobs { padding-top: 56px; padding-bottom: 72px; }
+      .keywords-section { padding: 48px 16px 28px; }
+      .kw-icons-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 0; justify-items: center; }
+      .kw-icon-item { flex: none; min-height: auto; min-width: 0; width: 100%; }
+      .kw-icon-item svg { width: 42px; height: 42px; }
+      .kw-icon-label { font-size: 8.5px; letter-spacing: 1.2px; white-space: normal; text-align: center; }
+      .quality { padding-top: 24px; padding-bottom: 56px; }
+      .quality-intro { margin-bottom: 40px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; padding: 36px 28px 40px; }
+      .card-title { font-size: 20px; }
+      .about-banner { height: 320px; }
+      .gallery-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 24px; }
+      .gallery-rows { gap: 10px; }
+      .gallery-row { flex-direction: column; height: auto; gap: 10px; }
+      .gallery-item { flex: 1 1 auto !important; height: 220px; }
+      .jobs-header { margin-bottom: 32px; }
+      .job-card { padding: 22px 20px; gap: 14px; }
+      .job-title { font-size: 15.5px; }
+      .job-desc { font-size: 13px; }
+    }
+</style>
+
+<!-- ── NAV ── -->
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg" id="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=1800&q=85')"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Individuelle Raum- &amp;<br>Einrichtungslösungen</h1>
+    <p class="hero-sub">
+      in handwerklicher Maßarbeit für Privat- &amp; Gewerbekunden<br>
+      und über 30 Jahre Erfahrungen.
+    </p>
+    <a href="/pages/kontakt" class="btn-orange">Projekt anfragen &nbsp;→</a>
+  </div>
+</section>
+
+<!-- ── KEYWORDS ── -->
+<div class="keywords-section" id="kw-section">
+  <div class="kw-icons-row">
+
+    <!-- Einbauschränke -->
+    <a href="/pages/moebelbau" class="kw-icon-item">
+      <svg viewBox="0 0 24 24">
+        <rect pathLength="1" x="3" y="2" width="18" height="20" rx="0.5"/>
+        <line pathLength="1" x1="12" y1="2" x2="12" y2="22"/>
+        <line pathLength="1" x1="3" y1="9" x2="12" y2="9"/>
+        <line pathLength="1" x1="12" y1="7" x2="21" y2="7"/>
+        <line pathLength="1" x1="10.2" y1="14" x2="10.2" y2="17"/>
+        <line pathLength="1" x1="13.8" y1="14" x2="13.8" y2="17"/>
+      </svg>
+      <span class="kw-icon-label">Einbauschränke</span>
+    </a>
+
+    <!-- Küchen -->
+    <a href="/pages/kuechenbau" class="kw-icon-item">
+      <svg viewBox="0 0 24 24">
+        <rect pathLength="1" x="2" y="3" width="20" height="6" rx="0.5"/>
+        <line pathLength="1" x1="12" y1="3" x2="12" y2="9"/>
+        <rect pathLength="1" x="2" y="14" width="20" height="7" rx="0.5"/>
+        <line pathLength="1" x1="2" y1="14" x2="22" y2="14"/>
+        <circle pathLength="1" cx="8" cy="11.5" r="1.3"/>
+        <circle pathLength="1" cx="16" cy="11.5" r="1.3"/>
+      </svg>
+      <span class="kw-icon-label">Küchen</span>
+    </a>
+
+    <!-- Innenausbau -->
+    <a href="/pages/innenausbau" class="kw-icon-item">
+      <svg viewBox="0 0 24 24">
+        <polyline pathLength="1" points="3,21 3,17 8,17 8,13 13,13 13,9 18,9 18,5 21,5"/>
+        <line pathLength="1" x1="3" y1="21" x2="21" y2="21"/>
+        <line pathLength="1" x1="21" y1="5" x2="21" y2="21"/>
+      </svg>
+      <span class="kw-icon-label">Innenausbau</span>
+    </a>
+
+    <!-- Wandverkleidung -->
+    <a href="/pages/innenausbau" class="kw-icon-item">
+      <svg viewBox="0 0 24 24">
+        <rect pathLength="1" x="2" y="4"  width="20" height="4" rx="0.3"/>
+        <line pathLength="1" x1="9"  y1="4" x2="9"  y2="8"/>
+        <rect pathLength="1" x="2" y="10" width="20" height="4" rx="0.3"/>
+        <line pathLength="1" x1="15" y1="10" x2="15" y2="14"/>
+        <rect pathLength="1" x="2" y="16" width="20" height="4" rx="0.3"/>
+        <line pathLength="1" x1="12" y1="16" x2="12" y2="20"/>
+      </svg>
+      <span class="kw-icon-label">Wandverkleidung</span>
+    </a>
+
+    <!-- Parkett -->
+    <a href="/pages/innenausbau" class="kw-icon-item">
+      <svg viewBox="0 0 24 24">
+        <polyline pathLength="1" points="2,8 7,3 12,8 17,3 22,8"/>
+        <polyline pathLength="1" points="2,14 7,9 12,14 17,9 22,14"/>
+        <polyline pathLength="1" points="2,20 7,15 12,20 17,15 22,20"/>
+      </svg>
+      <span class="kw-icon-label">Parkett</span>
+    </a>
+
+    <!-- Türen -->
+    <a href="/pages/moebelbau" class="kw-icon-item">
+      <svg viewBox="0 0 24 24">
+        <rect pathLength="1" x="5"  y="2"  width="14" height="20" rx="0.5"/>
+        <rect pathLength="1" x="7"  y="4"  width="10" height="7"  rx="0.3"/>
+        <rect pathLength="1" x="7"  y="13" width="10" height="7"  rx="0.3"/>
+        <circle pathLength="1" cx="15.5" cy="11" r="0.8"/>
+        <line pathLength="1" x1="4" y1="22" x2="20" y2="22"/>
+      </svg>
+      <span class="kw-icon-label">Türen</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- ── MODERNE QUALITÄT ── -->
+<section class="quality">
+  <div class="quality-intro reveal">
+    <p class="moqu-label">
+      <span class="moqu-kanji">木</span>
+      <span class="moqu-divider"></span>
+      <span class="moqu-label-text">moku — japanisch für Holz</span>
+    </p>
+    <h2 class="section-heading">Aus dem Wesen<br>des Holzes.</h2>
+    <p class="section-body">
+      MOQU — abgeleitet vom japanischen Wort für Holz (木, moku) — steht für
+      maßgefertigte Möbel und Einrichtungslösungen in Meisterqualität. Mit über
+      30 Jahren Erfahrung entwickeln wir aus den Wünschen unserer Kunden individuelle
+      Konzepte: vom einzelnen Möbel bis zur gesamten Raumlösung. In jedem
+      Arbeitsabschnitt höchster Wert auf Design, Qualität und Service.
+    </p>
+  </div>
+  <div class="cards">
+    <div class="card reveal reveal-d1">
+      <svg class="card-icon" viewBox="0 0 24 24"><path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931zm0 0L19.5 7.125"/></svg>
+      <span class="card-num">01</span>
+      <div class="card-title">Planung</div>
+      <p class="card-body">Wünsche und Anforderungen werden strukturiert erfasst und in individuelle Konzepte überführt — vom einzelnen Möbel bis zur gesamten Raumlösung.</p>
+    </div>
+    <div class="card reveal reveal-d2">
+      <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.311a14.97 14.97 0 0 1-3 0M12 3a6 6 0 0 1 6 6c0 2.105-.86 4.01-2.25 5.388V18H8.25v-3.612A6 6 0 0 1 6 9a6 6 0 0 1 6-6Z"/></svg>
+      <span class="card-num">02</span>
+      <div class="card-title">Entwicklung</div>
+      <p class="card-body">Aus der Planung entstehen detaillierte Konstruktionszeichnungen. Funktion, Gestaltung und Machbarkeit greifen präzise ineinander.</p>
+    </div>
+    <div class="card reveal reveal-d3">
+      <svg class="card-icon" viewBox="0 0 24 24"><path d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg>
+      <span class="card-num">03</span>
+      <div class="card-title">Fertigung</div>
+      <p class="card-body">In unserer Tischlerei werden Entwürfe präzise umgesetzt. Jedes Projekt entsteht individuell und mit handwerklicher Sorgfalt.</p>
+    </div>
+    <div class="card reveal reveal-d4">
+      <svg class="card-icon" viewBox="0 0 24 24"><path d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z"/></svg>
+      <span class="card-num">04</span>
+      <div class="card-title">Montage</div>
+      <p class="card-body">Unsere Monteure liefern und montieren zuverlässig vor Ort — sauber, termintreu, und so, dass alles genau dort sitzt, wo es hingehört.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT BANNER ── -->
+<section class="about-banner">
+  <div class="about-bg" id="about-bg" style="background-image:url('https://images.unsplash.com/photo-1497219055242-93359eeed651?w=1800&q=85')"></div>
+  <div class="about-content reveal">
+    <p class="about-label">Seit 1995</p>
+    <h2 class="about-title">Handwerk mit Leidenschaft<br>und Präzision</h2>
+    <a href="/pages/ueber-uns" class="link-text">Mehr über uns erfahren &nbsp;→</a>
+  </div>
+</section>
+
+<!-- ── GALERIE ── -->
+<section class="gallery">
+  <div class="gallery-header reveal">
+    <h2 class="section-heading">Galerie</h2>
+    <a href="/pages/projekte" class="link-muted">Alle Projekte →</a>
+  </div>
+  <div class="gallery-rows reveal" id="gallery-rows">
+    <!-- Rendered by JS / fallback static -->
+    <div class="gallery-row">
+      <a class="gallery-item" href="/pages/projekte" style="flex:3">
+        <img src="https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=80" alt="Büromöbel" loading="lazy" />
+        <div class="g-overlay"></div>
+        <div class="g-caption"><span class="g-cat">Gewerbe</span><span class="g-title">Büromöbel</span></div>
+      </a>
+      <a class="gallery-item" href="/pages/projekte" style="flex:2">
+        <img src="https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=600&q=80" alt="Einbauschrank" loading="lazy" />
+        <div class="g-overlay"></div>
+        <div class="g-caption"><span class="g-cat">Privat</span><span class="g-title">Einbauschrank</span></div>
+      </a>
+    </div>
+    <div class="gallery-row">
+      <a class="gallery-item" href="/pages/projekte" style="flex:1.1">
+        <img src="https://images.unsplash.com/photo-1764076327046-fe35f955cba1?w=600&q=80" alt="Esszimmer" loading="lazy" />
+        <div class="g-overlay"></div>
+        <div class="g-caption"><span class="g-cat">Privat</span><span class="g-title">Esszimmer</span></div>
+      </a>
+      <a class="gallery-item" href="/pages/projekte" style="flex:2.2">
+        <img src="https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=80" alt="Wandverkleidung" loading="lazy" />
+        <div class="g-overlay"></div>
+        <div class="g-caption"><span class="g-cat">Innenausbau</span><span class="g-title">Wandverkleidung</span></div>
+      </a>
+    </div>
+    <div class="gallery-row">
+      <a class="gallery-item" href="/pages/projekte" style="flex:1">
+        <img src="https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=800&q=80" alt="Küche" loading="lazy" />
+        <div class="g-overlay"></div>
+        <div class="g-caption"><span class="g-cat">Privat</span><span class="g-title">Küche</span></div>
+      </a>
+      <a class="gallery-item" href="/pages/projekte" style="flex:1">
+        <img src="https://images.unsplash.com/photo-1552836514-bbf70221e437?w=800&q=80" alt="Gastronomie" loading="lazy" />
+        <div class="g-overlay"></div>
+        <div class="g-caption"><span class="g-cat">Gewerbe</span><span class="g-title">Gastronomie</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── JOBS ── -->
+<section class="jobs" id="stellenanzeigen">
+  <div class="jobs-header reveal">
+    <h2 class="section-heading">Stellenanzeigen</h2>
+    <p class="jobs-sub">Werde Teil unseres Teams.</p>
+  </div>
+  <div class="job-list" id="job-list">
+    <!-- Rendered by JS / fallback static -->
+    <a class="job-card reveal" href="/pages/kontakt">
+      <div>
+        <div class="job-title">Tischler für nachhaltige Möbel</div>
+        <div class="job-desc">Wir suchen einen Tischler, der mit uns hochwertige nachhaltige Möbel herstellen möchte.</div>
+      </div>
+      <span class="job-arrow">→</span>
+    </a>
+    <a class="job-card reveal reveal-d1" href="/pages/kontakt">
+      <div>
+        <div class="job-title">Möbeltischler für kreative Projekte</div>
+        <div class="job-desc">Wir suchen einen erfahrenen Möbeltischler für innovative Designprojekte.</div>
+      </div>
+      <span class="job-arrow">→</span>
+    </a>
+    <a class="job-card reveal reveal-d2" href="/pages/kontakt">
+      <div>
+        <div class="job-title">Tischler für Möbelproduktion</div>
+        <div class="job-desc">Wir suchen einen Tischler für die Unterstützung unserer Möbelproduktion.</div>
+      </div>
+      <span class="job-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta reveal">
+  <div>
+    <p class="cta-label">Bereit loszulegen?</p>
+    <h2 class="cta-title">Lass uns dein Projekt besprechen.</h2>
+  </div>
+  <a href="/pages/kontakt" class="btn-orange">Kontakt aufnehmen &nbsp;→</a>
+</section>
+
+<!-- ── FOOTER ── -->

@@ -1,0 +1,26 @@
+<nav>
+  <a href="{{ routes.root_url }}" class="nav-logo">{{ shop.name | default: 'MOQU' }}</a>
+  <button class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/pages/projekte"{% if request.path == '/pages/projekte' %} class="active"{% endif %}>Projekte</a></li>
+    <li class="nav-dropdown">
+      <button class="nav-services-btn" type="button">
+        Services
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/pages/moebelbau">Möbelbau</a>
+        <a href="/pages/innenausbau">Innenausbau</a>
+        <a href="/pages/kuechenbau">Küchenbau</a>
+      </div>
+    </li>
+    <li><a href="/pages/ueber-uns"{% if request.path == '/pages/ueber-uns' %} class="active"{% endif %}>Über uns</a></li>
+    <li><a href="/pages/kontakt"{% if request.path == '/pages/kontakt' %} class="active"{% endif %}>Kontakt</a></li>
+  </ul>
+</nav>
+
+{% schema %}
+{ "name": "Header", "settings": [] }
+{% endschema %}

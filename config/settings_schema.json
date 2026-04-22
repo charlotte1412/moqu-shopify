@@ -1,0 +1,16 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "MOQU",
+    "theme_version": "1.0.0",
+    "theme_author": "MOQU",
+    "theme_documentation_url": "https://github.com/charlotte1412/moqu-shopify",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Favicon (optional)" }
+    ]
+  }
+]
