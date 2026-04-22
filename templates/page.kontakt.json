@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": { "title": "Kontakt", "lead": "Erzähl uns von deinem Projekt. Wir antworten innerhalb eines Werktags." }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": { "heading": "Projektidee?<br>Kontaktiere uns.", "success_message": "Danke! Wir melden uns zeitnah bei dir." }
+    }
+  },
+  "order": ["header","form"]
+}

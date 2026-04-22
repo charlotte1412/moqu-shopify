@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": { "title": "Küchenbau", "lead": "Maßgefertigte Küchen, die über Jahrzehnte funktionieren." }
+    },
+    "alt": {
+      "type": "alt-sections",
+      "blocks": {
+        "a1": { "type": "row", "settings": { "subtitle": "Ihre Küche, Ihre Vorstellungen.", "heading": "Persönliche Planung", "body": "<p>Eine Küche entsteht nicht am Reißbrett – sie entsteht im Gespräch. Wir nehmen uns Zeit, Ihre Anforderungen, Kochgewohnheiten und räumlichen Gegebenheiten zu verstehen.</p>" } },
+        "a2": { "type": "row", "settings": { "subtitle": "Millimetergenau gefertigt.", "heading": "Maßgefertigte Küchen", "body": "<p>Standardmaße sind selten die beste Lösung. Unsere Küchen werden individuell auf Ihren Raum zugeschnitten – jede Schublade, jede Front, jedes Regal sitzt genau dort, wo es hingehört.</p>" } },
+        "a3": { "type": "row", "settings": { "subtitle": "Oberflächen, die begeistern.", "heading": "Materialauswahl & Oberflächen", "body": "<p>Holz, Lack, Furnier oder Naturstein – die Wahl der Materialien entscheidet über Charakter und Langlebigkeit einer Küche. Wir beraten Sie umfassend und helfen Ihnen, Oberflächen zu wählen, die zu Ihrem Stil und Ihren Ansprüchen passen.</p>" } },
+        "a4": { "type": "row", "settings": { "subtitle": "Alles aus einer Hand.", "heading": "Montage & Fertigstellung", "body": "<p>Nach der Fertigung übernehmen unsere erfahrenen Monteure die fachgerechte Installation vor Ort. Wir koordinieren alle Gewerke – von der Elektrik bis zum Wasseranschluss – und sorgen für einen reibungslosen Ablauf.</p>" } }
+      },
+      "block_order": ["a1","a2","a3","a4"]
+    },
+    "cta": {
+      "type": "cta",
+      "settings": { "label": "Küche im Kopf?", "title": "Lass uns deine Traumküche planen.", "button_label": "Beratung anfragen", "button_url": "/pages/kontakt" }
+    }
+  },
+  "order": ["header","alt","cta"]
+}

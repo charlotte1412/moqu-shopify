@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": { "title": "Innenausbau", "lead": "Raumkonzepte aus einer Hand — von der Wandverkleidung bis zum kompletten Interieur." }
+    },
+    "alt": {
+      "type": "alt-sections",
+      "blocks": {
+        "a1": { "type": "row", "settings": { "subtitle": "Ganzheitlich denken, präzise planen.", "heading": "Raumplanung & Beratung", "body": "<p>Jeder Ausbau beginnt mit einem genauen Blick auf den Raum. Wir analysieren Ihre Räumlichkeiten, berücksichtigen bauliche Gegebenheiten und entwickeln ein ganzheitliches Konzept, das Funktion, Ästhetik und Ihre individuellen Bedürfnisse vereint.</p>" } },
+        "a2": { "type": "row", "settings": { "subtitle": "Material trifft auf Handwerkskunst.", "heading": "Wand- & Deckenverkleidungen", "body": "<p>Hochwertige Verkleidungen verändern den Charakter eines Raumes grundlegend. Wir fertigen und montieren Verkleidungen aus Holz, Akustikpaneelen und individuellen Materialien – passgenau auf Ihre Maße und Anforderungen zugeschnitten.</p>" } },
+        "a3": { "type": "row", "settings": { "subtitle": "Jeden Zentimeter optimal nutzen.", "heading": "Einbaulösungen & Stauraum", "body": "<p>Maßgefertigte Einbauschränke, Nischen und Regalsysteme entstehen bei uns genau dort, wo sie gebraucht werden. Jede Einbaulösung ist auf den Raum und seine Nutzung abgestimmt und fügt sich nahtlos in die vorhandene Architektur ein.</p>" } },
+        "a4": { "type": "row", "settings": { "subtitle": "Ein Ansprechpartner. Alles aus einer Hand.", "heading": "Komplettausbau & Koordination", "body": "<p>Vom Rohbau bis zum fertigen Raum begleiten wir Sie durch den gesamten Ausbauprozess. Wir koordinieren alle beteiligten Gewerke, behalten Zeitpläne im Blick und sorgen für einen reibungslosen Ablauf.</p>" } },
+        "a5": { "type": "row", "settings": { "subtitle": "Wärme und Charakter unter den Füßen.", "heading": "Parkett & Bodenbeläge", "body": "<p>Ein hochwertiger Boden prägt die gesamte Atmosphäre eines Raumes. Wir verlegen Parkett, Dielen und moderne Bodenbeläge mit höchster handwerklicher Sorgfalt – vom Untergrund bis zur abschließenden Oberflächenbehandlung.</p>" } },
+        "a6": { "type": "row", "settings": { "subtitle": "Details, die den Unterschied machen.", "heading": "Türen & Zargen", "body": "<p>Türen sind mehr als funktionale Raumteiler – sie sind gestalterische Elemente, die den Charakter eines Innenraums maßgeblich mitbestimmen. Wir liefern und montieren Innentüren, Schiebetüren und Zargen in verschiedensten Ausführungen und Materialien.</p>" } }
+      },
+      "block_order": ["a1","a2","a3","a4","a5","a6"]
+    },
+    "cta": {
+      "type": "cta",
+      "settings": { "label": "Innenausbau geplant?", "title": "Sprich mit uns über deinen Raum.", "button_label": "Kontakt aufnehmen", "button_url": "/pages/kontakt" }
+    }
+  },
+  "order": ["header","alt","cta"]
+}

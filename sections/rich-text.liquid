@@ -1,0 +1,19 @@
+<section class="rich-text-section" style="padding: {{ section.settings.padding_y }}px {{ section.settings.padding_x }}px; background: {{ section.settings.bg }};">
+  <div class="rich-text-inner" style="max-width: {{ section.settings.max_width }}px; margin: 0 auto; font-size: 15.5px; line-height: 1.8; color: #3a3530;">
+    {{ section.settings.content }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fließtext",
+  "settings": [
+    { "type": "richtext", "id": "content", "label": "Inhalt", "default": "<p>Text hier eingeben.</p>" },
+    { "type": "color", "id": "bg", "label": "Hintergrund", "default": "#fcfbf7" },
+    { "type": "range", "id": "max_width", "min": 600, "max": 1400, "step": 20, "default": 860, "unit": "px", "label": "Maximale Textbreite" },
+    { "type": "range", "id": "padding_x", "min": 0, "max": 120, "step": 10, "default": 80, "unit": "px", "label": "Horizontaler Abstand" },
+    { "type": "range", "id": "padding_y", "min": 0, "max": 120, "step": 10, "default": 60, "unit": "px", "label": "Vertikaler Abstand" }
+  ],
+  "presets": [{ "name": "Fließtext" }]
+}
+{% endschema %}

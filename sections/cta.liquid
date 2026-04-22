@@ -1,0 +1,22 @@
+<section class="cta reveal">
+  <div>
+    {%- if section.settings.label != blank -%}<p class="cta-label">{{ section.settings.label }}</p>{%- endif -%}
+    <h2 class="cta-title">{{ section.settings.title }}</h2>
+  </div>
+  {%- if section.settings.button_label != blank -%}
+    <a href="{{ section.settings.button_url }}" class="btn-orange">{{ section.settings.button_label }} &nbsp;→</a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "CTA-Streifen",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow-Label", "default": "Bereit loszulegen?" },
+    { "type": "text", "id": "title", "label": "Überschrift", "default": "Lass uns dein Projekt besprechen." },
+    { "type": "text", "id": "button_label", "label": "Button-Text", "default": "Kontakt aufnehmen" },
+    { "type": "url", "id": "button_url", "label": "Button-Ziel", "default": "/pages/kontakt" }
+  ],
+  "presets": [{ "name": "CTA-Streifen" }]
+}
+{% endschema %}

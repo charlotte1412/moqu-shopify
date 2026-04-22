@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": { "title": "Projekte", "lead": "Ausgewählte Arbeiten aus Möbelbau, Innenausbau und Küchenbau." }
+    },
+    "gallery": {
+      "type": "gallery",
+      "settings": { "heading": "", "link_label": "", "link_url": "" },
+      "blocks": {
+        "g1": { "type": "item", "settings": { "title": "Büromöbel", "category": "Gewerbe", "width": 3, "new_row": false, "url": "#" } },
+        "g2": { "type": "item", "settings": { "title": "Einbauschrank", "category": "Privat", "width": 2, "new_row": false, "url": "#" } },
+        "g3": { "type": "item", "settings": { "title": "Esszimmer", "category": "Privat", "width": 1, "new_row": true, "url": "#" } },
+        "g4": { "type": "item", "settings": { "title": "Wandverkleidung", "category": "Innenausbau", "width": 2, "new_row": false, "url": "#" } },
+        "g5": { "type": "item", "settings": { "title": "Küche", "category": "Privat", "width": 1, "new_row": true, "url": "#" } },
+        "g6": { "type": "item", "settings": { "title": "Gastronomie", "category": "Gewerbe", "width": 1, "new_row": false, "url": "#" } }
+      },
+      "block_order": ["g1","g2","g3","g4","g5","g6"]
+    },
+    "cta": {
+      "type": "cta",
+      "settings": { "label": "Eigenes Projekt im Kopf?", "title": "Lass uns darüber sprechen.", "button_label": "Kontakt aufnehmen", "button_url": "/pages/kontakt" }
+    }
+  },
+  "order": ["header","gallery","cta"]
+}

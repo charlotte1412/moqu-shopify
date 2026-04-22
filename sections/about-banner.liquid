@@ -1,0 +1,34 @@
+<section class="about-banner">
+  <div class="about-bg" style="background-image:url('{%- if section.settings.image != blank -%}{{ section.settings.image | image_url: width: 2400 }}{%- else -%}https://images.unsplash.com/photo-1497219055242-93359eeed651?w=1800&q=85{%- endif -%}')"></div>
+  <div class="about-content reveal">
+    {%- if section.settings.label != blank -%}<p class="about-label">{{ section.settings.label }}</p>{%- endif -%}
+    <h2 class="about-title">{{ section.settings.title }}</h2>
+    {%- if section.settings.link_label != blank -%}
+      <a href="{{ section.settings.link_url }}" class="link-text">{{ section.settings.link_label }} &nbsp;→</a>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .about-banner { position: relative; height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+  .about-bg { position: absolute; inset: 0; background-size: cover; background-position: center 30%; }
+  .about-bg::after { content: ''; position: absolute; inset: 0; background: rgba(18,12,6,0.54); }
+  .about-content { position: relative; z-index: 1; padding: 0 20px; }
+  .about-label { font-size: 11px; letter-spacing: 3.5px; color: rgba(255,255,255,0.55); text-transform: uppercase; margin-bottom: 18px; }
+  .about-title { font-size: clamp(30px, 4vw, 50px); font-weight: 700; color: #fff; line-height: 1.18; margin-bottom: 30px; letter-spacing: -0.5px; font-family: 'MuseoModerno',sans-serif; }
+  @media (max-width: 760px) { .about-banner { height: 320px; } }
+</style>
+
+{% schema %}
+{
+  "name": "Über-uns-Banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Hintergrundbild" },
+    { "type": "text", "id": "label", "label": "Eyebrow-Label", "default": "Seit 1995" },
+    { "type": "text", "id": "title", "label": "Überschrift", "default": "Handwerk mit Leidenschaft<br>und Präzision" },
+    { "type": "text", "id": "link_label", "label": "Link-Text", "default": "Mehr über uns erfahren" },
+    { "type": "url", "id": "link_url", "label": "Link-Ziel", "default": "/pages/ueber-uns" }
+  ],
+  "presets": [{ "name": "Über-uns-Banner" }]
+}
+{% endschema %}

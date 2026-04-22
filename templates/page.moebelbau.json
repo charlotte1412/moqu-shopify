@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": { "title": "Möbelbau", "lead": "Maßgefertigte Möbel, individuell geplant und handwerklich gefertigt." }
+    },
+    "alt": {
+      "type": "alt-sections",
+      "blocks": {
+        "a1": { "type": "row", "settings": { "subtitle": "Zuhören, verstehen, gemeinsam entwickeln.", "heading": "Persönliche Beratung", "body": "<p>Jedes Projekt im Möbelbau beginnt mit einem Gespräch. Wir nehmen uns Zeit, deine Anforderungen, Wünsche und räumlichen Gegebenheiten genau zu verstehen.</p>" } },
+        "a2": { "type": "row", "settings": { "subtitle": "Möbel, die exakt passen.", "heading": "Präzise Anfertigung", "body": "<p>Maßanfertigung bedeutet mehr als nur die richtigen Abmessungen. Es geht um Proportion, Materialwahl, Konstruktion und Details.</p>" } },
+        "a3": { "type": "row", "settings": { "subtitle": "Handwerk mit Anspruch", "heading": "Höchste Verarbeitungsqualität", "body": "<p>Als Meisterbetrieb stehen wir für präzise Handwerksarbeit und hochwertige Verarbeitung. Wir wählen Materialien sorgfältig aus und verarbeiten sie mit technischer Genauigkeit und gestalterischem Bewusstsein.</p>" } },
+        "a4": { "type": "row", "settings": { "subtitle": "Mehr als nur ein Möbelstück.", "heading": "Ganzheitliche Raumkonzepte", "body": "<p>Unsere Raumkonzepte umfassen alle Aspekte — Design, Materialwahl und Funktionalität. Alles wird von Anfang an in einem Gesamtkonzept gedacht.</p>" } }
+      },
+      "block_order": ["a1","a2","a3","a4"]
+    },
+    "cta": {
+      "type": "cta",
+      "settings": { "label": "Projekt im Kopf?", "title": "Lass uns dein Möbel besprechen.", "button_label": "Beratung anfragen", "button_url": "/pages/kontakt" }
+    }
+  },
+  "order": ["header","alt","cta"]
+}
