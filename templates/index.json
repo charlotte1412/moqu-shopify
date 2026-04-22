@@ -1,0 +1,63 @@
+{
+  "sections": {
+    "hero": {
+      "type": "moqu-hero",
+      "settings": {
+        "title": "Maßgefertigte Möbel.<br>Individueller Innenausbau.",
+        "subtitle": "MOQU steht für Modern Quality – Handwerk, das Räume prägt.",
+        "button_label": "Projekte ansehen",
+        "button_url": "/pages/projekte"
+      }
+    },
+    "keywords": {
+      "type": "moqu-keywords",
+      "blocks": {
+        "k1": { "type": "keyword", "settings": { "label": "EINBAUSCHRÄNKE" } },
+        "k2": { "type": "keyword", "settings": { "label": "KÜCHEN" } },
+        "k3": { "type": "keyword", "settings": { "label": "INNENAUSBAU" } },
+        "k4": { "type": "keyword", "settings": { "label": "MASSMÖBEL" } }
+      },
+      "block_order": ["k1", "k2", "k3", "k4"]
+    },
+    "quality": {
+      "type": "moqu-quality",
+      "settings": {
+        "kanji": "木",
+        "label": "MODERN QUALITY",
+        "heading": "Handwerk, das Räume prägt.",
+        "body": "Von der ersten Skizze bis zur Montage – alles aus einer Hand. Wir planen, fertigen und montieren deine Traummöbel in Meisterqualität."
+      },
+      "blocks": {
+        "c1": { "type": "card", "settings": { "title": "Beratung",  "body": "Persönlich, individuell und immer auf deine Bedürfnisse zugeschnitten." } },
+        "c2": { "type": "card", "settings": { "title": "Planung",   "body": "Detailgenaue Planung mit 3D-Visualisierung und Materialmustern." } },
+        "c3": { "type": "card", "settings": { "title": "Fertigung", "body": "CNC-Präzision trifft handwerkliche Sorgfalt in unserer Werkstatt." } },
+        "c4": { "type": "card", "settings": { "title": "Montage",   "body": "Saubere Montage durch unser eigenes Team – pünktlich und verlässlich." } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"]
+    },
+    "projects": {
+      "type": "moqu-projects",
+      "settings": { "heading": "Aktuelle Projekte", "metaobject_type": "project", "limit": 6 }
+    },
+    "about": {
+      "type": "moqu-about-banner",
+      "settings": {
+        "label": "ÜBER UNS",
+        "title": "Modern Quality seit über 30 Jahren.",
+        "body": "Individuelle Raum- und Einrichtungslösungen in Meisterqualität seit über 30 Jahren.",
+        "button_label": "Mehr erfahren",
+        "button_url": "/pages/ueber-uns"
+      }
+    },
+    "cta": {
+      "type": "moqu-cta",
+      "settings": {
+        "label": "Bereit loszulegen?",
+        "title": "Lass uns dein Projekt besprechen.",
+        "button_label": "Kontakt aufnehmen",
+        "button_url": "/pages/kontakt"
+      }
+    }
+  },
+  "order": ["hero", "keywords", "quality", "projects", "about", "cta"]
+}

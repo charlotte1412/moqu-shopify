@@ -1,0 +1,27 @@
+<section class="moqu-hero">
+  <div class="moqu-hero-bg" style="background-image: url('{%- if section.settings.image != blank -%}{{ section.settings.image | image_url: width: 2400 }}{%- else -%}https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=2000&q=85{%- endif -%}');"></div>
+  <div class="moqu-hero-content">
+    <h1 class="moqu-hero-title">{{ section.settings.title }}</h1>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="moqu-hero-sub">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_url }}" class="moqu-btn">{{ section.settings.button_label }} &nbsp;→</a>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "MOQU · Hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Hintergrundbild" },
+    { "type": "text", "id": "title", "label": "Überschrift",
+      "default": "Maßgefertigte Möbel.<br>Individueller Innenausbau." },
+    { "type": "textarea", "id": "subtitle", "label": "Untertitel",
+      "default": "MOQU steht für Modern Quality – Handwerk, das Räume prägt." },
+    { "type": "text", "id": "button_label", "label": "Button Label", "default": "Projekte ansehen" },
+    { "type": "url",  "id": "button_url",   "label": "Button URL" }
+  ],
+  "presets": [{ "name": "MOQU · Hero" }]
+}
+{% endschema %}

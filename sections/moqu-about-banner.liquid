@@ -1,0 +1,32 @@
+<section class="moqu-about-banner">
+  {%- if section.settings.image != blank -%}
+    <div class="moqu-about-bg" style="background-image: url('{{ section.settings.image | image_url: width: 2400 }}');"></div>
+  {%- else -%}
+    <div class="moqu-about-bg" style="background-image: url('https://images.unsplash.com/photo-1616627451515-cf2ba03a4a43?w=2000&q=85');"></div>
+  {%- endif -%}
+  <div class="moqu-about-content moqu-reveal">
+    {%- if section.settings.label != blank -%}<div class="moqu-about-label">{{ section.settings.label }}</div>{%- endif -%}
+    <h2 class="moqu-about-title">{{ section.settings.title }}</h2>
+    {%- if section.settings.body != blank -%}
+      <p style="color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.65; margin: 0 0 30px 0;">{{ section.settings.body }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_url }}" class="moqu-btn">{{ section.settings.button_label }} &nbsp;→</a>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "MOQU · About-Banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Hintergrundbild" },
+    { "type": "text",     "id": "label", "label": "Label (klein oben)", "default": "ÜBER UNS" },
+    { "type": "text",     "id": "title", "label": "Überschrift", "default": "Modern Quality seit über 30 Jahren." },
+    { "type": "textarea", "id": "body",  "label": "Text",
+      "default": "Individuelle Raum- und Einrichtungslösungen in Meisterqualität seit über 30 Jahren." },
+    { "type": "text", "id": "button_label", "label": "Button Label", "default": "Mehr erfahren" },
+    { "type": "url",  "id": "button_url",   "label": "Button URL" }
+  ],
+  "presets": [{ "name": "MOQU · About-Banner" }]
+}
+{% endschema %}

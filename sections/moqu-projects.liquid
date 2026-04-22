@@ -1,0 +1,44 @@
+{%- comment -%}
+  Zeigt alle Metaobjects vom Typ `project` als Kartengrid.
+  Anforderungen an das Metaobject (siehe MOQU-README.md):
+    handle: project
+    fields: title (single_line_text), category (single_line_text),
+            cover (file_reference · image), images (file_list · image),
+            year (number_integer), description (multi_line_text),
+            body (rich_text), client (single_line_text),
+            service (single_line_text), location (single_line_text)
+{%- endcomment -%}
+
+<section class="moqu-projects moqu-section">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="moqu-section-heading moqu-reveal" style="margin-bottom: 40px;">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  <div class="moqu-project-grid">
+    {%- assign metaobjects = shop.metaobjects[section.settings.metaobject_type] | default: shop.metaobjects.project -%}
+    {%- for mo in metaobjects.values -%}
+      {%- if section.settings.limit and forloop.index > section.settings.limit -%}{%- break -%}{%- endif -%}
+      <a href="{{ mo.system.url | default: mo | default_url }}" class="moqu-project-card moqu-reveal">
+        {%- if mo.cover.value != blank -%}
+          <img src="{{ mo.cover.value | image_url: width: 900 }}" alt="{{ mo.title.value | escape }}" loading="lazy">
+        {%- endif -%}
+        <div class="moqu-project-card-overlay">
+          <h3 class="moqu-project-card-title">{{ mo.title.value }}</h3>
+        </div>
+      </a>
+    {%- else -%}
+      <p style="color: var(--moqu-text-muted);">Noch keine Projekte angelegt. Im Shopify-Admin unter <strong>Content → Metaobjects → Project</strong> neue Einträge anlegen.</p>
+    {%- endfor -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "MOQU · Projects",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Projekte" },
+    { "type": "text", "id": "metaobject_type", "label": "Metaobject-Typ (handle)", "default": "project" },
+    { "type": "range", "id": "limit", "label": "Maximal anzeigen", "min": 0, "max": 48, "step": 1, "default": 0, "info": "0 = alle" }
+  ],
+  "presets": [{ "name": "MOQU · Projects" }]
+}
+{% endschema %}

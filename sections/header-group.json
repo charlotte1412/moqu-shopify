@@ -1,0 +1,22 @@
+{
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "moqu-header": {
+      "type": "moqu-header",
+      "blocks": {
+        "link-projekte": { "type": "link", "settings": { "label": "Projekte", "url": "/pages/projekte" } },
+        "dropdown-services": { "type": "dropdown", "settings": {
+          "label": "Services",
+          "child_1_label": "Möbelbau",    "child_1_url": "/pages/moebelbau",
+          "child_2_label": "Innenausbau", "child_2_url": "/pages/innenausbau",
+          "child_3_label": "Küchenbau",   "child_3_url": "/pages/kuechenbau"
+        } },
+        "link-about":   { "type": "link", "settings": { "label": "Über uns", "url": "/pages/ueber-uns" } },
+        "link-contact": { "type": "link", "settings": { "label": "Kontakt",  "url": "/pages/kontakt" } }
+      },
+      "block_order": ["link-projekte", "dropdown-services", "link-about", "link-contact"]
+    }
+  },
+  "order": ["moqu-header"]
+}

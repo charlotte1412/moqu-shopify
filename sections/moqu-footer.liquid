@@ -1,0 +1,101 @@
+<footer class="moqu-footer">
+  <div class="moqu-footer-grid">
+    <div>
+      <span class="moqu-footer-logo">{{ section.settings.logo_text | default: shop.name }}</span>
+      <p class="moqu-footer-desc">{{ section.settings.footer_desc }}</p>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'link_list' -%}
+          <div>
+            <div class="moqu-footer-col-title">{{ block.settings.title }}</div>
+            <ul>
+              {%- for i in (1..8) -%}
+                {%- assign label_key = 'label_' | append: i -%}
+                {%- assign url_key = 'url_' | append: i -%}
+                {%- assign l = block.settings[label_key] -%}
+                {%- assign u = block.settings[url_key] -%}
+                {%- if l != blank -%}<li><a href="{{ u }}">{{ l }}</a></li>{%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- when 'contact' -%}
+          <div>
+            <div class="moqu-footer-col-title">{{ block.settings.title | default: 'Kontakt' }}</div>
+            <div class="moqu-footer-contact">
+              {%- if block.settings.address != blank -%}<p>{{ block.settings.address }}</p><br>{%- endif -%}
+              {%- if block.settings.phone != blank   -%}<p>{{ block.settings.phone }}</p>{%- endif -%}
+              {%- if block.settings.email != blank   -%}<p><a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a></p>{%- endif -%}
+            </div>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="moqu-footer-bottom">
+    <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+    <span>{{ section.settings.credit }}</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "MOQU · Footer",
+  "settings": [
+    { "type": "text", "id": "logo_text", "label": "Logo-Text", "default": "MOQU" },
+    { "type": "textarea", "id": "footer_desc", "label": "Footer-Beschreibung",
+      "default": "Individuelle Raum- und Einrichtungslösungen in Meisterqualität seit über 30 Jahren." },
+    { "type": "text", "id": "credit", "label": "Credit/Zusatz (rechts unten)", "default": "" }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Link-Spalte",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Überschrift", "default": "Seiten" },
+        { "type": "text", "id": "label_1", "label": "Label 1" }, { "type": "url", "id": "url_1", "label": "URL 1" },
+        { "type": "text", "id": "label_2", "label": "Label 2" }, { "type": "url", "id": "url_2", "label": "URL 2" },
+        { "type": "text", "id": "label_3", "label": "Label 3" }, { "type": "url", "id": "url_3", "label": "URL 3" },
+        { "type": "text", "id": "label_4", "label": "Label 4" }, { "type": "url", "id": "url_4", "label": "URL 4" },
+        { "type": "text", "id": "label_5", "label": "Label 5" }, { "type": "url", "id": "url_5", "label": "URL 5" },
+        { "type": "text", "id": "label_6", "label": "Label 6" }, { "type": "url", "id": "url_6", "label": "URL 6" },
+        { "type": "text", "id": "label_7", "label": "Label 7" }, { "type": "url", "id": "url_7", "label": "URL 7" },
+        { "type": "text", "id": "label_8", "label": "Label 8" }, { "type": "url", "id": "url_8", "label": "URL 8" }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "Kontakt-Spalte",
+      "settings": [
+        { "type": "text", "id": "title",   "label": "Überschrift", "default": "Kontakt" },
+        { "type": "textarea", "id": "address", "label": "Adresse", "default": "Musterstraße 1\n01234 Musterstadt" },
+        { "type": "text", "id": "phone",   "label": "Telefon", "default": "+49 3456 789 0" },
+        { "type": "text", "id": "email",   "label": "E-Mail",  "default": "info@moqu-interior.de" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "link_list", "settings": {
+          "title": "Seiten",
+          "label_1": "Projekte",     "url_1": "/pages/projekte",
+          "label_2": "Möbelbau",     "url_2": "/pages/moebelbau",
+          "label_3": "Innenausbau",  "url_3": "/pages/innenausbau",
+          "label_4": "Küchenbau",    "url_4": "/pages/kuechenbau",
+          "label_5": "Über uns",     "url_5": "/pages/ueber-uns",
+          "label_6": "Kontakt",      "url_6": "/pages/kontakt"
+        } },
+      { "type": "contact", "settings": {} },
+      { "type": "link_list", "settings": {
+          "title": "Rechtliches",
+          "label_1": "Datenschutz",  "url_1": "/pages/datenschutz",
+          "label_2": "AGB",          "url_2": "/pages/agb",
+          "label_3": "Impressum",    "url_3": "/pages/impressum"
+        } }
+    ]
+  },
+  "presets": [{ "name": "MOQU · Footer" }],
+  "enabled_on": { "groups": ["footer"] }
+}
+{% endschema %}

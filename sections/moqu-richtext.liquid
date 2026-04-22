@@ -1,0 +1,16 @@
+<section class="moqu-section" style="background: {{ section.settings.bg }}; max-width: {{ section.settings.max_width }}px; margin: 0 auto;">
+  <div class="moqu-reveal" style="font-size: 16.5px; line-height: 1.8; color: var(--moqu-text-soft);">
+    {{ section.settings.content }}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "MOQU · Rich Text",
+  "settings": [
+    { "type": "richtext", "id": "content", "label": "Inhalt", "default": "<p>Text hier eingeben.</p>" },
+    { "type": "color", "id": "bg", "label": "Hintergrund", "default": "#fcfbf7" },
+    { "type": "range", "id": "max_width", "label": "Max-Breite", "min": 600, "max": 1400, "step": 20, "default": 860, "unit": "px" }
+  ],
+  "presets": [{ "name": "MOQU · Rich Text" }]
+}
+{% endschema %}

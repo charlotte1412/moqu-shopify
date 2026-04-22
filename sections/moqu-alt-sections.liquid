@@ -1,0 +1,36 @@
+<section class="moqu-alt-sections">
+  {%- for block in section.blocks -%}
+    <div class="moqu-alt-section{% if forloop.index0 | modulo: 2 == 1 %} moqu-reverse{% endif %}" {{ block.shopify_attributes }}>
+      <div class="moqu-alt-text moqu-reveal">
+        <div class="moqu-alt-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+        {%- if block.settings.subtitle != blank -%}<div class="moqu-alt-subtitle">{{ block.settings.subtitle }}</div>{%- endif -%}
+        <h2 class="moqu-alt-heading">{{ block.settings.heading }}</h2>
+        <p class="moqu-alt-body">{{ block.settings.body }}</p>
+      </div>
+      <div class="moqu-alt-img moqu-reveal">
+        {%- if block.settings.image != blank -%}
+          <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.heading | escape }}" loading="lazy">
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endfor -%}
+</section>
+{% schema %}
+{
+  "name": "MOQU · Alt-Sections",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Zeile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Bild" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle (kursiv, orange)" },
+        { "type": "text", "id": "heading", "label": "Überschrift", "default": "Überschrift" },
+        { "type": "richtext", "id": "body", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "MOQU · Alt-Sections" }]
+}
+{% endschema %}

@@ -1,0 +1,90 @@
+{%- liquid
+  assign active = request.path
+-%}
+<nav class="moqu-nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="moqu-nav-inner">
+    <a href="{{ routes.root_url }}" class="moqu-logo">
+      {%- if section.settings.logo != blank -%}
+        <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" loading="eager" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}">
+      {%- else -%}
+        {{ shop.name | default: 'MOQU' }}
+      {%- endif -%}
+    </a>
+    <button class="moqu-hamburger" aria-label="Menü öffnen" aria-controls="moqu-nav-links"><span></span><span></span><span></span></button>
+    <ul class="moqu-nav-links" id="moqu-nav-links">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'link' -%}
+            <li><a href="{{ block.settings.url }}"{% if block.settings.url == active %} class="moqu-active"{% endif %}>{{ block.settings.label }}</a></li>
+          {%- when 'dropdown' -%}
+            <li class="moqu-dropdown">
+              <button class="moqu-dropdown-btn">
+                {{ block.settings.label }}
+                <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="moqu-dropdown-menu">
+                {%- for i in (1..5) -%}
+                  {%- assign label_key = 'child_' | append: i | append: '_label' -%}
+                  {%- assign url_key = 'child_' | append: i | append: '_url' -%}
+                  {%- assign l = block.settings[label_key] -%}
+                  {%- assign u = block.settings[url_key] -%}
+                  {%- if l != blank -%}<a href="{{ u }}">{{ l }}</a>{%- endif -%}
+                {%- endfor -%}
+              </div>
+            </li>
+        {%- endcase -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "MOQU · Header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo (optional, sonst Text)" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Menü-Link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Link" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "name": "Dropdown (Services)",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Haupt-Label", "default": "Services" },
+        { "type": "text", "id": "child_1_label", "label": "Unterpunkt 1 Label" },
+        { "type": "url",  "id": "child_1_url",   "label": "Unterpunkt 1 URL" },
+        { "type": "text", "id": "child_2_label", "label": "Unterpunkt 2 Label" },
+        { "type": "url",  "id": "child_2_url",   "label": "Unterpunkt 2 URL" },
+        { "type": "text", "id": "child_3_label", "label": "Unterpunkt 3 Label" },
+        { "type": "url",  "id": "child_3_url",   "label": "Unterpunkt 3 URL" },
+        { "type": "text", "id": "child_4_label", "label": "Unterpunkt 4 Label" },
+        { "type": "url",  "id": "child_4_url",   "label": "Unterpunkt 4 URL" },
+        { "type": "text", "id": "child_5_label", "label": "Unterpunkt 5 Label" },
+        { "type": "url",  "id": "child_5_url",   "label": "Unterpunkt 5 URL" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "link", "settings": { "label": "Projekte", "url": "/pages/projekte" } },
+      { "type": "dropdown", "settings": {
+          "label": "Services",
+          "child_1_label": "Möbelbau",    "child_1_url": "/pages/moebelbau",
+          "child_2_label": "Innenausbau", "child_2_url": "/pages/innenausbau",
+          "child_3_label": "Küchenbau",   "child_3_url": "/pages/kuechenbau"
+        } },
+      { "type": "link", "settings": { "label": "Über uns", "url": "/pages/ueber-uns" } },
+      { "type": "link", "settings": { "label": "Kontakt",  "url": "/pages/kontakt" } }
+    ]
+  },
+  "presets": [{ "name": "MOQU · Header" }],
+  "enabled_on": { "groups": ["header"] }
+}
+{% endschema %}
