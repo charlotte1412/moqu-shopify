@@ -4,9 +4,24 @@
       "type": "page-header",
       "settings": {
         "title": "Möbelbau",
-        "lead": "Test"
+        "lead": "Ob Einbaumöbel, Einzelstücke oder komplette Einrichtungslösungen: Im Möbelbau verbinden wir funktionales Denken mit gestalterischem Anspruch und präziser handwerklicher Ausführung."
+      }
+    },
+    "alt": {
+      "type": "alt-sections"
+    },
+    "faq": {
+      "type": "faq"
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "label": "Projekt besprechen",
+        "title": "Jetzt beraten lassen.",
+        "button_label": "Kontakt aufnehmen",
+        "button_url": "/pages/kontakt"
       }
     }
   },
-  "order": ["h"]
+  "order": ["h", "alt", "faq", "cta"]
 }
