@@ -1,41 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ request.locale.iso_code | default: 'de' }}">
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="{{ settings.color_bg | default: '#fcfbf7' }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fcfbf7">
   <link rel="canonical" href="{{ canonical_url }}">
 
-  <title>
-    {{ page_title }}
-    {%- unless page_title contains shop.name %} – {{ shop.name }}{%- endunless -%}
-  </title>
+  <title>{{ page_title }}{% unless page_title contains shop.name %} – {{ shop.name }}{% endunless %}</title>
 
-  {%- assign meta_description = page_description | default: settings.seo_description -%}
-  {%- if meta_description != blank -%}
-    <meta name="description" content="{{ meta_description | escape }}">
-  {%- endif -%}
-
-  {%- comment -%} ── Open Graph / Twitter ── {%- endcomment -%}
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ page_title | escape }}">
-  <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:site_name" content="{{ shop.name | escape }}">
-  {%- if meta_description != blank -%}
-    <meta property="og:description" content="{{ meta_description | escape }}">
-  {%- endif -%}
-  {%- if settings.seo_og_image != blank -%}
-    <meta property="og:image" content="{{ settings.seo_og_image | image_url: width: 1200 }}">
-    <meta name="twitter:card" content="summary_large_image">
-  {%- else -%}
-    <meta name="twitter:card" content="summary">
-  {%- endif -%}
-  {%- if settings.seo_twitter_handle != blank -%}
-    <meta name="twitter:site" content="@{{ settings.seo_twitter_handle }}">
-  {%- endif -%}
-
-  {% if settings.favicon != blank %}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,126 +18,17 @@
 
   <link rel="stylesheet" href="{{ 'shared.css' | asset_url }}">
 
-  <style>
-    :root {
-      --bg: {{ settings.color_bg | default: '#fcfbf7' }};
-      --text: {{ settings.color_text | default: '#1a1a18' }};
-      --accent: {{ settings.color_accent | default: '#c8772a' }};
-      --accent-dark: {{ settings.color_accent_dark | default: '#ad631e' }};
-    }
-    body { background: var(--bg); color: var(--text); }
-  </style>
-
-  {%- comment -%} ── JSON-LD: LocalBusiness ── {%- endcomment -%}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "{{ settings.seo_business_type | default: 'LocalBusiness' }}",
-    "name": {{ settings.seo_business_name | default: shop.name | json }},
-    "url": {{ shop.url | json }},
-    {%- if settings.seo_og_image != blank -%}
-    "image": {{ settings.seo_og_image | image_url: width: 1200 | prepend: 'https:' | json }},
-    {%- endif -%}
-    {%- if settings.seo_description != blank -%}
-    "description": {{ settings.seo_description | json }},
-    {%- endif -%}
-    {%- if settings.contact_phone != blank -%}
-    "telephone": {{ settings.contact_phone | json }},
-    {%- endif -%}
-    {%- if settings.contact_email != blank -%}
-    "email": {{ settings.contact_email | json }},
-    {%- endif -%}
-    {%- if settings.contact_street != blank -%}
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": {{ settings.contact_street | json }},
-      "postalCode": {{ settings.contact_postal_code | json }},
-      "addressLocality": {{ settings.contact_city | json }},
-      "addressCountry": {{ settings.contact_country | default: 'DE' | json }}
-    },
-    {%- endif -%}
-    {%- if settings.contact_opening_hours != blank -%}
-    "openingHours": {{ settings.contact_opening_hours | json }},
-    {%- endif -%}
-    {%- if settings.seo_service_area != blank -%}
-    "areaServed": {{ settings.seo_service_area | json }},
-    {%- endif -%}
-    "sameAs": [
-      {%- assign social_first = true -%}
-      {%- if settings.social_instagram != blank -%}{%- unless social_first -%},{%- endunless -%}{{ settings.social_instagram | json }}{%- assign social_first = false -%}{%- endif -%}
-      {%- if settings.social_facebook  != blank -%}{%- unless social_first -%},{%- endunless -%}{{ settings.social_facebook  | json }}{%- assign social_first = false -%}{%- endif -%}
-      {%- if settings.social_linkedin  != blank -%}{%- unless social_first -%},{%- endunless -%}{{ settings.social_linkedin  | json }}{%- assign social_first = false -%}{%- endif -%}
-    ]
-  }
-  </script>
-
-  {%- comment -%} ── Google Tag Manager ── {%- endcomment -%}
-  {%- if settings.tracking_gtm_id != blank -%}
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ settings.tracking_gtm_id }}');</script>
-  {%- endif -%}
-
-  {%- comment -%} ── Google Analytics 4 ── {%- endcomment -%}
-  {%- if settings.tracking_ga4_id != blank -%}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings.tracking_ga4_id }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ settings.tracking_ga4_id }}', { anonymize_ip: true });
-  </script>
-  {%- endif -%}
-
-  {%- comment -%} ── Meta (Facebook) Pixel ── {%- endcomment -%}
-  {%- if settings.tracking_meta_pixel_id != blank -%}
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '{{ settings.tracking_meta_pixel_id }}');
-    fbq('track', 'PageView');
-  </script>
-  {%- endif -%}
-
-  {%- comment -%} ── Plausible Analytics ── {%- endcomment -%}
-  {%- if settings.tracking_plausible_domain != blank -%}
-  <script defer data-domain="{{ settings.tracking_plausible_domain }}" src="https://plausible.io/js/script.js"></script>
-  {%- endif -%}
-
   {{ content_for_header }}
 </head>
-<body data-page="{{ template | replace: '.', '-' }}">
+<body>
+  {% section 'header' %}
 
-{%- if settings.tracking_gtm_id != blank -%}
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ settings.tracking_gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-{%- endif -%}
+  <main>
+    {{ content_for_layout }}
+  </main>
 
-{% section 'header' %}
+  {% section 'footer' %}
 
-<main>
-  {{ content_for_layout }}
-</main>
-
-{% section 'footer' %}
-
-{%- if settings.cookie_banner_enabled -%}
-  <div id="moqu-cookie-banner" style="position:fixed; left:20px; right:20px; bottom:20px; max-width:720px; margin:0 auto; background:#1a1a18; color:#fff; padding:20px 24px; border-radius:10px; box-shadow:0 12px 40px rgba(0,0,0,0.25); font-size:14.5px; line-height:1.55; z-index:9999; display:none; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-    <div style="flex:1; min-width:260px;">{{ settings.cookie_banner_text | default: 'Wir verwenden Cookies, um dir die bestmögliche Erfahrung auf unserer Website zu bieten.' }}
-      <a href="/pages/datenschutz" style="color:var(--accent,#c8772a); text-decoration:underline; margin-left:6px;">Mehr erfahren</a>
-    </div>
-    <button id="moqu-cookie-accept" type="button" style="background:var(--accent,#c8772a); color:#fff; border:0; padding:10px 22px; border-radius:6px; font-size:14px; font-weight:600; cursor:pointer;">OK, verstanden</button>
-  </div>
-  <script>
-    (function(){
-      var banner = document.getElementById('moqu-cookie-banner');
-      if (!banner) return;
-      try { if (localStorage.getItem('moqu-cookie-ok') === '1') return; } catch(e){}
-      banner.style.display = 'flex';
-      document.getElementById('moqu-cookie-accept').addEventListener('click', function(){
-        try { localStorage.setItem('moqu-cookie-ok', '1'); } catch(e){}
-        banner.style.display = 'none';
-      });
-    })();
-  </script>
-{%- endif -%}
-
-<script src="{{ 'shared.js' | asset_url }}" defer></script>
+  <script src="{{ 'shared.js' | asset_url }}" defer></script>
 </body>
 </html>

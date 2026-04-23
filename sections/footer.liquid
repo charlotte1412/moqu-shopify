@@ -2,92 +2,41 @@
   <div class="footer-grid">
     <div>
       <div class="footer-logo">{{ shop.name | default: 'MOQU' }}</div>
-      {%- if settings.footer_description != blank -%}
-        <p class="footer-desc">{{ settings.footer_description | newline_to_br }}</p>
-      {%- endif -%}
-      {%- if settings.social_instagram != blank or settings.social_facebook != blank or settings.social_linkedin != blank -%}
-        <div class="footer-social" style="display:flex; gap:14px; margin-top:18px;">
-          {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>{%- endif -%}
-          {%- if settings.social_facebook  != blank -%}<a href="{{ settings.social_facebook }}"  target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>{%- endif -%}
-          {%- if settings.social_linkedin  != blank -%}<a href="{{ settings.social_linkedin }}"  target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>{%- endif -%}
-        </div>
-      {%- endif -%}
+      <p class="footer-desc">Individuelle Raum- und Einrichtungslösungen<br>in Meisterqualität seit über 30 Jahren.</p>
     </div>
-
-    {%- for block in section.blocks -%}
-      {%- if block.type == 'menu' -%}
-        <div {{ block.shopify_attributes }}>
-          <div class="footer-col-title">{{ block.settings.title }}</div>
-          <ul class="footer-links">
-            {%- if block.settings.link_1_label != blank -%}<li><a href="{{ block.settings.link_1_url }}">{{ block.settings.link_1_label }}</a></li>{%- endif -%}
-            {%- if block.settings.link_2_label != blank -%}<li><a href="{{ block.settings.link_2_url }}">{{ block.settings.link_2_label }}</a></li>{%- endif -%}
-            {%- if block.settings.link_3_label != blank -%}<li><a href="{{ block.settings.link_3_url }}">{{ block.settings.link_3_label }}</a></li>{%- endif -%}
-            {%- if block.settings.link_4_label != blank -%}<li><a href="{{ block.settings.link_4_url }}">{{ block.settings.link_4_label }}</a></li>{%- endif -%}
-            {%- if block.settings.link_5_label != blank -%}<li><a href="{{ block.settings.link_5_url }}">{{ block.settings.link_5_label }}</a></li>{%- endif -%}
-            {%- if block.settings.link_6_label != blank -%}<li><a href="{{ block.settings.link_6_url }}">{{ block.settings.link_6_label }}</a></li>{%- endif -%}
-          </ul>
-        </div>
-      {%- endif -%}
-    {%- endfor -%}
-
+    <div>
+      <div class="footer-col-title">Seiten</div>
+      <ul class="footer-links">
+        <li><a href="/pages/projekte">Projekte</a></li>
+        <li><a href="/pages/moebelbau">Möbelbau</a></li>
+        <li><a href="/pages/innenausbau">Innenausbau</a></li>
+        <li><a href="/pages/kuechenbau">Küchenbau</a></li>
+        <li><a href="/pages/ueber-uns">Über uns</a></li>
+        <li><a href="/pages/kontakt">Kontakt</a></li>
+      </ul>
+    </div>
     <div>
       <div class="footer-col-title">Kontakt</div>
       <div class="footer-contact">
-        {%- if settings.contact_street != blank or settings.contact_city != blank -%}
-          <p>{{ settings.contact_street }}<br>{{ settings.contact_city }}</p><br>
-        {%- endif -%}
-        {%- if settings.contact_phone != blank -%}<p>{{ settings.contact_phone }}</p>{%- endif -%}
-        {%- if settings.contact_email != blank -%}<p><a href="mailto:{{ settings.contact_email }}" style="color:inherit;">{{ settings.contact_email }}</a></p>{%- endif -%}
+        <p>Halberstädter Chaussee 187<br>39116 Magdeburg</p>
+        <p>+49 3456 789 0</p>
+        <p><a href="mailto:info@moqu-interior.de" style="color:inherit;">info@moqu-interior.de</a></p>
       </div>
     </div>
+    <div>
+      <div class="footer-col-title">Rechtliches</div>
+      <ul class="footer-links">
+        <li><a href="/pages/datenschutz">Datenschutz</a></li>
+        <li><a href="/pages/agb">AGB</a></li>
+        <li><a href="/pages/impressum">Impressum</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-copy">© {{ 'now' | date: '%Y' }} {{ shop.name }}. Alle Rechte vorbehalten.</div>
 </footer>
 
 {% schema %}
 {
   "name": "Footer",
-  "max_blocks": 3,
-  "blocks": [
-    {
-      "type": "menu",
-      "name": "Menü-Spalte",
-      "settings": [
-        { "type": "text", "id": "title", "label": "Titel", "default": "Seiten" },
-        { "type": "header", "content": "Links" },
-        { "type": "text", "id": "link_1_label", "label": "Link 1 Text" },
-        { "type": "url",  "id": "link_1_url",   "label": "Link 1 Ziel" },
-        { "type": "text", "id": "link_2_label", "label": "Link 2 Text" },
-        { "type": "url",  "id": "link_2_url",   "label": "Link 2 Ziel" },
-        { "type": "text", "id": "link_3_label", "label": "Link 3 Text" },
-        { "type": "url",  "id": "link_3_url",   "label": "Link 3 Ziel" },
-        { "type": "text", "id": "link_4_label", "label": "Link 4 Text" },
-        { "type": "url",  "id": "link_4_url",   "label": "Link 4 Ziel" },
-        { "type": "text", "id": "link_5_label", "label": "Link 5 Text" },
-        { "type": "url",  "id": "link_5_url",   "label": "Link 5 Ziel" },
-        { "type": "text", "id": "link_6_label", "label": "Link 6 Text" },
-        { "type": "url",  "id": "link_6_url",   "label": "Link 6 Ziel" }
-      ]
-    }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "menu", "settings": {
-        "title": "Seiten",
-        "link_1_label": "Projekte",   "link_1_url": "/pages/projekte",
-        "link_2_label": "Möbelbau",   "link_2_url": "/pages/moebelbau",
-        "link_3_label": "Innenausbau","link_3_url": "/pages/innenausbau",
-        "link_4_label": "Küchenbau",  "link_4_url": "/pages/kuechenbau",
-        "link_5_label": "Über uns",   "link_5_url": "/pages/ueber-uns",
-        "link_6_label": "Kontakt",    "link_6_url": "/pages/kontakt"
-      }},
-      { "type": "menu", "settings": {
-        "title": "Rechtliches",
-        "link_1_label": "Datenschutz", "link_1_url": "/pages/datenschutz",
-        "link_2_label": "AGB",         "link_2_url": "/pages/agb",
-        "link_3_label": "Impressum",   "link_3_url": "/pages/impressum"
-      }}
-    ]
-  }
+  "settings": []
 }
 {% endschema %}

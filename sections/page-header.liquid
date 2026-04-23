@@ -1,39 +1,16 @@
-{%- if section.settings.image != blank -%}
-  <div class="page-hero" style="background-image: url('{{ section.settings.image | image_url: width: 2400 }}');">
-    <div class="page-hero-overlay"></div>
-    <div class="page-hero-content">
-      <h1 class="page-hero-title reveal">{{ section.settings.title | default: page.title }}</h1>
-      {%- if section.settings.lead != blank -%}
-        <p class="page-hero-lead reveal reveal-d1">{{ section.settings.lead }}</p>
-      {%- endif -%}
-    </div>
-  </div>
-{%- else -%}
-  <div class="page-header">
-    <h1 class="page-title reveal">{{ section.settings.title | default: page.title }}</h1>
-    {%- if section.settings.lead != blank -%}
-      <p class="page-lead reveal reveal-d1">{{ section.settings.lead }}</p>
-    {%- endif -%}
-  </div>
-{%- endif -%}
-
-<style>
-  .page-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; padding: 120px 80px 60px; background-size: cover; background-position: center; overflow: hidden; }
-  .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,7,4,0.55) 0%, rgba(10,7,4,0.15) 60%, rgba(10,7,4,0.05) 100%); }
-  .page-hero-content { position: relative; z-index: 1; max-width: 760px; }
-  .page-hero-title { font-family: 'MuseoModerno', sans-serif; font-size: clamp(40px, 6vw, 72px); font-weight: 700; color: #fff; line-height: 1.06; letter-spacing: -1px; margin: 0 0 18px 0; }
-  .page-hero-lead { font-size: 17px; color: rgba(255,255,255,0.9); line-height: 1.55; max-width: 640px; }
-  @media (max-width: 1100px) { .page-hero { padding: 100px 40px 48px; } }
-  @media (max-width: 760px)  { .page-hero { padding: 90px 24px 40px; min-height: 50vh; } .page-hero-title { font-size: clamp(30px, 8vw, 48px); } }
-</style>
+<div class="page-header">
+  <h1 class="page-title">{{ section.settings.title | default: page.title }}</h1>
+  {% if section.settings.lead != blank %}
+    <p class="page-lead">{{ section.settings.lead }}</p>
+  {% endif %}
+</div>
 
 {% schema %}
 {
   "name": "Seitenkopf",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Hintergrundbild (optional)", "info": "Wenn gesetzt, wird ein Hero mit Bild statt eines schlichten Seitenkopfs gezeigt." },
-    { "type": "text", "id": "title", "label": "Titel", "info": "Leer lassen = Seitentitel aus Shopify-Pages-Admin wird übernommen" },
-    { "type": "textarea", "id": "lead", "label": "Lead-Text (optional)" }
+    { "type": "text", "id": "title", "label": "Titel" },
+    { "type": "textarea", "id": "lead", "label": "Lead-Text" }
   ],
   "presets": [{ "name": "Seitenkopf" }]
 }

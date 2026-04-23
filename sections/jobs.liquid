@@ -1,50 +1,31 @@
 <section class="jobs" id="stellenanzeigen">
-  <div class="jobs-header reveal">
+  <div class="jobs-header">
     <h2 class="section-heading">{{ section.settings.heading }}</h2>
-    {%- if section.settings.subtitle != blank -%}<p class="jobs-sub">{{ section.settings.subtitle }}</p>{%- endif -%}
+    {% if section.settings.subtitle != blank %}
+      <p class="jobs-sub">{{ section.settings.subtitle }}</p>
+    {% endif %}
   </div>
   <div class="job-list">
-    {%- for block in section.blocks -%}
-      <a class="job-card reveal{% if forloop.index0 > 0 %} reveal-d{{ forloop.index0 }}{% endif %}" href="{{ block.settings.url | default: '/pages/kontakt' }}" {{ block.shopify_attributes }}>
+    {% for block in section.blocks %}
+      <a class="job-card" href="{{ block.settings.url | default: '/pages/kontakt' }}" {{ block.shopify_attributes }}>
         <div>
           <div class="job-title">{{ block.settings.title }}</div>
           <div class="job-desc">{{ block.settings.desc }}</div>
         </div>
         <span class="job-arrow">→</span>
       </a>
-    {%- endfor -%}
+    {% endfor %}
   </div>
 </section>
-
-<style>
-  .jobs { background: #eceae6; padding: 80px 80px 100px; }
-  .jobs-header { margin-bottom: 48px; }
-  .jobs-sub { font-size: 15px; color: #9a9690; margin-top: 8px; }
-  .job-list { display: flex; flex-direction: column; gap: 14px; }
-  .job-card { background: #fff; border-radius: 8px; padding: 26px 30px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: box-shadow 0.25s, border-color 0.25s; border: 1px solid rgba(0,0,0,0.04); text-decoration: none; color: inherit; }
-  .job-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.09); border-color: rgba(200,119,42,0.15); }
-  .job-title { font-size: 17px; font-weight: 600; color: #3a3530; margin-bottom: 5px; }
-  .job-desc { font-size: 13.5px; color: #908c86; }
-  .job-arrow { font-size: 18px; color: #c8c4be; flex-shrink: 0; margin-left: 24px; transition: color 0.2s; }
-  .job-card:hover .job-arrow { color: var(--accent,#c8772a); }
-  @media (max-width: 1100px) { .jobs { padding-left: 40px; padding-right: 40px; } }
-  @media (max-width: 760px) {
-    .jobs { padding: 56px 24px 72px; }
-    .jobs-header { margin-bottom: 32px; }
-    .job-card { padding: 22px 20px; gap: 14px; }
-    .job-title { font-size: 15.5px; }
-    .job-desc { font-size: 13px; }
-  }
-</style>
 
 {% schema %}
 {
   "name": "Stellenanzeigen",
+  "max_blocks": 12,
   "settings": [
     { "type": "text", "id": "heading", "label": "Überschrift", "default": "Stellenanzeigen" },
-    { "type": "text", "id": "subtitle", "label": "Untertitel", "default": "Werde Teil unseres Teams." }
+    { "type": "text", "id": "subtitle", "label": "Untertitel" }
   ],
-  "max_blocks": 12,
   "blocks": [
     {
       "type": "job",
@@ -52,7 +33,7 @@
       "settings": [
         { "type": "text", "id": "title", "label": "Titel" },
         { "type": "textarea", "id": "desc", "label": "Kurzbeschreibung" },
-        { "type": "url", "id": "url", "label": "Bewerbungs-Ziel", "default": "/pages/kontakt" }
+        { "type": "url", "id": "url", "label": "Bewerbungs-Ziel" }
       ]
     }
   ],

@@ -1,34 +1,20 @@
 <section class="about-intro">
-  <h2 class="reveal">{{ section.settings.heading }}</h2>
-  {%- if section.settings.lead != blank -%}
-    <p class="about-intro-lead reveal reveal-d1">{{ section.settings.lead }}</p>
-  {%- endif -%}
-  {%- if section.settings.body != blank -%}
-    <div class="about-intro-body reveal reveal-d2">{{ section.settings.body }}</div>
-  {%- endif -%}
+  <h2>{{ section.settings.heading }}</h2>
+  {% if section.settings.lead != blank %}
+    <p class="about-intro-lead">{{ section.settings.lead }}</p>
+  {% endif %}
+  {% if section.settings.body != blank %}
+    <div class="about-intro-body">{{ section.settings.body }}</div>
+  {% endif %}
 </section>
-
-<style>
-  .about-intro { padding: 30px 80px 100px; }
-  .about-intro h2 { font-size: clamp(30px, 3.6vw, 46px); font-weight: 600; color: #1a1a18; letter-spacing: -0.6px; line-height: 1.1; margin: 0 0 40px 0; font-family: 'MuseoModerno',sans-serif; }
-  .about-intro p { font-size: 15px; color: #7e7a74; line-height: 1.78; font-weight: 400; margin: 0 0 20px 0; }
-  .about-intro-lead { max-width: 780px; margin-bottom: 44px !important; }
-  .about-intro-body { column-count: 2; column-gap: 72px; max-width: 1200px; }
-  .about-intro-body p { break-inside: avoid; }
-  .about-intro-body p:last-child { margin-bottom: 0; }
-  @media (max-width: 1100px) { .about-intro { padding: 30px 40px 80px; } .about-intro-body { column-gap: 48px; } }
-  @media (max-width: 760px) { .about-intro { padding: 20px 20px 60px; } .about-intro h2 { margin-bottom: 28px; } .about-intro-lead { margin-bottom: 32px !important; } .about-intro-body { column-count: 1; } }
-</style>
 
 {% schema %}
 {
   "name": "Über-uns Intro",
   "settings": [
     { "type": "text", "id": "heading", "label": "Überschrift", "default": "MOQU..." },
-    { "type": "textarea", "id": "lead", "label": "Lead-Absatz",
-      "default": "...steht für Modern Quality – und zugleich für unsere tiefe Verbundenheit zum Werkstoff Holz. Abgeleitet vom japanischen Wort für Holz, vereint der Name Tradition und zeitgemäßen Anspruch." },
-    { "type": "richtext", "id": "body", "label": "Fließtext (2-spaltig)",
-      "default": "<p>Seit über 30 Jahren entstehen bei uns Möbel und Innenausbauten mit Substanz.</p><p>MOQU ist gewachsen – wie Holz selbst.</p><p>Der Gründer Tilo legte den Grundstein mit handwerklicher Präzision.</p><p>Heute führt Simon diesen Weg fort.</p>" }
+    { "type": "textarea", "id": "lead", "label": "Lead-Absatz" },
+    { "type": "richtext", "id": "body", "label": "Fließtext (2-spaltig)" }
   ],
   "presets": [{ "name": "Über-uns Intro" }]
 }

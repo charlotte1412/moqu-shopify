@@ -1,36 +1,17 @@
 <div class="keywords-section">
   <div class="kw-icons-row">
-    {%- for block in section.blocks -%}
+    {% for block in section.blocks %}
       <a href="{{ block.settings.url | default: '#' }}" class="kw-icon-item kw-visible" {{ block.shopify_attributes }}>
-        {%- if block.settings.icon_svg != blank -%}
+        {% if block.settings.icon_svg != blank %}
           {{ block.settings.icon_svg }}
-        {%- else -%}
+        {% else %}
           <svg viewBox="0 0 24 24"><circle pathLength="1" cx="12" cy="12" r="10"/></svg>
-        {%- endif -%}
+        {% endif %}
         <span class="kw-icon-label">{{ block.settings.label }}</span>
       </a>
-    {%- endfor -%}
+    {% endfor %}
   </div>
 </div>
-
-<style>
-  .keywords-section { background: #fcfbf7; padding: 80px 80px 40px; }
-  .kw-icons-row { display: flex; justify-content: space-evenly; align-items: center; }
-  .kw-icon-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 14px; min-height: 100px; text-decoration: none; }
-  .kw-icon-item svg { width: 68px; height: 68px; stroke: var(--accent,#c8772a); stroke-width: 0.85; fill: none; overflow: visible; }
-  .kw-icon-item svg [pathLength] { stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 0.2; transition: opacity 0.4s ease; }
-  .kw-icon-item:hover svg [pathLength] { opacity: 1; }
-  .kw-icon-label { font-size: 12.5px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: #1a1a18; white-space: nowrap; transition: color 0.35s ease; }
-  .kw-icon-item:hover .kw-icon-label { color: var(--accent,#c8772a); }
-  @media (max-width: 1100px) { .keywords-section { padding: 64px 40px 32px; } .kw-icon-item svg { width: 52px; height: 52px; } }
-  @media (max-width: 760px) {
-    .keywords-section { padding: 48px 16px 28px; }
-    .kw-icons-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 0; justify-items: center; }
-    .kw-icon-item { flex: none; min-height: auto; min-width: 0; width: 100%; }
-    .kw-icon-item svg { width: 42px; height: 42px; }
-    .kw-icon-label { font-size: 8.5px; letter-spacing: 1.2px; white-space: normal; text-align: center; }
-  }
-</style>
 
 {% schema %}
 {
@@ -43,7 +24,7 @@
       "settings": [
         { "type": "text", "id": "label", "label": "Label" },
         { "type": "url", "id": "url", "label": "Verlinktes Ziel" },
-        { "type": "html", "id": "icon_svg", "label": "Icon (SVG-Code)", "info": "Komplettes <svg viewBox=\"0 0 24 24\">…</svg>-Element." }
+        { "type": "html", "id": "icon_svg", "label": "Icon (SVG-Code)" }
       ]
     }
   ],

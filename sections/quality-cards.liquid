@@ -1,64 +1,48 @@
 <section class="quality">
-  <div class="quality-intro reveal">
-    {%- if section.settings.label != blank or section.settings.kanji != blank -%}
+  <div class="quality-intro">
+    {% if section.settings.label != blank or section.settings.kanji != blank %}
       <p class="moqu-label">
-        {%- if section.settings.kanji != blank -%}<span class="moqu-kanji">{{ section.settings.kanji }}</span><span class="moqu-divider"></span>{%- endif -%}
+        {% if section.settings.kanji != blank %}
+          <span class="moqu-kanji">{{ section.settings.kanji }}</span><span class="moqu-divider"></span>
+        {% endif %}
         <span class="moqu-label-text">{{ section.settings.label }}</span>
       </p>
-    {%- endif -%}
+    {% endif %}
     <h2 class="section-heading">{{ section.settings.heading }}</h2>
-    {%- if section.settings.body != blank -%}
+    {% if section.settings.body != blank %}
       <p class="section-body">{{ section.settings.body }}</p>
-    {%- endif -%}
+    {% endif %}
   </div>
   <div class="cards">
-    {%- for block in section.blocks -%}
-      <div class="card reveal reveal-d{{ forloop.index }}" {{ block.shopify_attributes }}>
-        {%- if block.settings.icon_svg != blank -%}{{ block.settings.icon_svg }}{%- endif -%}
+    {% for block in section.blocks %}
+      <div class="card" {{ block.shopify_attributes }}>
+        {% if block.settings.icon_svg != blank %}{{ block.settings.icon_svg }}{% endif %}
         <span class="card-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
         <div class="card-title">{{ block.settings.title }}</div>
         <p class="card-body">{{ block.settings.body }}</p>
       </div>
-    {%- endfor -%}
+    {% endfor %}
   </div>
 </section>
-
-<style>
-  .quality { background: #fcfbf7; padding: 40px 80px 80px; }
-  .quality-intro { max-width: 660px; margin-bottom: 64px; }
-  .moqu-label { display: flex; align-items: center; gap: 14px; font-size: 11px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase; color: var(--accent,#c8772a); margin-bottom: 22px; }
-  .moqu-kanji { font-family: serif; font-size: 28px; font-weight: 400; letter-spacing: 0; line-height: 1; text-transform: none; }
-  .moqu-divider { flex: 0 0 22px; height: 1px; background: currentColor; opacity: 0.35; }
-  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .card { background: #fff; border-radius: 10px; padding: 44px 32px 48px; border: 1px solid rgba(0,0,0,0.05); position: relative; overflow: hidden; min-height: 300px; transition: border-color 0.25s, box-shadow 0.3s, transform 0.3s; }
-  .card:hover { border-color: rgba(200,119,42,0.22); box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-5px); }
-  .card-num { display: block; font-family: 'MuseoModerno',sans-serif; font-size: 11px; font-weight: 700; color: var(--accent,#c8772a); letter-spacing: 3.5px; margin-bottom: 26px; }
-  .card-icon { position: absolute; right: -16px; bottom: -16px; width: 150px; height: 150px; color: rgba(200,119,42,0.07); stroke-width: 0.75; fill: none; stroke: currentColor; pointer-events: none; }
-  .card-title { font-size: 23px; font-weight: 600; color: #1a1a18; margin-bottom: 14px; line-height: 1.18; position: relative; z-index: 1; font-family: 'MuseoModerno',sans-serif; }
-  .card-body { font-size: 14.5px; color: #8a8680; line-height: 1.72; position: relative; z-index: 1; }
-  @media (max-width: 1100px) { .quality { padding: 32px 40px 80px; } .cards { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 760px) { .quality { padding: 24px 24px 56px; } .cards { grid-template-columns: 1fr; } .card { min-height: auto; padding: 36px 28px 40px; } .card-title { font-size: 20px; } }
-</style>
 
 {% schema %}
 {
   "name": "Qualitäts-Karten",
-  "settings": [
-    { "type": "text", "id": "kanji", "label": "Kanji-Zeichen", "default": "木" },
-    { "type": "text", "id": "label", "label": "Eyebrow-Label", "default": "moku — japanisch für Holz" },
-    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Aus dem Wesen<br>des Holzes." },
-    { "type": "textarea", "id": "body", "label": "Intro-Text",
-      "default": "MOQU — abgeleitet vom japanischen Wort für Holz (木, moku) — steht für maßgefertigte Möbel und Einrichtungslösungen in Meisterqualität. Mit über 30 Jahren Erfahrung entwickeln wir aus den Wünschen unserer Kunden individuelle Konzepte: vom einzelnen Möbel bis zur gesamten Raumlösung. In jedem Arbeitsabschnitt höchster Wert auf Design, Qualität und Service." }
-  ],
   "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "kanji", "label": "Kanji-Zeichen" },
+    { "type": "text", "id": "label", "label": "Eyebrow-Label" },
+    { "type": "text", "id": "heading", "label": "Überschrift" },
+    { "type": "textarea", "id": "body", "label": "Intro-Text" }
+  ],
   "blocks": [
     {
       "type": "card",
       "name": "Karte",
       "settings": [
-        { "type": "text", "id": "title", "label": "Titel", "default": "Titel" },
+        { "type": "text", "id": "title", "label": "Titel" },
         { "type": "textarea", "id": "body", "label": "Beschreibung" },
-        { "type": "html", "id": "icon_svg", "label": "Icon (SVG-Code)", "info": "Komplettes <svg class=\"card-icon\">…</svg>-Element einfügen. Optional." }
+        { "type": "html", "id": "icon_svg", "label": "Icon (SVG)" }
       ]
     }
   ],

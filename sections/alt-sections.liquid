@@ -1,42 +1,38 @@
 <div class="alt-sections">
-  {%- for block in section.blocks -%}
-    {%- assign is_odd = forloop.index0 | modulo: 2 -%}
-    <div class="alt-section{% if is_odd == 1 %} reverse{% endif %}" {{ block.shopify_attributes }}>
-      <div class="alt-text reveal">
+  {% for block in section.blocks %}
+    {% assign odd = forloop.index0 | modulo: 2 %}
+    <div class="alt-section{% if odd == 1 %} reverse{% endif %}" {{ block.shopify_attributes }}>
+      <div class="alt-text">
         <div class="alt-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
-        {%- if block.settings.subtitle != blank -%}<div class="alt-subtitle">{{ block.settings.subtitle }}</div>{%- endif -%}
+        {% if block.settings.subtitle != blank %}
+          <div class="alt-subtitle">{{ block.settings.subtitle }}</div>
+        {% endif %}
         <h2 class="alt-heading">{{ block.settings.heading }}</h2>
         <div class="alt-body">{{ block.settings.body }}</div>
       </div>
-      <div class="alt-img reveal reveal-d2">
-        {%- if block.settings.image != blank -%}
-          <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />
-        {%- elsif block.settings.image_url != blank -%}
-          <img src="{{ block.settings.image_url }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />
-        {%- else -%}
-          {{ 'lifestyle-2' | placeholder_svg_tag: 'alt-placeholder' }}
-        {%- endif -%}
+      <div class="alt-img">
+        {% if block.settings.image != blank %}
+          <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.heading | escape }}" loading="lazy">
+        {% elsif block.settings.image_url != blank %}
+          <img src="{{ block.settings.image_url }}" alt="{{ block.settings.heading | escape }}" loading="lazy">
+        {% endif %}
       </div>
     </div>
-  {%- endfor -%}
+  {% endfor %}
 </div>
-
-<style>
-  .alt-img svg.alt-placeholder { width: 100%; height: auto; min-height: 300px; background: linear-gradient(135deg, #e8e1d4 0%, #cfc5b3 100%); fill: rgba(255,255,255,0.4); display: block; border-radius: 6px; }
-</style>
 
 {% schema %}
 {
-  "name": "Alt-Sections (Bild/Text abwechselnd)",
+  "name": "Alt-Sections",
   "max_blocks": 12,
   "blocks": [
     {
       "type": "row",
-      "name": "Abschnitt",
+      "name": "Bild/Text-Block",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Bild (hochladen)" },
-        { "type": "text", "id": "image_url", "label": "Bild-URL (Fallback)", "info": "Wird nur genutzt, wenn kein Bild hochgeladen ist. Hochgeladenes Bild überschreibt die URL immer." },
-        { "type": "text", "id": "subtitle", "label": "Subtitle (kursiv, orange)" },
+        { "type": "text", "id": "image_url", "label": "Bild-URL (Fallback)" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
         { "type": "text", "id": "heading", "label": "Überschrift" },
         { "type": "richtext", "id": "body", "label": "Text" }
       ]

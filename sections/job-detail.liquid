@@ -3,133 +3,80 @@
   <span class="job-badge">Stellenanzeige</span>
   <h1 class="job-detail-title">{{ section.settings.title | default: page.title }}</h1>
 
-  {%- if section.settings.job_type != blank or section.settings.location != blank -%}
-    <div class="job-meta">
-      {%- if section.settings.job_type != blank -%}
-        <span class="job-meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-          {{ section.settings.job_type }}
-        </span>
-      {%- endif -%}
-      {%- if section.settings.location != blank -%}
-        <span class="job-meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          {{ section.settings.location }}
-        </span>
-      {%- endif -%}
-    </div>
-  {%- endif -%}
+  <div class="job-meta">
+    {% if section.settings.job_type != blank %}
+      <span class="job-meta-item">{{ section.settings.job_type }}</span>
+    {% endif %}
+    {% if section.settings.location != blank %}
+      <span class="job-meta-item">{{ section.settings.location }}</span>
+    {% endif %}
+  </div>
 
-  {%- if section.settings.intro != blank -%}
+  {% if section.settings.intro != blank %}
     <p class="job-intro">{{ section.settings.intro }}</p>
-  {%- endif -%}
+  {% endif %}
 
-  {%- if section.settings.aufgaben != blank -%}
+  {% if section.settings.aufgaben != blank %}
     <div class="job-section">
       <h3 class="job-section-title">Deine Aufgaben</h3>
       <ul class="job-list-items">
-        {%- assign items = section.settings.aufgaben | newline_to_br | split: '<br />' -%}
-        {%- for item in items -%}{%- assign trimmed = item | strip -%}{%- if trimmed != blank -%}<li>{{ trimmed }}</li>{%- endif -%}{%- endfor -%}
+        {% assign items = section.settings.aufgaben | newline_to_br | split: '<br />' %}
+        {% for item in items %}
+          {% assign trimmed = item | strip %}
+          {% if trimmed != blank %}<li>{{ trimmed }}</li>{% endif %}
+        {% endfor %}
       </ul>
     </div>
-  {%- endif -%}
+  {% endif %}
 
-  {%- if section.settings.profil != blank -%}
+  {% if section.settings.profil != blank %}
     <div class="job-section">
       <h3 class="job-section-title">Dein Profil</h3>
       <ul class="job-list-items">
-        {%- assign items = section.settings.profil | newline_to_br | split: '<br />' -%}
-        {%- for item in items -%}{%- assign trimmed = item | strip -%}{%- if trimmed != blank -%}<li>{{ trimmed }}</li>{%- endif -%}{%- endfor -%}
+        {% assign items = section.settings.profil | newline_to_br | split: '<br />' %}
+        {% for item in items %}
+          {% assign trimmed = item | strip %}
+          {% if trimmed != blank %}<li>{{ trimmed }}</li>{% endif %}
+        {% endfor %}
       </ul>
     </div>
-  {%- endif -%}
+  {% endif %}
 
-  {%- if section.settings.angebot != blank -%}
+  {% if section.settings.angebot != blank %}
     <div class="job-section">
       <h3 class="job-section-title">Unser Angebot</h3>
       <ul class="job-list-items">
-        {%- assign items = section.settings.angebot | newline_to_br | split: '<br />' -%}
-        {%- for item in items -%}{%- assign trimmed = item | strip -%}{%- if trimmed != blank -%}<li>{{ trimmed }}</li>{%- endif -%}{%- endfor -%}
+        {% assign items = section.settings.angebot | newline_to_br | split: '<br />' %}
+        {% for item in items %}
+          {% assign trimmed = item | strip %}
+          {% if trimmed != blank %}<li>{{ trimmed }}</li>{% endif %}
+        {% endfor %}
       </ul>
     </div>
-  {%- endif -%}
-
-  {%- if page.content != blank -%}
-    <div class="job-section rte" style="font-size:15.5px; line-height:1.75;">
-      {{ page.content }}
-    </div>
-  {%- endif -%}
+  {% endif %}
 
   <div class="job-cta">
     <div class="job-cta-title">{{ section.settings.cta_title | default: 'Klingt interessant?' }}</div>
-    <p class="job-cta-sub">{{ section.settings.cta_subtitle | default: 'Wir freuen uns auf deine Bewerbung per E-Mail.' }}</p>
-    {%- assign apply_href = section.settings.apply_email | default: settings.contact_email -%}
-    <a href="mailto:{{ apply_href }}?subject=Bewerbung: {{ section.settings.title | default: page.title | escape }}" class="btn-orange">
-      {{ section.settings.cta_button | default: 'Jetzt bewerben' }} &nbsp;→
-    </a>
+    <p class="job-cta-sub">{{ section.settings.cta_subtitle | default: 'Wir freuen uns auf deine Bewerbung.' }}</p>
+    <a href="mailto:{{ section.settings.apply_email | default: 'info@moqu-interior.de' }}" class="btn-orange">{{ section.settings.cta_button | default: 'Jetzt bewerben' }} &nbsp;→</a>
   </div>
 </section>
-
-{%- comment -%} ── JobPosting Structured Data ── {%- endcomment -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "JobPosting",
-  "title": {{ section.settings.title | default: page.title | json }},
-  "description": {{ section.settings.intro | strip_html | json }},
-  "employmentType": {%- case section.settings.job_type -%}{%- when 'Vollzeit' -%}"FULL_TIME"{%- when 'Teilzeit' -%}"PART_TIME"{%- when 'Minijob' -%}"PART_TIME"{%- when 'Ausbildung' -%}"INTERN"{%- else -%}"OTHER"{%- endcase -%},
-  "datePosted": {{ page.published_at | default: 'now' | date: '%Y-%m-%d' | json }},
-  "hiringOrganization": {
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    "sameAs": {{ shop.url | json }}
-  },
-  "jobLocation": {
-    "@type": "Place",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": {{ section.settings.location | default: settings.contact_city | json }},
-      "addressCountry": {{ settings.contact_country | default: 'DE' | json }}
-    }
-  }
-}
-</script>
 
 {% schema %}
 {
   "name": "Stellen-Detail",
   "settings": [
-    { "type": "header", "content": "Basis-Daten" },
-    { "type": "text", "id": "title", "label": "Stellentitel", "info": "Leer lassen = Seitentitel" },
-    { "type": "select", "id": "job_type", "label": "Beschäftigungsart", "default": "Vollzeit",
-      "options": [
-        { "value": "Vollzeit",   "label": "Vollzeit" },
-        { "value": "Teilzeit",   "label": "Teilzeit" },
-        { "value": "Minijob",    "label": "Minijob" },
-        { "value": "Ausbildung", "label": "Ausbildung" }
-      ]
-    },
-    { "type": "text", "id": "location", "label": "Standort", "default": "Magdeburg" },
-
-    { "type": "header", "content": "Intro" },
-    { "type": "textarea", "id": "intro", "label": "Einleitungstext" },
-
-    { "type": "header", "content": "Listen (ein Eintrag pro Zeile)" },
-    { "type": "textarea", "id": "aufgaben", "label": "Deine Aufgaben", "info": "Ein Punkt pro Zeile — wird als Aufzählung gerendert." },
-    { "type": "textarea", "id": "profil",   "label": "Dein Profil",    "info": "Ein Punkt pro Zeile." },
-    { "type": "textarea", "id": "angebot",  "label": "Unser Angebot",  "info": "Ein Punkt pro Zeile." },
-
-    { "type": "header", "content": "Bewerbungs-CTA" },
-    { "type": "text", "id": "cta_title", "label": "CTA-Überschrift", "default": "Klingt interessant?" },
-    { "type": "text", "id": "cta_subtitle", "label": "CTA-Untertitel", "default": "Wir freuen uns auf deine Bewerbung per E-Mail." },
-    { "type": "text", "id": "cta_button", "label": "Button-Text", "default": "Jetzt bewerben" },
-    { "type": "text", "id": "apply_email", "label": "Bewerbungs-E-Mail", "info": "Leer lassen = globale Kontakt-Mail aus Theme-Settings." }
+    { "type": "text", "id": "title", "label": "Stellentitel" },
+    { "type": "text", "id": "job_type", "label": "Beschäftigungsart", "default": "Vollzeit" },
+    { "type": "text", "id": "location", "label": "Standort" },
+    { "type": "textarea", "id": "intro", "label": "Einleitung" },
+    { "type": "textarea", "id": "aufgaben", "label": "Aufgaben (ein Punkt pro Zeile)" },
+    { "type": "textarea", "id": "profil", "label": "Profil (ein Punkt pro Zeile)" },
+    { "type": "textarea", "id": "angebot", "label": "Angebot (ein Punkt pro Zeile)" },
+    { "type": "text", "id": "cta_title", "label": "CTA-Überschrift" },
+    { "type": "text", "id": "cta_subtitle", "label": "CTA-Untertitel" },
+    { "type": "text", "id": "cta_button", "label": "Button-Text" },
+    { "type": "text", "id": "apply_email", "label": "Bewerbungs-E-Mail" }
   ],
   "presets": [{ "name": "Stellen-Detail" }]
 }

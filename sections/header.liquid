@@ -1,83 +1,31 @@
 <nav>
-  <a href="{{ routes.root_url }}" class="nav-logo">
-    {%- if settings.logo_image != blank -%}
-      <img src="{{ settings.logo_image | image_url: width: 300 }}"
-           alt="{{ shop.name | escape }}"
-           style="max-height: {{ settings.logo_max_height | default: 28 }}px; width: auto; display: block;" />
-    {%- else -%}
-      {{ shop.name | default: 'MOQU' }}
-    {%- endif -%}
-  </a>
+  <a href="/" class="nav-logo">{{ shop.name | default: 'MOQU' }}</a>
   <button class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links">
-    {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when 'link' -%}
-          <li {{ block.shopify_attributes }}>
-            <a href="{{ block.settings.url }}"{% if request.path == block.settings.url %} class="active"{% endif %}>{{ block.settings.label }}</a>
-          </li>
-        {%- when 'dropdown' -%}
-          <li class="nav-dropdown" {{ block.shopify_attributes }}>
-            <button class="nav-services-btn" type="button">
-              {{ block.settings.label }}
-              <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="nav-dropdown-menu">
-              {%- if block.settings.link_1_label != blank -%}<a href="{{ block.settings.link_1_url }}">{{ block.settings.link_1_label }}</a>{%- endif -%}
-              {%- if block.settings.link_2_label != blank -%}<a href="{{ block.settings.link_2_url }}">{{ block.settings.link_2_label }}</a>{%- endif -%}
-              {%- if block.settings.link_3_label != blank -%}<a href="{{ block.settings.link_3_url }}">{{ block.settings.link_3_label }}</a>{%- endif -%}
-              {%- if block.settings.link_4_label != blank -%}<a href="{{ block.settings.link_4_url }}">{{ block.settings.link_4_label }}</a>{%- endif -%}
-            </div>
-          </li>
-      {%- endcase -%}
-    {%- endfor -%}
+    <li><a href="/pages/projekte">Projekte</a></li>
+    <li class="nav-dropdown">
+      <button class="nav-services-btn" type="button">
+        Services
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/pages/moebelbau">Möbelbau</a>
+        <a href="/pages/innenausbau">Innenausbau</a>
+        <a href="/pages/kuechenbau">Küchenbau</a>
+      </div>
+    </li>
+    <li><a href="/pages/ueber-uns">Über uns</a></li>
+    <li><a href="/pages/kontakt">Kontakt</a></li>
   </ul>
 </nav>
 
 {% schema %}
 {
   "name": "Header",
-  "max_blocks": 10,
-  "blocks": [
-    {
-      "type": "link",
-      "name": "Menüpunkt",
-      "settings": [
-        { "type": "text", "id": "label", "label": "Beschriftung" },
-        { "type": "url",  "id": "url",   "label": "Ziel" }
-      ]
-    },
-    {
-      "type": "dropdown",
-      "name": "Dropdown",
-      "settings": [
-        { "type": "text", "id": "label", "label": "Beschriftung", "default": "Services" },
-        { "type": "header", "content": "Dropdown-Links" },
-        { "type": "text", "id": "link_1_label", "label": "Link 1 Text" },
-        { "type": "url",  "id": "link_1_url",   "label": "Link 1 Ziel" },
-        { "type": "text", "id": "link_2_label", "label": "Link 2 Text" },
-        { "type": "url",  "id": "link_2_url",   "label": "Link 2 Ziel" },
-        { "type": "text", "id": "link_3_label", "label": "Link 3 Text" },
-        { "type": "url",  "id": "link_3_url",   "label": "Link 3 Ziel" },
-        { "type": "text", "id": "link_4_label", "label": "Link 4 Text" },
-        { "type": "url",  "id": "link_4_url",   "label": "Link 4 Ziel" }
-      ]
-    }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "link", "settings": { "label": "Projekte", "url": "/pages/projekte" } },
-      { "type": "dropdown", "settings": {
-        "label": "Services",
-        "link_1_label": "Möbelbau",   "link_1_url": "/pages/moebelbau",
-        "link_2_label": "Innenausbau","link_2_url": "/pages/innenausbau",
-        "link_3_label": "Küchenbau",  "link_3_url": "/pages/kuechenbau"
-      }},
-      { "type": "link", "settings": { "label": "Über uns", "url": "/pages/ueber-uns" } },
-      { "type": "link", "settings": { "label": "Kontakt",  "url": "/pages/kontakt" } }
-    ]
-  }
+  "settings": []
 }
 {% endschema %}
