@@ -1,14 +1,16 @@
-{%- comment -%} Full Möbelbau page rendered as one editable static section. {%- endcomment -%}
+{%- comment -%} Full Möbelbau page. Rendert Defaults wenn keine Blocks konfiguriert, sonst User-Blocks. {%- endcomment -%}
 
 <div class="page-header">
-  <h1 class="page-title reveal">{{ section.settings.title }}</h1>
-  {%- if section.settings.lead != blank -%}
-    <p class="page-lead reveal reveal-d1">{{ section.settings.lead }}</p>
-  {%- endif -%}
+  <h1 class="page-title reveal">{{ section.settings.title | default: 'Möbelbau' }}</h1>
+  {%- if section.settings.lead != blank -%}<p class="page-lead reveal reveal-d1">{{ section.settings.lead }}</p>{%- endif -%}
 </div>
 
-{%- assign alt_i = 0 -%}
+{%- assign alt_count = 0 -%}
+{%- for block in section.blocks -%}{%- if block.type == 'alt-row' -%}{%- assign alt_count = alt_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+
 <div class="alt-sections">
+{%- if alt_count > 0 -%}
+  {%- assign alt_i = 0 -%}
   {%- for block in section.blocks -%}
     {%- if block.type == 'alt-row' -%}
       {%- assign alt_i = alt_i | plus: 1 -%}
@@ -21,113 +23,114 @@
           <div class="alt-body">{{ block.settings.body }}</div>
         </div>
         <div class="alt-img reveal reveal-d2">
-          {%- if block.settings.image != blank -%}
-            <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />
-          {%- elsif block.settings.image_url != blank -%}
-            <img src="{{ block.settings.image_url }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />
-          {%- endif -%}
+          {%- if block.settings.image != blank -%}<img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />
+          {%- elsif block.settings.image_url != blank -%}<img src="{{ block.settings.image_url }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />{%- endif -%}
         </div>
       </div>
     {%- endif -%}
   {%- endfor -%}
+{%- else -%}
+  <div class="alt-section">
+    <div class="alt-text reveal">
+      <div class="alt-num">01</div>
+      <div class="alt-subtitle">Zuhören, verstehen, gemeinsam entwickeln.</div>
+      <h2 class="alt-heading">Persönliche Beratung</h2>
+      <p class="alt-body">Jedes Projekt im Möbelbau beginnt mit einem Gespräch. Wir nehmen uns Zeit, deine Anforderungen, Wünsche und räumlichen Gegebenheiten genau zu verstehen.<br><br>Ob maßgefertigter Einbauschrank, individuelle Küche oder durchdachtes Stauraumkonzept – gute Lösungen entstehen durch sorgfältige Planung.</p>
+    </div>
+    <div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=85" alt="Beratung" loading="lazy" /></div>
+  </div>
+  <div class="alt-section reverse">
+    <div class="alt-text reveal">
+      <div class="alt-num">02</div>
+      <div class="alt-subtitle">Möbel, die exakt passen.</div>
+      <h2 class="alt-heading">Präzise Anfertigung</h2>
+      <p class="alt-body">Maßanfertigung bedeutet mehr als nur die richtigen Abmessungen. Es geht um Proportion, Materialwahl, Konstruktion und Details.<br><br>Im Möbelbau fertigen wir individuelle Einbaumöbel, Regalsysteme, Schränke und Sonderlösungen, die millimetergenau geplant und umgesetzt werden.</p>
+    </div>
+    <div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85" alt="Einbauschrank" loading="lazy" /></div>
+  </div>
+  <div class="alt-section">
+    <div class="alt-text reveal">
+      <div class="alt-num">03</div>
+      <div class="alt-subtitle">Handwerk mit Anspruch.</div>
+      <h2 class="alt-heading">Höchste Verarbeitungsqualität</h2>
+      <p class="alt-body">Als Meisterbetrieb stehen wir für präzise Handwerksarbeit und hochwertige Verarbeitung. Wir wählen Materialien sorgfältig aus und verarbeiten sie mit technischer Genauigkeit und gestalterischem Bewusstsein.</p>
+    </div>
+    <div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85" alt="Handwerksarbeit" loading="lazy" /></div>
+  </div>
+  <div class="alt-section reverse">
+    <div class="alt-text reveal">
+      <div class="alt-num">04</div>
+      <div class="alt-subtitle">Mehr als nur ein Möbelstück.</div>
+      <h2 class="alt-heading">Ganzheitliche Raumkonzepte</h2>
+      <p class="alt-body">Unsere Raumkonzepte umfassen alle Aspekte — Design, Materialwahl und Funktionalität. Alles wird von Anfang an in einem Gesamtkonzept gedacht.</p>
+    </div>
+    <div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=85" alt="Raumkonzept" loading="lazy" /></div>
+  </div>
+{%- endif -%}
 </div>
 
 {%- assign faq_count = 0 -%}
 {%- for block in section.blocks -%}{%- if block.type == 'faq' -%}{%- assign faq_count = faq_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
-{%- if faq_count > 0 -%}
+
 <section class="faq-section">
   {%- if section.settings.faq_label != blank -%}<p class="faq-label reveal">{{ section.settings.faq_label }}</p>{%- endif -%}
   <h2 class="faq-heading reveal">{{ section.settings.faq_heading | default: 'Häufige Fragen' }}</h2>
   <div class="faq-list reveal">
-    {%- for block in section.blocks -%}
-      {%- if block.type == 'faq' -%}
-        <div class="faq-item" {{ block.shopify_attributes }}>
-          <button class="faq-q" type="button" aria-expanded="false">
-            <span>{{ block.settings.question }}</span>
-            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-a">{{ block.settings.answer }}</div>
-        </div>
-      {%- endif -%}
-    {%- endfor -%}
+  {%- if faq_count > 0 -%}
+    {%- for block in section.blocks -%}{%- if block.type == 'faq' -%}
+      <div class="faq-item" {{ block.shopify_attributes }}>
+        <button class="faq-q" type="button" aria-expanded="false"><span>{{ block.settings.question }}</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a">{{ block.settings.answer }}</div>
+      </div>
+    {%- endif -%}{%- endfor -%}
+  {%- else -%}
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>Was kostet ein maßgefertigter Einbauschrank?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">Die Kosten variieren je nach Größe, Material und Ausstattung. Maßgefertigte Einbauschränke beginnen bei ca. 1.500 €. Kontaktiere uns gerne für ein unverbindliches Angebot.</div></div>
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>Wie lange dauert die Fertigung und Montage?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">Von der Auftragsbestätigung bis zur Montage rechnen wir für ein typisches Möbelstück mit 4–8 Wochen.</div></div>
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>Welche Materialien verwenden Sie?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">Wir verarbeiten hochwertige Hölzer, Platten und Oberflächen – von geölter Eiche über Mattlack bis hin zu Furnier.</div></div>
+    <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>Liefern und montieren Sie auch?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">Ja, unsere Monteure liefern und bauen alle Möbel fachgerecht vor Ort ein – sauber, termintreu und mit Sorgfalt.</div></div>
+  {%- endif -%}
   </div>
 </section>
-<script>
-  (function(){
-    document.querySelectorAll('.faq-section .faq-item').forEach(function(item){
-      var btn = item.querySelector('.faq-q');
-      if (!btn || btn.dataset.faqBound) return;
-      btn.dataset.faqBound = '1';
-      btn.addEventListener('click', function(){
-        var open = item.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    });
-  })();
-</script>
-{%- endif -%}
+<script>(function(){document.querySelectorAll('.faq-section .faq-item').forEach(function(item){var btn=item.querySelector('.faq-q');if(!btn||btn.dataset.faqBound)return;btn.dataset.faqBound='1';btn.addEventListener('click',function(){var open=item.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});});})();</script>
 
-{%- if section.settings.cta_title != blank -%}
 <section class="cta reveal">
   <div>
     {%- if section.settings.cta_label != blank -%}<p class="cta-label">{{ section.settings.cta_label }}</p>{%- endif -%}
-    <h2 class="cta-title">{{ section.settings.cta_title }}</h2>
+    <h2 class="cta-title">{{ section.settings.cta_title | default: 'Jetzt beraten lassen.' }}</h2>
   </div>
-  {%- if section.settings.cta_button != blank -%}
-    <a href="{{ section.settings.cta_url | default: '/pages/kontakt' }}" class="btn-orange">{{ section.settings.cta_button }} &nbsp;→</a>
-  {%- endif -%}
+  <a href="{{ section.settings.cta_url | default: '/pages/kontakt' }}" class="btn-orange">{{ section.settings.cta_button | default: 'Kontakt aufnehmen' }} &nbsp;→</a>
 </section>
-{%- endif -%}
 
 {% schema %}
 {
   "name": "Möbelbau-Inhalt",
   "settings": [
+    { "type": "paragraph", "content": "Bearbeitbarer Content für die Möbelbau-Seite. Default-Blöcke werden angezeigt, bis du eigene hinzufügst." },
     { "type": "header", "content": "Seitenkopf" },
     { "type": "text", "id": "title", "label": "Titel", "default": "Möbelbau" },
     { "type": "textarea", "id": "lead", "label": "Lead-Text", "default": "Ob Einbaumöbel, Einzelstücke oder komplette Einrichtungslösungen: Im Möbelbau verbinden wir funktionales Denken mit gestalterischem Anspruch und präziser handwerklicher Ausführung." },
-    { "type": "header", "content": "FAQ-Abschnitt" },
-    { "type": "text", "id": "faq_label", "label": "FAQ-Eyebrow", "default": "FAQ" },
-    { "type": "text", "id": "faq_heading", "label": "FAQ-Überschrift", "default": "Häufige Fragen" },
+    { "type": "header", "content": "FAQ" },
+    { "type": "text", "id": "faq_label", "label": "Eyebrow", "default": "FAQ" },
+    { "type": "text", "id": "faq_heading", "label": "Überschrift", "default": "Häufige Fragen" },
     { "type": "header", "content": "CTA-Streifen" },
-    { "type": "text", "id": "cta_label", "label": "CTA-Eyebrow", "default": "Projekt besprechen" },
-    { "type": "text", "id": "cta_title", "label": "CTA-Titel", "default": "Jetzt beraten lassen." },
-    { "type": "text", "id": "cta_button", "label": "CTA-Button", "default": "Kontakt aufnehmen" },
-    { "type": "url", "id": "cta_url", "label": "CTA-Ziel", "default": "/pages/kontakt" }
+    { "type": "text", "id": "cta_label", "label": "Eyebrow", "default": "Projekt besprechen" },
+    { "type": "text", "id": "cta_title", "label": "Titel", "default": "Jetzt beraten lassen." },
+    { "type": "text", "id": "cta_button", "label": "Button-Text", "default": "Kontakt aufnehmen" },
+    { "type": "url", "id": "cta_url", "label": "Button-Ziel", "default": "/pages/kontakt" }
   ],
   "max_blocks": 30,
   "blocks": [
-    {
-      "type": "alt-row",
-      "name": "Bild/Text-Block",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Bild (hochladen)" },
-        { "type": "text", "id": "image_url", "label": "Bild-URL (Fallback)", "info": "Default-Bild — wird vom Upload überschrieben." },
-        { "type": "text", "id": "subtitle", "label": "Subtitle (orange)" },
-        { "type": "text", "id": "heading", "label": "Überschrift" },
-        { "type": "richtext", "id": "body", "label": "Text" }
-      ]
-    },
-    {
-      "type": "faq",
-      "name": "FAQ-Frage",
-      "settings": [
-        { "type": "text", "id": "question", "label": "Frage" },
-        { "type": "richtext", "id": "answer", "label": "Antwort" }
-      ]
-    }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=85", "subtitle": "Zuhören, verstehen, gemeinsam entwickeln.", "heading": "Persönliche Beratung", "body": "<p>Jedes Projekt im Möbelbau beginnt mit einem Gespräch. Wir nehmen uns Zeit, deine Anforderungen, Wünsche und räumlichen Gegebenheiten genau zu verstehen.</p><p>Ob maßgefertigter Einbauschrank, individuelle Küche oder durchdachtes Stauraumkonzept – gute Lösungen entstehen durch sorgfältige Planung.</p>" } },
-      { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85", "subtitle": "Möbel, die exakt passen.", "heading": "Präzise Anfertigung", "body": "<p>Maßanfertigung bedeutet mehr als nur die richtigen Abmessungen. Es geht um Proportion, Materialwahl, Konstruktion und Details.</p><p>Im Möbelbau fertigen wir individuelle Einbaumöbel, Regalsysteme, Schränke und Sonderlösungen, die millimetergenau geplant und umgesetzt werden.</p>" } },
-      { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85", "subtitle": "Handwerk mit Anspruch.", "heading": "Höchste Verarbeitungsqualität", "body": "<p>Als Meisterbetrieb stehen wir für präzise Handwerksarbeit und hochwertige Verarbeitung. Wir wählen Materialien sorgfältig aus und verarbeiten sie mit technischer Genauigkeit und gestalterischem Bewusstsein.</p>" } },
-      { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=85", "subtitle": "Mehr als nur ein Möbelstück.", "heading": "Ganzheitliche Raumkonzepte", "body": "<p>Unsere Raumkonzepte umfassen alle Aspekte — Design, Materialwahl und Funktionalität. Alles wird von Anfang an in einem Gesamtkonzept gedacht.</p>" } },
-      { "type": "faq", "settings": { "question": "Was kostet ein maßgefertigter Einbauschrank?", "answer": "<p>Die Kosten variieren je nach Größe, Material und Ausstattung. Maßgefertigte Einbauschränke beginnen bei ca. 1.500 €. Kontaktiere uns gerne für ein unverbindliches Angebot.</p>" } },
-      { "type": "faq", "settings": { "question": "Wie lange dauert die Fertigung und Montage?", "answer": "<p>Von der Auftragsbestätigung bis zur Montage rechnen wir für ein typisches Möbelstück mit 4–8 Wochen.</p>" } },
-      { "type": "faq", "settings": { "question": "Welche Materialien verwenden Sie?", "answer": "<p>Wir verarbeiten hochwertige Hölzer, Platten und Oberflächen – von geölter Eiche über Mattlack bis hin zu Furnier.</p>" } },
-      { "type": "faq", "settings": { "question": "Liefern und montieren Sie auch?", "answer": "<p>Ja, unsere Monteure liefern und bauen alle Möbel fachgerecht vor Ort ein – sauber, termintreu und mit Sorgfalt.</p>" } }
-    ]
-  }
+    { "type": "alt-row", "name": "Bild/Text-Block", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Bild (hochladen)" },
+      { "type": "text", "id": "image_url", "label": "Bild-URL (Fallback)" },
+      { "type": "text", "id": "subtitle", "label": "Subtitle (orange)" },
+      { "type": "text", "id": "heading", "label": "Überschrift" },
+      { "type": "richtext", "id": "body", "label": "Text" }
+    ] },
+    { "type": "faq", "name": "FAQ-Frage", "settings": [
+      { "type": "text", "id": "question", "label": "Frage" },
+      { "type": "richtext", "id": "answer", "label": "Antwort" }
+    ] }
+  ]
 }
 {% endschema %}

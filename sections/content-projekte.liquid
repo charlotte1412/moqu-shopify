@@ -1,53 +1,68 @@
-{%- comment -%} Full Projekte page rendered as one editable static section. {%- endcomment -%}
+{%- comment -%} Full Projekte page with fallback. {%- endcomment -%}
 
 <div class="page-header">
-  <h1 class="page-title reveal">{{ section.settings.title }}</h1>
-  {%- if section.settings.lead != blank -%}<p class="page-lead reveal reveal-d1">{{ section.settings.lead }}</p>{%- endif -%}
+  <h1 class="page-title reveal">{{ section.settings.title | default: 'Projekte' }}</h1>
+  {%- if section.settings.lead != blank -%}<p class="page-lead reveal reveal-d1">{{ section.settings.lead }}</p>
+  {%- else -%}<p class="page-lead reveal reveal-d1">Ausgewählte Arbeiten aus Möbelbau, Innenausbau und Küchenbau. Jedes Projekt erzählt seine eigene Geschichte.</p>{%- endif -%}
 </div>
+
+{%- assign tile_count = 0 -%}
+{%- for block in section.blocks -%}{%- if block.type == 'tile' -%}{%- assign tile_count = tile_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
 
 <section class="gallery">
   <div class="gallery-rows reveal">
-    {%- for block in section.blocks -%}
-      {%- if block.type == 'tile' -%}
-        {%- if block.settings.new_row and forloop.index > 1 -%}</div><div class="gallery-row">{%- endif -%}
-        {%- if forloop.first -%}<div class="gallery-row">{%- endif -%}
-        <a class="gallery-item" href="{{ block.settings.url | default: '/pages/projekte' }}" style="flex: {{ block.settings.width | default: 1 }}" {{ block.shopify_attributes }}>
-          {%- if block.settings.image != blank -%}
-            <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.title | escape }}" loading="lazy" />
-          {%- elsif block.settings.image_url != blank -%}
-            <img src="{{ block.settings.image_url }}" alt="{{ block.settings.title | escape }}" loading="lazy" />
-          {%- endif -%}
-          <div class="g-overlay"></div>
-          <div class="g-caption"><span class="g-title">{{ block.settings.title }}</span></div>
-        </a>
-        {%- if forloop.last -%}</div>{%- endif -%}
-      {%- endif -%}
-    {%- endfor -%}
+{%- if tile_count > 0 -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'tile' -%}
+      {%- if block.settings.new_row and forloop.index > 1 -%}</div><div class="gallery-row">{%- endif -%}
+      {%- if forloop.first -%}<div class="gallery-row">{%- endif -%}
+      <a class="gallery-item" href="{{ block.settings.url | default: '/pages/projekte' }}" style="flex: {{ block.settings.width | default: 1 }}" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}<img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.title | escape }}" loading="lazy" />
+        {%- elsif block.settings.image_url != blank -%}<img src="{{ block.settings.image_url }}" alt="{{ block.settings.title | escape }}" loading="lazy" />{%- endif -%}
+        <div class="g-overlay"></div>
+        <div class="g-caption"><span class="g-title">{{ block.settings.title }}</span></div>
+      </a>
+      {%- if forloop.last -%}</div>{%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- else -%}
+  <div class="gallery-row">
+    <a class="gallery-item" href="/pages/projekte" style="flex: 3"><img src="https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=80" alt="Büromöbel" loading="lazy" /><div class="g-overlay"></div><div class="g-caption"><span class="g-title">Büromöbel</span></div></a>
+    <a class="gallery-item" href="/pages/projekte" style="flex: 2"><img src="https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=600&q=80" alt="Einbauschrank" loading="lazy" /><div class="g-overlay"></div><div class="g-caption"><span class="g-title">Einbauschrank</span></div></a>
+  </div>
+  <div class="gallery-row">
+    <a class="gallery-item" href="/pages/projekte" style="flex: 1"><img src="https://images.unsplash.com/photo-1764076327046-fe35f955cba1?w=600&q=80" alt="Esszimmer" loading="lazy" /><div class="g-overlay"></div><div class="g-caption"><span class="g-title">Esszimmer</span></div></a>
+    <a class="gallery-item" href="/pages/projekte" style="flex: 2"><img src="https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=80" alt="Wandverkleidung" loading="lazy" /><div class="g-overlay"></div><div class="g-caption"><span class="g-title">Wandverkleidung</span></div></a>
+  </div>
+  <div class="gallery-row">
+    <a class="gallery-item" href="/pages/projekte" style="flex: 1"><img src="https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=800&q=80" alt="Küche" loading="lazy" /><div class="g-overlay"></div><div class="g-caption"><span class="g-title">Küche</span></div></a>
+    <a class="gallery-item" href="/pages/projekte" style="flex: 1"><img src="https://images.unsplash.com/photo-1552836514-bbf70221e437?w=800&q=80" alt="Gastronomie" loading="lazy" /><div class="g-overlay"></div><div class="g-caption"><span class="g-title">Gastronomie</span></div></a>
+  </div>
+{%- endif -%}
   </div>
 </section>
 
-{%- if section.settings.cta_title != blank -%}
 <section class="cta reveal">
   <div>
     {%- if section.settings.cta_label != blank -%}<p class="cta-label">{{ section.settings.cta_label }}</p>{%- endif -%}
-    <h2 class="cta-title">{{ section.settings.cta_title }}</h2>
+    <h2 class="cta-title">{{ section.settings.cta_title | default: 'Lass uns darüber sprechen.' }}</h2>
   </div>
-  {%- if section.settings.cta_button != blank -%}<a href="{{ section.settings.cta_url | default: '/pages/kontakt' }}" class="btn-orange">{{ section.settings.cta_button }} &nbsp;→</a>{%- endif -%}
+  <a href="{{ section.settings.cta_url | default: '/pages/kontakt' }}" class="btn-orange">{{ section.settings.cta_button | default: 'Kontakt aufnehmen' }} &nbsp;→</a>
 </section>
-{%- endif -%}
 
 {% schema %}
 {
   "name": "Projekte-Inhalt",
   "settings": [
+    { "type": "paragraph", "content": "Bearbeitbarer Content. Default-Kacheln werden angezeigt, bis du eigene hinzufügst." },
     { "type": "header", "content": "Seitenkopf" },
     { "type": "text", "id": "title", "label": "Titel", "default": "Projekte" },
-    { "type": "textarea", "id": "lead", "label": "Lead-Text", "default": "Ausgewählte Arbeiten aus Möbelbau, Innenausbau und Küchenbau. Jedes Projekt erzählt seine eigene Geschichte." },
+    { "type": "textarea", "id": "lead", "label": "Lead" },
     { "type": "header", "content": "CTA" },
-    { "type": "text", "id": "cta_label", "label": "CTA-Eyebrow", "default": "Eigenes Projekt im Kopf?" },
-    { "type": "text", "id": "cta_title", "label": "CTA-Titel", "default": "Lass uns darüber sprechen." },
-    { "type": "text", "id": "cta_button", "label": "CTA-Button", "default": "Kontakt aufnehmen" },
-    { "type": "url", "id": "cta_url", "label": "CTA-Ziel", "default": "/pages/kontakt" }
+    { "type": "text", "id": "cta_label", "label": "Eyebrow", "default": "Eigenes Projekt im Kopf?" },
+    { "type": "text", "id": "cta_title", "label": "Titel", "default": "Lass uns darüber sprechen." },
+    { "type": "text", "id": "cta_button", "label": "Button", "default": "Kontakt aufnehmen" },
+    { "type": "url", "id": "cta_url", "label": "Ziel", "default": "/pages/kontakt" }
   ],
   "max_blocks": 24,
   "blocks": [
@@ -55,20 +70,10 @@
       { "type": "image_picker", "id": "image", "label": "Bild (hochladen)" },
       { "type": "text", "id": "image_url", "label": "Bild-URL (Fallback)" },
       { "type": "text", "id": "title", "label": "Titel" },
-      { "type": "url",  "id": "url", "label": "Verlinkt nach" },
+      { "type": "url", "id": "url", "label": "Verlinkt nach" },
       { "type": "range", "id": "width", "min": 1, "max": 5, "step": 1, "default": 2, "label": "Breite (Gewichtung)" },
       { "type": "checkbox", "id": "new_row", "label": "Neue Zeile ab hier", "default": false }
     ] }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=80", "title": "Büromöbel", "width": 3, "new_row": false, "url": "/pages/projekte" } },
-      { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=600&q=80", "title": "Einbauschrank", "width": 2, "new_row": false, "url": "/pages/projekte" } },
-      { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1764076327046-fe35f955cba1?w=600&q=80", "title": "Esszimmer", "width": 1, "new_row": true,  "url": "/pages/projekte" } },
-      { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=80", "title": "Wandverkleidung", "width": 2, "new_row": false, "url": "/pages/projekte" } },
-      { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=800&q=80", "title": "Küche", "width": 1, "new_row": true,  "url": "/pages/projekte" } },
-      { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1552836514-bbf70221e437?w=800&q=80", "title": "Gastronomie", "width": 1, "new_row": false, "url": "/pages/projekte" } }
-    ]
-  }
+  ]
 }
 {% endschema %}
