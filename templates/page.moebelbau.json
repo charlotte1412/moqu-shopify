@@ -8,10 +8,19 @@
       }
     },
     "alt": {
-      "type": "alt-sections"
+      "type": "alt-sections",
+      "blocks": {
+        "a1": { "type": "row", "settings": { "subtitle": "Zuhören, verstehen, gemeinsam entwickeln.", "heading": "Persönliche Beratung", "body": "<p>Jedes Projekt im Möbelbau beginnt mit einem Gespräch.</p>" } },
+        "a2": { "type": "row", "settings": { "subtitle": "Möbel, die exakt passen.", "heading": "Präzise Anfertigung", "body": "<p>Maßanfertigung bedeutet mehr als nur die richtigen Abmessungen.</p>" } }
+      },
+      "block_order": ["a1", "a2"]
     },
     "faq": {
-      "type": "faq"
+      "type": "faq",
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "Was kostet ein maßgefertigter Einbauschrank?", "answer": "<p>Die Kosten variieren je nach Größe.</p>" } }
+      },
+      "block_order": ["f1"]
     },
     "cta": {
       "type": "cta",
