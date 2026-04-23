@@ -1,0 +1,125 @@
+{
+  "sections": {
+    "moebelbau": {
+      "type": "content-moebelbau",
+      "settings": {
+        "title": "Möbelbau",
+        "lead": "Ob Einbaumöbel, Einzelstücke oder komplette Einrichtungslösungen: Im Möbelbau verbinden wir funktionales Denken mit gestalterischem Anspruch und präziser handwerklicher Ausführung.",
+        "cta_label": "Projekt besprechen",
+        "cta_title": "Jetzt beraten lassen.",
+        "cta_button": "Kontakt aufnehmen",
+        "cta_url": "/pages/kontakt"
+      },
+      "blocks": {
+        "m_a1": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=85", "subtitle": "Zuhören, verstehen, gemeinsam entwickeln.", "heading": "Persönliche Beratung", "body": "<p>Jedes Projekt im Möbelbau beginnt mit einem Gespräch. Wir nehmen uns Zeit, deine Anforderungen, Wünsche und räumlichen Gegebenheiten genau zu verstehen.</p><p>Ob maßgefertigter Einbauschrank, individuelle Küche oder durchdachtes Stauraumkonzept – gute Lösungen entstehen durch sorgfältige Planung.</p>" } },
+        "m_a2": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85", "subtitle": "Möbel, die exakt passen.", "heading": "Präzise Anfertigung", "body": "<p>Maßanfertigung bedeutet mehr als nur die richtigen Abmessungen. Es geht um Proportion, Materialwahl, Konstruktion und Details.</p><p>Im Möbelbau fertigen wir individuelle Einbaumöbel, Regalsysteme, Schränke und Sonderlösungen, die millimetergenau geplant und umgesetzt werden.</p>" } },
+        "m_a3": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85", "subtitle": "Handwerk mit Anspruch.", "heading": "Höchste Verarbeitungsqualität", "body": "<p>Als Meisterbetrieb stehen wir für präzise Handwerksarbeit und hochwertige Verarbeitung. Wir wählen Materialien sorgfältig aus und verarbeiten sie mit technischer Genauigkeit und gestalterischem Bewusstsein.</p>" } },
+        "m_a4": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=85", "subtitle": "Mehr als nur ein Möbelstück.", "heading": "Ganzheitliche Raumkonzepte", "body": "<p>Unsere Raumkonzepte umfassen alle Aspekte — Design, Materialwahl und Funktionalität. Alles wird von Anfang an in einem Gesamtkonzept gedacht.</p>" } },
+        "m_f1": { "type": "faq", "settings": { "question": "Was kostet ein maßgefertigter Einbauschrank?", "answer": "<p>Die Kosten variieren je nach Größe, Material und Ausstattung. Maßgefertigte Einbauschränke beginnen bei ca. 1.500 €. Kontaktiere uns gerne für ein unverbindliches Angebot.</p>" } },
+        "m_f2": { "type": "faq", "settings": { "question": "Wie lange dauert die Fertigung und Montage?", "answer": "<p>Von der Auftragsbestätigung bis zur Montage rechnen wir für ein typisches Möbelstück mit 4–8 Wochen.</p>" } },
+        "m_f3": { "type": "faq", "settings": { "question": "Welche Materialien verwenden Sie?", "answer": "<p>Wir verarbeiten hochwertige Hölzer, Platten und Oberflächen – von geölter Eiche über Mattlack bis hin zu Furnier.</p>" } },
+        "m_f4": { "type": "faq", "settings": { "question": "Liefern und montieren Sie auch?", "answer": "<p>Ja, unsere Monteure liefern und bauen alle Möbel fachgerecht vor Ort ein – sauber, termintreu und mit Sorgfalt.</p>" } }
+      },
+      "block_order": ["m_a1","m_a2","m_a3","m_a4","m_f1","m_f2","m_f3","m_f4"]
+    },
+    "innenausbau": {
+      "type": "content-innenausbau",
+      "settings": {
+        "title": "Innenausbau",
+        "lead": "Raumkonzepte aus einer Hand — von der Wandverkleidung bis zum kompletten Interieur. Wir realisieren ganzheitliche Innenausbauten.",
+        "cta_label": "Innenausbau geplant?",
+        "cta_title": "Sprich mit uns über deinen Raum.",
+        "cta_button": "Kontakt aufnehmen",
+        "cta_url": "/pages/kontakt"
+      },
+      "blocks": {
+        "i_a1": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=85", "subtitle": "Ganzheitlich denken, präzise planen.", "heading": "Raumplanung & Beratung", "body": "<p>Jeder Ausbau beginnt mit einem genauen Blick auf den Raum. Wir analysieren deine Räumlichkeiten, berücksichtigen bauliche Gegebenheiten und entwickeln ein ganzheitliches Konzept.</p>" } },
+        "i_a2": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85", "subtitle": "Material trifft auf Handwerkskunst.", "heading": "Wand- & Deckenverkleidungen", "body": "<p>Hochwertige Verkleidungen verändern den Charakter eines Raumes grundlegend. Wir fertigen und montieren Verkleidungen aus Holz, Akustikpaneelen und individuellen Materialien.</p>" } },
+        "i_a3": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85", "subtitle": "Jeden Zentimeter optimal nutzen.", "heading": "Einbaulösungen & Stauraum", "body": "<p>Maßgefertigte Einbauschränke, Nischen und Regalsysteme entstehen bei uns genau dort, wo sie gebraucht werden.</p>" } },
+        "i_a4": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1764076327046-fe35f955cba1?w=900&q=85", "subtitle": "Ein Ansprechpartner. Alles aus einer Hand.", "heading": "Komplettausbau & Koordination", "body": "<p>Vom Rohbau bis zum fertigen Raum begleiten wir dich durch den gesamten Ausbauprozess.</p>" } },
+        "i_a5": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=85", "subtitle": "Wärme und Charakter unter den Füßen.", "heading": "Parkett & Bodenbeläge", "body": "<p>Ein hochwertiger Boden prägt die gesamte Atmosphäre eines Raumes. Wir verlegen Parkett, Dielen und moderne Bodenbeläge.</p>" } },
+        "i_a6": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1552836514-bbf70221e437?w=900&q=85", "subtitle": "Details, die den Unterschied machen.", "heading": "Türen & Zargen", "body": "<p>Türen sind mehr als funktionale Raumteiler. Wir liefern und montieren Innentüren, Schiebetüren und Zargen.</p>" } },
+        "i_f1": { "type": "faq", "settings": { "question": "Was umfasst Innenausbau genau?", "answer": "<p>Wir realisieren Wand- und Deckenverkleidungen, maßgefertigte Einbaulösungen, Türen und Zargen sowie Parkett- und Bodenarbeiten – für Privat und Gewerbe.</p>" } },
+        "i_f2": { "type": "faq", "settings": { "question": "Arbeiten Sie auch für Gewerbebetriebe?", "answer": "<p>Ja, wir realisieren Innenausbau sowohl für Privathäuser als auch für Büros, Läden und Gastronomiebetriebe.</p>" } },
+        "i_f3": { "type": "faq", "settings": { "question": "Übernehmen Sie die Koordination aller Gewerke?", "answer": "<p>Ja, wir begleiten dich durch den gesamten Ausbauprozess und koordinieren alle beteiligten Handwerker.</p>" } },
+        "i_f4": { "type": "faq", "settings": { "question": "In welchem Umkreis sind Sie tätig?", "answer": "<p>Wir sind hauptsächlich im Raum Magdeburg tätig. Bei größeren Projekten sprich uns gerne direkt an.</p>" } }
+      },
+      "block_order": ["i_a1","i_a2","i_a3","i_a4","i_a5","i_a6","i_f1","i_f2","i_f3","i_f4"]
+    },
+    "kuechenbau": {
+      "type": "content-kuechenbau",
+      "settings": {
+        "title": "Küchenbau",
+        "lead": "Maßgefertigte Küchen, die über Jahrzehnte funktionieren.",
+        "cta_label": "Küche im Kopf?",
+        "cta_title": "Lass uns deine Traumküche planen.",
+        "cta_button": "Beratung anfragen",
+        "cta_url": "/pages/kontakt"
+      },
+      "blocks": {
+        "k_a1": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=85", "subtitle": "Deine Küche, deine Vorstellungen.", "heading": "Persönliche Planung", "body": "<p>Eine Küche entsteht nicht am Reißbrett – sie entsteht im Gespräch. Wir nehmen uns Zeit, deine Anforderungen und Kochgewohnheiten zu verstehen.</p>" } },
+        "k_a2": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85", "subtitle": "Millimetergenau gefertigt.", "heading": "Maßgefertigte Küchen", "body": "<p>Standardmaße sind selten die beste Lösung. Unsere Küchen werden individuell auf deinen Raum zugeschnitten.</p>" } },
+        "k_a3": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85", "subtitle": "Oberflächen, die begeistern.", "heading": "Materialauswahl & Oberflächen", "body": "<p>Holz, Lack, Furnier oder Naturstein – die Wahl der Materialien entscheidet über Charakter und Langlebigkeit einer Küche.</p>" } },
+        "k_a4": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=85", "subtitle": "Alles aus einer Hand.", "heading": "Montage & Fertigstellung", "body": "<p>Nach der Fertigung übernehmen unsere erfahrenen Monteure die fachgerechte Installation vor Ort.</p>" } },
+        "k_f1": { "type": "faq", "settings": { "question": "Was kostet eine maßgefertigte Küche?", "answer": "<p>Maßgefertigte Küchen beginnen je nach Größe und Ausstattung bei ca. 8.000 €. Wir erstellen dir ein individuelles, unverbindliches Angebot.</p>" } },
+        "k_f2": { "type": "faq", "settings": { "question": "Kümmern Sie sich auch um Elektrik und Wasseranschluss?", "answer": "<p>Ja, wir koordinieren alle Gewerke – von der Elektrik bis zum Sanitärinstallateur.</p>" } },
+        "k_f3": { "type": "faq", "settings": { "question": "Wie läuft eine Küchenplanung bei MOQU ab?", "answer": "<p>Wir starten mit einem persönlichen Gespräch, entwickeln gemeinsam ein Konzept, fertigen alle Teile in unserer Werkstatt und montieren alles aus einer Hand.</p>" } },
+        "k_f4": { "type": "faq", "settings": { "question": "Wie lange dauert es von der Planung bis zur fertigen Küche?", "answer": "<p>Von der ersten Planung bis zur Montage rechnest du üblicherweise mit 8–12 Wochen.</p>" } }
+      },
+      "block_order": ["k_a1","k_a2","k_a3","k_a4","k_f1","k_f2","k_f3","k_f4"]
+    },
+    "ueber-uns": {
+      "type": "content-ueber-uns",
+      "settings": {
+        "title": "Über uns",
+        "intro_heading": "MOQU...",
+        "intro_lead": "...steht für Modern Quality – und zugleich für unsere tiefe Verbundenheit zum Werkstoff Holz. Abgeleitet vom japanischen Wort für Holz (木, moku), vereint der Name Tradition und zeitgemäßen Anspruch.",
+        "intro_body": "<p>Seit über 30 Jahren entstehen bei uns Möbel und Innenausbauten mit Substanz. Was mit klassischer Handwerksarbeit begann, entwickelt sich heute zu einem modernen Meisterbetrieb für individuellen Möbelbau, hochwertigen Innenausbau und klare Raumkonzepte.</p><p>MOQU ist gewachsen – wie Holz selbst. Geprägt von Erfahrung, weitergeführt mit neuer Perspektive.</p><p>Der Gründer Tilo legte den Grundstein mit handwerklicher Präzision, Verlässlichkeit und dem Anspruch, jedes Möbelstück sorgfältig und individuell zu fertigen.</p><p>Heute führt Simon diesen Weg fort – mit dem Ziel, das Handwerk weiterzudenken, alte Stereotype der Tischlerei aufzubrechen und Möbelbau sowie Innenausbau moderner, klarer und gestalterischer zu interpretieren.</p>",
+        "cta_label": "Bereit loszulegen?",
+        "cta_title": "Lass uns dein Projekt besprechen.",
+        "cta_button": "Kontakt aufnehmen",
+        "cta_url": "/pages/kontakt"
+      },
+      "blocks": {
+        "u_a1": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85", "subtitle": "Gewachsen aus Erfahrung. Verankert in Magdeburg.", "heading": "Handwerk mit Herkunft", "body": "<p>Unsere Arbeit ist fest mit der Region verbunden. Die Landschaft und das ruhige, beständige Fließen prägen unsere Haltung.</p>" } },
+        "u_a2": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=85", "subtitle": "Verantwortung übernehmen, neu denken.", "heading": "Generationswechsel mit Haltung", "body": "<p>Der Gründer Tilo legte den Grundstein mit handwerklicher Präzision. Heute führt Simon diesen Weg fort – mit dem Ziel, das Handwerk weiterzudenken.</p>" } },
+        "u_a3": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=85", "subtitle": "Das Beste aus beiden Welten.", "heading": "Moderne Qualität", "body": "<p>Modernste CNC-Technik trifft auf traditionsreiches Handwerk. So entstehen Möbel, die höchsten Ansprüchen genügen.</p>" } },
+        "u_a4": { "type": "alt-row", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85", "subtitle": "Gemeinsam für das beste Ergebnis.", "heading": "Ein Team, ein Anspruch", "body": "<p>Unser Team aus Tischlern, Gestaltern und Projektmanagern arbeitet Hand in Hand — vom Entwurf bis zur Montage.</p>" } }
+      },
+      "block_order": ["u_a1","u_a2","u_a3","u_a4"]
+    },
+    "projekte": {
+      "type": "content-projekte",
+      "settings": {
+        "title": "Projekte",
+        "lead": "Ausgewählte Arbeiten aus Möbelbau, Innenausbau und Küchenbau. Jedes Projekt erzählt seine eigene Geschichte.",
+        "cta_label": "Eigenes Projekt im Kopf?",
+        "cta_title": "Lass uns darüber sprechen.",
+        "cta_button": "Kontakt aufnehmen",
+        "cta_url": "/pages/kontakt"
+      },
+      "blocks": {
+        "p_g1": { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=80", "title": "Büromöbel", "width": 3, "new_row": false, "url": "/pages/projekte" } },
+        "p_g2": { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=600&q=80", "title": "Einbauschrank", "width": 2, "new_row": false, "url": "/pages/projekte" } },
+        "p_g3": { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1764076327046-fe35f955cba1?w=600&q=80", "title": "Esszimmer", "width": 1, "new_row": true, "url": "/pages/projekte" } },
+        "p_g4": { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=80", "title": "Wandverkleidung", "width": 2, "new_row": false, "url": "/pages/projekte" } },
+        "p_g5": { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=800&q=80", "title": "Küche", "width": 1, "new_row": true, "url": "/pages/projekte" } },
+        "p_g6": { "type": "tile", "settings": { "image_url": "https://images.unsplash.com/photo-1552836514-bbf70221e437?w=800&q=80", "title": "Gastronomie", "width": 1, "new_row": false, "url": "/pages/projekte" } }
+      },
+      "block_order": ["p_g1","p_g2","p_g3","p_g4","p_g5","p_g6"]
+    },
+    "kontakt": {
+      "type": "content-kontakt",
+      "settings": {
+        "title": "Kontakt",
+        "lead": "Erzähl uns von deinem Projekt. Wir antworten innerhalb eines Werktags.",
+        "heading": "Projektidee?<br>Kontaktiere uns.",
+        "success_message": "Danke! Wir melden uns zeitnah bei dir."
+      }
+    },
+    "generic": {
+      "type": "content-generic"
+    }
+  },
+  "order": ["moebelbau","innenausbau","kuechenbau","ueber-uns","projekte","kontakt","generic"]
+}

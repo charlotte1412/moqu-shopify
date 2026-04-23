@@ -1,0 +1,89 @@
+{%- if page.handle == 'kuechenbau' -%}
+
+<div class="page-header">
+  <h1 class="page-title reveal">{{ section.settings.title | default: 'Küchenbau' }}</h1>
+  {%- if section.settings.lead != blank -%}<p class="page-lead reveal reveal-d1">{{ section.settings.lead }}</p>{%- endif -%}
+</div>
+
+<div class="alt-sections">
+  {%- assign alt_i = 0 -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'alt-row' -%}
+      {%- assign alt_i = alt_i | plus: 1 -%}
+      {%- assign odd = alt_i | modulo: 2 -%}
+      <div class="alt-section{% if odd == 0 %} reverse{% endif %}" {{ block.shopify_attributes }}>
+        <div class="alt-text reveal">
+          <div class="alt-num">{{ alt_i | prepend: '0' | slice: -2, 2 }}</div>
+          {%- if block.settings.subtitle != blank -%}<div class="alt-subtitle">{{ block.settings.subtitle }}</div>{%- endif -%}
+          <h2 class="alt-heading">{{ block.settings.heading }}</h2>
+          <div class="alt-body">{{ block.settings.body }}</div>
+        </div>
+        <div class="alt-img reveal reveal-d2">
+          {%- if block.settings.image != blank -%}<img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />
+          {%- elsif block.settings.image_url != blank -%}<img src="{{ block.settings.image_url }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />{%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{%- assign faq_count = 0 -%}
+{%- for block in section.blocks -%}{%- if block.type == 'faq' -%}{%- assign faq_count = faq_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- if faq_count > 0 -%}
+<section class="faq-section">
+  {%- if section.settings.faq_label != blank -%}<p class="faq-label reveal">{{ section.settings.faq_label }}</p>{%- endif -%}
+  <h2 class="faq-heading reveal">{{ section.settings.faq_heading | default: 'Häufige Fragen' }}</h2>
+  <div class="faq-list reveal">
+    {%- for block in section.blocks -%}{%- if block.type == 'faq' -%}
+      <div class="faq-item" {{ block.shopify_attributes }}><button class="faq-q" type="button" aria-expanded="false"><span>{{ block.settings.question }}</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">{{ block.settings.answer }}</div></div>
+    {%- endif -%}{%- endfor -%}
+  </div>
+</section>
+<script>(function(){document.querySelectorAll('.faq-section .faq-item').forEach(function(item){var btn=item.querySelector('.faq-q');if(!btn||btn.dataset.faqBound)return;btn.dataset.faqBound='1';btn.addEventListener('click',function(){var open=item.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});});})();</script>
+{%- endif -%}
+
+{%- if section.settings.cta_title != blank -%}
+<section class="cta reveal">
+  <div>
+    {%- if section.settings.cta_label != blank -%}<p class="cta-label">{{ section.settings.cta_label }}</p>{%- endif -%}
+    <h2 class="cta-title">{{ section.settings.cta_title }}</h2>
+  </div>
+  <a href="{{ section.settings.cta_url | default: '/pages/kontakt' }}" class="btn-orange">{{ section.settings.cta_button | default: 'Beratung anfragen' }} &nbsp;→</a>
+</section>
+{%- endif -%}
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Küchenbau (/kuechenbau)",
+  "settings": [
+    { "type": "paragraph", "content": "Inhalt der Küchenbau-Seite. Nur sichtbar auf /pages/kuechenbau." },
+    { "type": "header", "content": "Seitenkopf" },
+    { "type": "text", "id": "title", "label": "Titel", "default": "Küchenbau" },
+    { "type": "textarea", "id": "lead", "label": "Lead-Text" },
+    { "type": "header", "content": "FAQ" },
+    { "type": "text", "id": "faq_label", "label": "Eyebrow", "default": "FAQ" },
+    { "type": "text", "id": "faq_heading", "label": "Überschrift", "default": "Häufige Fragen" },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_label", "label": "Eyebrow" },
+    { "type": "text", "id": "cta_title", "label": "Titel" },
+    { "type": "text", "id": "cta_button", "label": "Button", "default": "Beratung anfragen" },
+    { "type": "url", "id": "cta_url", "label": "Ziel", "default": "/pages/kontakt" }
+  ],
+  "max_blocks": 30,
+  "blocks": [
+    { "type": "alt-row", "name": "Bild/Text-Block", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Bild (hochladen)" },
+      { "type": "text", "id": "image_url", "label": "Bild-URL (Fallback)" },
+      { "type": "text", "id": "subtitle", "label": "Subtitle (orange)" },
+      { "type": "text", "id": "heading", "label": "Überschrift" },
+      { "type": "richtext", "id": "body", "label": "Text" }
+    ] },
+    { "type": "faq", "name": "FAQ-Frage", "settings": [
+      { "type": "text", "id": "question", "label": "Frage" },
+      { "type": "richtext", "id": "answer", "label": "Antwort" }
+    ] }
+  ]
+}
+{% endschema %}

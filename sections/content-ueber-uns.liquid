@@ -1,0 +1,77 @@
+{%- if page.handle == 'ueber-uns' -%}
+
+<div class="page-header">
+  <h1 class="page-title reveal">{{ section.settings.title | default: 'Über uns' }}</h1>
+</div>
+
+{%- if section.settings.intro_heading != blank -%}
+<section class="about-intro">
+  <h2 class="reveal">{{ section.settings.intro_heading }}</h2>
+  {%- if section.settings.intro_lead != blank -%}<p class="about-intro-lead reveal reveal-d1">{{ section.settings.intro_lead }}</p>{%- endif -%}
+  {%- if section.settings.intro_body != blank -%}<div class="about-intro-body reveal reveal-d2">{{ section.settings.intro_body }}</div>{%- endif -%}
+</section>
+{%- endif -%}
+
+<div class="alt-sections">
+  {%- assign alt_i = 0 -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'alt-row' -%}
+      {%- assign alt_i = alt_i | plus: 1 -%}
+      {%- assign odd = alt_i | modulo: 2 -%}
+      <div class="alt-section{% if odd == 0 %} reverse{% endif %}" {{ block.shopify_attributes }}>
+        <div class="alt-text reveal">
+          <div class="alt-num">{{ alt_i | prepend: '0' | slice: -2, 2 }}</div>
+          {%- if block.settings.subtitle != blank -%}<div class="alt-subtitle">{{ block.settings.subtitle }}</div>{%- endif -%}
+          <h2 class="alt-heading">{{ block.settings.heading }}</h2>
+          <div class="alt-body">{{ block.settings.body }}</div>
+        </div>
+        <div class="alt-img reveal reveal-d2">
+          {%- if block.settings.image != blank -%}<img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />
+          {%- elsif block.settings.image_url != blank -%}<img src="{{ block.settings.image_url }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />{%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{%- if section.settings.cta_title != blank -%}
+<section class="cta reveal">
+  <div>
+    {%- if section.settings.cta_label != blank -%}<p class="cta-label">{{ section.settings.cta_label }}</p>{%- endif -%}
+    <h2 class="cta-title">{{ section.settings.cta_title }}</h2>
+  </div>
+  <a href="{{ section.settings.cta_url | default: '/pages/kontakt' }}" class="btn-orange">{{ section.settings.cta_button | default: 'Kontakt aufnehmen' }} &nbsp;→</a>
+</section>
+{%- endif -%}
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Über uns (/ueber-uns)",
+  "settings": [
+    { "type": "paragraph", "content": "Inhalt der Über-uns-Seite. Nur sichtbar auf /pages/ueber-uns." },
+    { "type": "header", "content": "Seitenkopf" },
+    { "type": "text", "id": "title", "label": "Titel", "default": "Über uns" },
+    { "type": "header", "content": "Intro-Block" },
+    { "type": "text", "id": "intro_heading", "label": "Überschrift" },
+    { "type": "textarea", "id": "intro_lead", "label": "Lead" },
+    { "type": "richtext", "id": "intro_body", "label": "Fließtext (2-spaltig)" },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_label", "label": "Eyebrow" },
+    { "type": "text", "id": "cta_title", "label": "Titel" },
+    { "type": "text", "id": "cta_button", "label": "Button", "default": "Kontakt aufnehmen" },
+    { "type": "url", "id": "cta_url", "label": "Ziel", "default": "/pages/kontakt" }
+  ],
+  "max_blocks": 12,
+  "blocks": [
+    { "type": "alt-row", "name": "Bild/Text-Block", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Bild (hochladen)" },
+      { "type": "text", "id": "image_url", "label": "Bild-URL (Fallback)" },
+      { "type": "text", "id": "subtitle", "label": "Subtitle (orange)" },
+      { "type": "text", "id": "heading", "label": "Überschrift" },
+      { "type": "richtext", "id": "body", "label": "Text" }
+    ] }
+  ]
+}
+{% endschema %}
