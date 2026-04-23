@@ -10,8 +10,8 @@
     "alt": {
       "type": "alt-sections",
       "blocks": {
-        "a1": { "type": "row", "settings": { "subtitle": "Zuhören, verstehen, gemeinsam entwickeln.", "heading": "Persönliche Beratung", "body": "<p>Jedes Projekt im Möbelbau beginnt mit einem Gespräch.</p>" } },
-        "a2": { "type": "row", "settings": { "subtitle": "Möbel, die exakt passen.", "heading": "Präzise Anfertigung", "body": "<p>Maßanfertigung bedeutet mehr als nur die richtigen Abmessungen.</p>" } }
+        "a1": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=85", "subtitle": "Zuhören, verstehen, gemeinsam entwickeln.", "heading": "Persönliche Beratung", "body": "<p>Jedes Projekt im Möbelbau beginnt mit einem Gespräch.</p>" } },
+        "a2": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85", "subtitle": "Möbel, die exakt passen.", "heading": "Präzise Anfertigung", "body": "<p>Maßanfertigung bedeutet mehr als nur die richtigen Abmessungen.</p>" } }
       },
       "block_order": ["a1", "a2"]
     },
