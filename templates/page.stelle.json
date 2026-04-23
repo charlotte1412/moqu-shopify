@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "job": {
+      "type": "job-detail",
+      "settings": {
+        "job_type": "Vollzeit",
+        "location": "Magdeburg",
+        "intro": "Du hast ein Gespür für Holz und möchtest mit uns arbeiten? Bei MOQU fertigen wir individuelle Möbelstücke und Innenausbauten. Als Teil unseres Teams arbeitest du an anspruchsvollen Projekten für Privat- und Gewerbekunden.",
+        "aufgaben": "Fertigung individueller Möbelstücke\nMitarbeit bei der Entwicklung neuer Produkte und Designs\nQualitätskontrolle und Oberflächenbehandlung\nMontage beim Kunden vor Ort",
+        "profil": "Abgeschlossene Ausbildung als Tischler/in oder vergleichbar\nErfahrung mit Massivholzverarbeitung\nInteresse an nachhaltigen Materialien und Verfahren\nTeamfähigkeit und selbstständige Arbeitsweise",
+        "angebot": "Arbeiten mit hochwertigen, nachhaltigen Materialien\nAbwechslungsreiche Projekte im Privat- und Gewerbebereich\nModerne Werkstatt mit CNC-Technik\nWeiterbildungsmöglichkeiten und faire Vergütung",
+        "cta_title": "Klingt interessant?",
+        "cta_subtitle": "Wir freuen uns auf deine Bewerbung per E-Mail.",
+        "cta_button": "Jetzt bewerben"
+      }
+    }
+  },
+  "order": ["job"]
+}

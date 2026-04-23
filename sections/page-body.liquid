@@ -1,0 +1,45 @@
+{%- comment -%}
+  Rendert den Seiteninhalt aus dem Shopify-Admin (Online Store → Pages → Body).
+  Bleibt leer, solange im Admin nichts eingegeben wurde — dann greifen die
+  übrigen Sektionen darunter (Alt-Sections, Galerie, CTA …).
+{%- endcomment -%}
+
+{%- if page.content != blank -%}
+  <section class="page-body reveal"
+           style="padding: {{ section.settings.padding_y }}px {{ section.settings.padding_x }}px; background: {{ section.settings.bg }};">
+    <div class="page-body-inner rte"
+         style="max-width: {{ section.settings.max_width }}px; margin: 0 auto;">
+      {{ page.content }}
+    </div>
+  </section>
+
+  <style>
+    .page-body-inner { font-size: 16px; line-height: 1.82; color: #3a3530; }
+    .page-body-inner h2 { font-family: 'MuseoModerno', sans-serif; font-size: clamp(26px, 3vw, 36px); font-weight: 600; color: #1a1a18; letter-spacing: -0.4px; line-height: 1.2; margin: 40px 0 18px; }
+    .page-body-inner h2:first-child { margin-top: 0; }
+    .page-body-inner h3 { font-family: 'MuseoModerno', sans-serif; font-size: 20px; font-weight: 600; color: #1a1a18; margin: 28px 0 10px; }
+    .page-body-inner p { margin-bottom: 16px; }
+    .page-body-inner ul, .page-body-inner ol { padding-left: 22px; margin-bottom: 16px; }
+    .page-body-inner li { margin-bottom: 4px; }
+    .page-body-inner a { color: var(--accent, #c8772a); text-decoration: underline; }
+    .page-body-inner img { max-width: 100%; height: auto; border-radius: 6px; margin: 20px 0; }
+    .page-body-inner blockquote { border-left: 3px solid var(--accent, #c8772a); padding-left: 20px; margin: 24px 0; font-style: italic; color: #5a5550; }
+    @media (max-width: 760px) {
+      .page-body { padding: 40px 20px !important; }
+    }
+  </style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Seiteninhalt (Shopify-Admin)",
+  "settings": [
+    { "type": "paragraph", "content": "Der Inhalt dieser Sektion kommt direkt aus dem Shopify-Admin: Online Store → Pages → [Seite] → Body. Hier kann nur das Layout angepasst werden." },
+    { "type": "color", "id": "bg", "label": "Hintergrund", "default": "#fcfbf7" },
+    { "type": "range", "id": "max_width", "min": 600, "max": 1400, "step": 20, "default": 860, "unit": "px", "label": "Maximale Textbreite" },
+    { "type": "range", "id": "padding_x", "min": 0, "max": 120, "step": 10, "default": 80, "unit": "px", "label": "Horizontaler Abstand" },
+    { "type": "range", "id": "padding_y", "min": 0, "max": 120, "step": 10, "default": 60, "unit": "px", "label": "Vertikaler Abstand" }
+  ],
+  "presets": [{ "name": "Seiteninhalt (Shopify-Admin)" }]
+}
+{% endschema %}

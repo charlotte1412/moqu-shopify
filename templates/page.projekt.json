@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "detail": {
+      "type": "project-detail",
+      "settings": {
+        "category": "Projekt",
+        "year": "2025",
+        "meta_auftraggeber": "Privatperson",
+        "meta_leistung": "Möbelbau",
+        "meta_standort": "Magdeburg"
+      }
+    }
+  },
+  "order": ["detail"]
+}

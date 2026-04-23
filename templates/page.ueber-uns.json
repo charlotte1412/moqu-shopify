@@ -8,17 +8,17 @@
       "type": "about-intro",
       "settings": {
         "heading": "MOQU...",
-        "lead": "...steht für Modern Quality – und zugleich für unsere tiefe Verbundenheit zum Werkstoff Holz. Abgeleitet vom japanischen Wort für Holz, vereint der Name Tradition und zeitgemäßen Anspruch.",
-        "body": "<p>Seit über 30 Jahren entstehen bei uns Möbel und Innenausbauten mit Substanz. Was mit klassischer Handwerksarbeit begann, entwickelt sich heute zu einem modernen Meisterbetrieb für individuellen Möbelbau, hochwertigen Innenausbau und klare Raumkonzepte.</p><p>MOQU ist gewachsen – wie Holz selbst. Geprägt von Erfahrung, weitergeführt mit neuer Perspektive.</p><p>Der Gründer Tilo legte den Grundstein mit handwerklicher Präzision, Verlässlichkeit und dem Anspruch, jedes Möbelstück sorgfältig und individuell zu fertigen. Qualität war nie ein Versprechen, sondern Voraussetzung.</p><p>Heute führt Simon diesen Weg fort – mit dem Ziel, das Handwerk weiterzudenken, alte Stereotype der Tischlerei aufzubrechen und Möbelbau sowie Innenausbau moderner, klarer und gestalterischer zu interpretieren.</p>"
+        "lead": "...steht für Modern Quality – und zugleich für unsere tiefe Verbundenheit zum Werkstoff Holz. Abgeleitet vom japanischen Wort für Holz (木, moku), vereint der Name Tradition und zeitgemäßen Anspruch.",
+        "body": "<p>Seit über 30 Jahren entstehen bei uns Möbel und Innenausbauten mit Substanz. Was mit klassischer Handwerksarbeit begann, entwickelt sich heute zu einem modernen Meisterbetrieb.</p><p>MOQU ist gewachsen – wie Holz selbst. Geprägt von Erfahrung, weitergeführt mit neuer Perspektive.</p>"
       }
     },
     "alt": {
       "type": "alt-sections",
       "blocks": {
-        "a1": { "type": "row", "settings": { "subtitle": "Gewachsen aus Erfahrung. Verankert in Radebeul.", "heading": "Handwerk mit Herkunft", "body": "<p>Unsere Arbeit ist fest mit der Region verbunden. Die Nähe zur Elbe, die Landschaft und das ruhige, beständige Fließen prägen unsere Haltung.</p><p>Das M im MOQU-Logo steht nicht nur für Moderne Qualität, sondern auch für Bewegung – als Welle.</p>" } },
-        "a2": { "type": "row", "settings": { "subtitle": "Verantwortung übernehmen, neu denken.", "heading": "Generationswechsel mit Haltung", "body": "<p>Mit dem Generationswechsel haben wir die Verantwortung übernommen und den Blick nach vorne gerichtet. Tradition und Innovation Hand in Hand.</p>" } },
-        "a3": { "type": "row", "settings": { "subtitle": "Das Beste aus beiden Welten.", "heading": "Moderne Qualität", "body": "<p>Modernste CNC-Technik trifft auf traditionsreiches Handwerk. So entstehen Möbel, die höchsten Ansprüchen genügen — funktional und ästhetisch.</p>" } },
-        "a4": { "type": "row", "settings": { "subtitle": "Gemeinsam für das beste Ergebnis.", "heading": "Ein Team, ein Anspruch", "body": "<p>Unser Team aus Tischlern, Gestaltern und Projektmanagern arbeitet Hand in Hand — vom Entwurf bis zur Montage.</p>" } }
+        "a1": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85", "subtitle": "Gewachsen aus Erfahrung. Verankert in Magdeburg.", "heading": "Handwerk mit Herkunft", "body": "<p>Unsere Arbeit ist fest mit der Region verbunden. Die Landschaft und das ruhige, beständige Fließen prägen unsere Haltung.</p>" } },
+        "a2": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=85", "subtitle": "Verantwortung übernehmen, neu denken.", "heading": "Generationswechsel mit Haltung", "body": "<p>Der Gründer Tilo legte den Grundstein mit handwerklicher Präzision. Heute führt Simon diesen Weg fort – mit dem Ziel, das Handwerk weiterzudenken.</p>" } },
+        "a3": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=85", "subtitle": "Das Beste aus beiden Welten.", "heading": "Moderne Qualität", "body": "<p>Modernste CNC-Technik trifft auf traditionsreiches Handwerk. So entstehen Möbel, die höchsten Ansprüchen genügen.</p>" } },
+        "a4": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85", "subtitle": "Gemeinsam für das beste Ergebnis.", "heading": "Ein Team, ein Anspruch", "body": "<p>Unser Team aus Tischlern, Gestaltern und Projektmanagern arbeitet Hand in Hand — vom Entwurf bis zur Montage.</p>" } }
       },
       "block_order": ["a1","a2","a3","a4"]
     },

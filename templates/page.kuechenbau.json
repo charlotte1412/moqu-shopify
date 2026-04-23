@@ -2,22 +2,36 @@
   "sections": {
     "header": {
       "type": "page-header",
-      "settings": { "title": "Küchenbau", "lead": "Maßgefertigte Küchen, die über Jahrzehnte funktionieren." }
+      "settings": {
+        "title": "Küchenbau",
+        "lead": "Maßgefertigte Küchen, die über Jahrzehnte funktionieren. Wir fertigen Küchen, die deinen Alltag bereichern — funktional, ästhetisch und aus einer Hand."
+      }
     },
     "alt": {
       "type": "alt-sections",
       "blocks": {
-        "a1": { "type": "row", "settings": { "subtitle": "Ihre Küche, Ihre Vorstellungen.", "heading": "Persönliche Planung", "body": "<p>Eine Küche entsteht nicht am Reißbrett – sie entsteht im Gespräch. Wir nehmen uns Zeit, Ihre Anforderungen, Kochgewohnheiten und räumlichen Gegebenheiten zu verstehen.</p>" } },
-        "a2": { "type": "row", "settings": { "subtitle": "Millimetergenau gefertigt.", "heading": "Maßgefertigte Küchen", "body": "<p>Standardmaße sind selten die beste Lösung. Unsere Küchen werden individuell auf Ihren Raum zugeschnitten – jede Schublade, jede Front, jedes Regal sitzt genau dort, wo es hingehört.</p>" } },
-        "a3": { "type": "row", "settings": { "subtitle": "Oberflächen, die begeistern.", "heading": "Materialauswahl & Oberflächen", "body": "<p>Holz, Lack, Furnier oder Naturstein – die Wahl der Materialien entscheidet über Charakter und Langlebigkeit einer Küche. Wir beraten Sie umfassend und helfen Ihnen, Oberflächen zu wählen, die zu Ihrem Stil und Ihren Ansprüchen passen.</p>" } },
-        "a4": { "type": "row", "settings": { "subtitle": "Alles aus einer Hand.", "heading": "Montage & Fertigstellung", "body": "<p>Nach der Fertigung übernehmen unsere erfahrenen Monteure die fachgerechte Installation vor Ort. Wir koordinieren alle Gewerke – von der Elektrik bis zum Wasseranschluss – und sorgen für einen reibungslosen Ablauf.</p>" } }
+        "a1": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=85", "subtitle": "Deine Küche, deine Vorstellungen.", "heading": "Persönliche Planung", "body": "<p>Eine Küche entsteht nicht am Reißbrett – sie entsteht im Gespräch. Wir nehmen uns Zeit, deine Anforderungen und Kochgewohnheiten zu verstehen.</p>" } },
+        "a2": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85", "subtitle": "Millimetergenau gefertigt.", "heading": "Maßgefertigte Küchen", "body": "<p>Standardmaße sind selten die beste Lösung. Unsere Küchen werden individuell auf deinen Raum zugeschnitten.</p>" } },
+        "a3": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85", "subtitle": "Oberflächen, die begeistern.", "heading": "Materialauswahl & Oberflächen", "body": "<p>Holz, Lack, Furnier oder Naturstein – die Wahl der Materialien entscheidet über Charakter und Langlebigkeit einer Küche.</p>" } },
+        "a4": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=85", "subtitle": "Alles aus einer Hand.", "heading": "Montage & Fertigstellung", "body": "<p>Nach der Fertigung übernehmen unsere erfahrenen Monteure die fachgerechte Installation vor Ort.</p>" } }
       },
       "block_order": ["a1","a2","a3","a4"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "label": "FAQ", "heading": "Häufige Fragen" },
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "Was kostet eine maßgefertigte Küche?", "answer": "<p>Maßgefertigte Küchen beginnen je nach Größe und Ausstattung bei ca. 8.000 €. Wir erstellen dir ein individuelles, unverbindliches Angebot.</p>" } },
+        "f2": { "type": "faq", "settings": { "question": "Kümmern Sie sich auch um Elektrik und Wasseranschluss?", "answer": "<p>Ja, wir koordinieren alle Gewerke – von der Elektrik bis zum Sanitärinstallateur – für einen reibungslosen Ablauf.</p>" } },
+        "f3": { "type": "faq", "settings": { "question": "Wie läuft eine Küchenplanung bei MOQU ab?", "answer": "<p>Wir starten mit einem persönlichen Gespräch, entwickeln gemeinsam ein Konzept, fertigen alle Teile in unserer Werkstatt und montieren alles aus einer Hand.</p>" } },
+        "f4": { "type": "faq", "settings": { "question": "Wie lange dauert es von der Planung bis zur fertigen Küche?", "answer": "<p>Von der ersten Planung bis zur Montage rechnest du üblicherweise mit 8–12 Wochen.</p>" } }
+      },
+      "block_order": ["f1","f2","f3","f4"]
     },
     "cta": {
       "type": "cta",
       "settings": { "label": "Küche im Kopf?", "title": "Lass uns deine Traumküche planen.", "button_label": "Beratung anfragen", "button_url": "/pages/kontakt" }
     }
   },
-  "order": ["header","alt","cta"]
+  "order": ["header","alt","faq","cta"]
 }

@@ -1,0 +1,127 @@
+<section class="projekt-hero">
+  {%- if section.settings.hero_image != blank -%}
+    <div class="projekt-hero-bg" style="background-image:url('{{ section.settings.hero_image | image_url: width: 2400 }}');"></div>
+  {%- else -%}
+    <div class="projekt-hero-bg projekt-hero-bg--placeholder"></div>
+  {%- endif -%}
+  <div class="projekt-hero-content">
+    {%- if section.settings.category != blank -%}
+      <span class="projekt-cat">{{ section.settings.category }}</span>
+    {%- endif -%}
+    <h1 class="projekt-title">{{ section.settings.title | default: page.title }}</h1>
+    {%- if section.settings.year != blank -%}
+      <p class="projekt-year">{{ section.settings.year }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<section class="projekt-body">
+  <div class="projekt-grid">
+    <aside class="projekt-meta reveal">
+      {%- if section.settings.meta_auftraggeber != blank -%}
+        <div class="projekt-meta-item"><span class="projekt-meta-key">Auftraggeber</span><span class="projekt-meta-val">{{ section.settings.meta_auftraggeber }}</span></div>
+      {%- endif -%}
+      {%- if section.settings.meta_leistung != blank -%}
+        <div class="projekt-meta-item"><span class="projekt-meta-key">Leistung</span><span class="projekt-meta-val">{{ section.settings.meta_leistung }}</span></div>
+      {%- endif -%}
+      {%- if section.settings.meta_standort != blank -%}
+        <div class="projekt-meta-item"><span class="projekt-meta-key">Standort</span><span class="projekt-meta-val">{{ section.settings.meta_standort }}</span></div>
+      {%- endif -%}
+      {%- if section.settings.year != blank -%}
+        <div class="projekt-meta-item"><span class="projekt-meta-key">Jahr</span><span class="projekt-meta-val">{{ section.settings.year }}</span></div>
+      {%- endif -%}
+    </aside>
+    <div class="projekt-content reveal reveal-d2">
+      {%- if section.settings.lead != blank -%}
+        <p class="projekt-lead">{{ section.settings.lead }}</p>
+      {%- endif -%}
+      <div class="projekt-rich rte">{{ page.content }}</div>
+    </div>
+  </div>
+
+  {%- assign has_gallery = false -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'image' and block.settings.image != blank -%}{%- assign has_gallery = true -%}{%- endif -%}
+  {%- endfor -%}
+  {%- if has_gallery -%}
+    <div class="projekt-gallery reveal">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'image' and block.settings.image != blank -%}
+          <div class="projekt-gallery-item" {{ block.shopify_attributes }}>
+            <img src="{{ block.settings.image | image_url: width: 1400 }}" alt="{{ block.settings.caption | default: section.settings.title | escape }}" loading="lazy" />
+            {%- if block.settings.caption != blank -%}
+              <p class="projekt-gallery-caption">{{ block.settings.caption }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <a href="/pages/projekte" class="projekt-back">← Alle Projekte</a>
+</section>
+
+<style>
+  .projekt-hero { position: relative; height: 55vh; min-height: 360px; overflow: hidden; display: flex; align-items: flex-end; padding: 0 80px 64px; }
+  .projekt-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .projekt-hero-bg--placeholder { background: linear-gradient(135deg, #3a2e22 0%, #5c4632 40%, #7a5a3e 100%); }
+  .projekt-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,10,6,0.70) 0%, rgba(15,10,6,0.15) 60%, transparent 100%); }
+  .projekt-hero-content { position: relative; z-index: 1; }
+  .projekt-cat { font-size: 10.5px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 10px; display: block; }
+  .projekt-title { font-family: 'MuseoModerno', sans-serif; font-size: clamp(32px, 4.5vw, 60px); font-weight: 700; color: #fff; letter-spacing: -1px; line-height: 1.08; margin-bottom: 12px; max-width: 760px; }
+  .projekt-year { font-size: 14px; color: rgba(255,255,255,0.5); }
+
+  .projekt-body { background: #fcfbf7; padding: 80px 80px 100px; }
+  .projekt-grid { display: grid; grid-template-columns: 280px 1fr; gap: 64px; max-width: 1100px; margin: 0 auto 64px; }
+  .projekt-meta { display: flex; flex-direction: column; gap: 20px; }
+  .projekt-meta-item { display: flex; flex-direction: column; gap: 3px; }
+  .projekt-meta-key { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #9a9690; }
+  .projekt-meta-val { font-size: 15px; color: #1a1a18; }
+  .projekt-lead { font-size: 18px; line-height: 1.62; color: #3a3530; margin-bottom: 24px; font-weight: 400; }
+  .projekt-rich { font-size: 16px; line-height: 1.8; color: #3a3530; }
+  .projekt-rich p { margin-bottom: 16px; }
+  .projekt-rich h2 { font-family: 'MuseoModerno',sans-serif; font-size: clamp(22px,2.5vw,28px); margin: 32px 0 12px; color: #1a1a18; }
+  .projekt-rich a { color: var(--accent,#c8772a); text-decoration: underline; }
+
+  .projekt-gallery { max-width: 1100px; margin: 0 auto 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .projekt-gallery-item img { width: 100%; border-radius: 6px; display: block; }
+  .projekt-gallery-caption { font-size: 13px; color: #9a9690; margin-top: 8px; text-align: center; }
+
+  .projekt-back { display: inline-block; max-width: 1100px; margin: 0 auto; color: #5a5550; font-size: 14.5px; letter-spacing: 0.3px; }
+  .projekt-back:hover { color: var(--accent,#c8772a); }
+
+  @media (max-width: 1100px) { .projekt-hero { padding: 0 40px 48px; } .projekt-body { padding: 60px 40px 80px; } .projekt-grid { grid-template-columns: 1fr; gap: 32px; } }
+  @media (max-width: 760px)  { .projekt-hero { padding: 0 24px 36px; height: 48vh; } .projekt-body { padding: 48px 24px 60px; } .projekt-gallery { grid-template-columns: 1fr; } }
+</style>
+
+{% schema %}
+{
+  "name": "Projekt-Detail",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero-Bild" },
+    { "type": "text", "id": "title", "label": "Projekt-Titel", "info": "Leer lassen = Seitentitel" },
+    { "type": "text", "id": "category", "label": "Kategorie (Eyebrow)" },
+    { "type": "text", "id": "year", "label": "Jahr", "default": "2025" },
+    { "type": "header", "content": "Meta-Infos (linke Spalte)" },
+    { "type": "text", "id": "meta_auftraggeber", "label": "Auftraggeber", "default": "Privatperson" },
+    { "type": "text", "id": "meta_leistung", "label": "Leistung", "default": "Möbelbau" },
+    { "type": "text", "id": "meta_standort", "label": "Standort", "default": "Magdeburg" },
+    { "type": "header", "content": "Text" },
+    { "type": "textarea", "id": "lead", "label": "Einleitungssatz (fett, größer)" },
+    { "type": "paragraph", "content": "Der Fließtext unten kommt aus dem Shopify-Pages-Admin (Inhalt)." }
+  ],
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Projekt-Bild",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Bild" },
+        { "type": "text", "id": "caption", "label": "Bildunterschrift (optional)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Projekt-Detail" }]
+}
+{% endschema %}

@@ -1,4 +1,17 @@
 {
-  "current": {},
-  "presets": {}
+  "current": "MOQU Default",
+  "presets": {
+    "MOQU Default": {
+      "color_bg": "#fcfbf7",
+      "color_text": "#1a1a18",
+      "color_accent": "#c8772a",
+      "color_accent_dark": "#ad631e",
+      "contact_street": "Halberstädter Chaussee 187",
+      "contact_city": "39116 Magdeburg",
+      "contact_phone": "+49 3456 789 0",
+      "contact_email": "info@moqu-interior.de",
+      "footer_description": "Individuelle Raum- und Einrichtungslösungen in Meisterqualität seit über 30 Jahren.",
+      "logo_max_height": 28
+    }
+  }
 }

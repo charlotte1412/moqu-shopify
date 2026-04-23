@@ -2,18 +2,18 @@
   "sections": {
     "header": {
       "type": "page-header",
-      "settings": { "title": "Projekte", "lead": "Ausgewählte Arbeiten aus Möbelbau, Innenausbau und Küchenbau." }
+      "settings": { "title": "Projekte", "lead": "Ausgewählte Arbeiten aus Möbelbau, Innenausbau und Küchenbau. Jedes Projekt erzählt seine eigene Geschichte – geprägt von individuellen Wünschen, besonderen Räumen und handwerklicher Sorgfalt." }
     },
     "gallery": {
       "type": "gallery",
       "settings": { "heading": "", "link_label": "", "link_url": "" },
       "blocks": {
-        "g1": { "type": "item", "settings": { "title": "Büromöbel", "category": "Gewerbe", "width": 3, "new_row": false, "url": "#" } },
-        "g2": { "type": "item", "settings": { "title": "Einbauschrank", "category": "Privat", "width": 2, "new_row": false, "url": "#" } },
-        "g3": { "type": "item", "settings": { "title": "Esszimmer", "category": "Privat", "width": 1, "new_row": true, "url": "#" } },
-        "g4": { "type": "item", "settings": { "title": "Wandverkleidung", "category": "Innenausbau", "width": 2, "new_row": false, "url": "#" } },
-        "g5": { "type": "item", "settings": { "title": "Küche", "category": "Privat", "width": 1, "new_row": true, "url": "#" } },
-        "g6": { "type": "item", "settings": { "title": "Gastronomie", "category": "Gewerbe", "width": 1, "new_row": false, "url": "#" } }
+        "g1": { "type": "item", "settings": { "title": "Büromöbel",      "category": "Gewerbe",     "width": 3, "new_row": false, "url": "/pages/projekte", "image_url": "https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=80" } },
+        "g2": { "type": "item", "settings": { "title": "Einbauschrank",   "category": "Privat",      "width": 2, "new_row": false, "url": "/pages/projekte", "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=600&q=80" } },
+        "g3": { "type": "item", "settings": { "title": "Esszimmer",       "category": "Privat",      "width": 1, "new_row": true,  "url": "/pages/projekte", "image_url": "https://images.unsplash.com/photo-1764076327046-fe35f955cba1?w=600&q=80" } },
+        "g4": { "type": "item", "settings": { "title": "Wandverkleidung", "category": "Innenausbau", "width": 2, "new_row": false, "url": "/pages/projekte", "image_url": "https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=80" } },
+        "g5": { "type": "item", "settings": { "title": "Küche",           "category": "Privat",      "width": 1, "new_row": true,  "url": "/pages/projekte", "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=800&q=80" } },
+        "g6": { "type": "item", "settings": { "title": "Gastronomie",     "category": "Gewerbe",     "width": 1, "new_row": false, "url": "/pages/projekte", "image_url": "https://images.unsplash.com/photo-1552836514-bbf70221e437?w=800&q=80" } }
       },
       "block_order": ["g1","g2","g3","g4","g5","g6"]
     },

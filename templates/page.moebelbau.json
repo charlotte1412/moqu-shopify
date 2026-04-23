@@ -2,22 +2,36 @@
   "sections": {
     "header": {
       "type": "page-header",
-      "settings": { "title": "Möbelbau", "lead": "Maßgefertigte Möbel, individuell geplant und handwerklich gefertigt." }
+      "settings": {
+        "title": "Möbelbau",
+        "lead": "Ob Einbaumöbel, Einzelstücke oder komplette Einrichtungslösungen: Im Möbelbau verbinden wir funktionales Denken mit gestalterischem Anspruch und präziser handwerklicher Ausführung. Bei MOQU entstehen individuelle Möbel, die sich harmonisch in ihre Umgebung einfügen, langlebig sind und den Alltag sinnvoll ergänzen."
+      }
     },
     "alt": {
       "type": "alt-sections",
       "blocks": {
-        "a1": { "type": "row", "settings": { "subtitle": "Zuhören, verstehen, gemeinsam entwickeln.", "heading": "Persönliche Beratung", "body": "<p>Jedes Projekt im Möbelbau beginnt mit einem Gespräch. Wir nehmen uns Zeit, deine Anforderungen, Wünsche und räumlichen Gegebenheiten genau zu verstehen.</p>" } },
-        "a2": { "type": "row", "settings": { "subtitle": "Möbel, die exakt passen.", "heading": "Präzise Anfertigung", "body": "<p>Maßanfertigung bedeutet mehr als nur die richtigen Abmessungen. Es geht um Proportion, Materialwahl, Konstruktion und Details.</p>" } },
-        "a3": { "type": "row", "settings": { "subtitle": "Handwerk mit Anspruch", "heading": "Höchste Verarbeitungsqualität", "body": "<p>Als Meisterbetrieb stehen wir für präzise Handwerksarbeit und hochwertige Verarbeitung. Wir wählen Materialien sorgfältig aus und verarbeiten sie mit technischer Genauigkeit und gestalterischem Bewusstsein.</p>" } },
-        "a4": { "type": "row", "settings": { "subtitle": "Mehr als nur ein Möbelstück.", "heading": "Ganzheitliche Raumkonzepte", "body": "<p>Unsere Raumkonzepte umfassen alle Aspekte — Design, Materialwahl und Funktionalität. Alles wird von Anfang an in einem Gesamtkonzept gedacht.</p>" } }
+        "a1": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1764526624453-db32c24eca55?w=900&q=85", "subtitle": "Zuhören, verstehen, gemeinsam entwickeln.", "heading": "Persönliche Beratung", "body": "<p>Jedes Projekt im Möbelbau beginnt mit einem Gespräch. Wir nehmen uns Zeit, deine Anforderungen, Wünsche und räumlichen Gegebenheiten genau zu verstehen.</p><p>Ob maßgefertigter Einbauschrank, individuelle Küche oder durchdachtes Stauraumkonzept – gute Lösungen entstehen durch sorgfältige Planung.</p>" } },
+        "a2": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85", "subtitle": "Möbel, die exakt passen.", "heading": "Präzise Anfertigung", "body": "<p>Maßanfertigung bedeutet mehr als nur die richtigen Abmessungen. Es geht um Proportion, Materialwahl, Konstruktion und Details.</p><p>Im Möbelbau fertigen wir individuelle Einbaumöbel, Regalsysteme, Schränke und Sonderlösungen, die millimetergenau geplant und umgesetzt werden.</p>" } },
+        "a3": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85", "subtitle": "Handwerk mit Anspruch.", "heading": "Höchste Verarbeitungsqualität", "body": "<p>Als Meisterbetrieb stehen wir für präzise Handwerksarbeit und hochwertige Verarbeitung. Wir wählen Materialien sorgfältig aus und verarbeiten sie mit technischer Genauigkeit und gestalterischem Bewusstsein.</p>" } },
+        "a4": { "type": "row", "settings": { "image_url": "https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=85", "subtitle": "Mehr als nur ein Möbelstück.", "heading": "Ganzheitliche Raumkonzepte", "body": "<p>Unsere Raumkonzepte umfassen alle Aspekte — Design, Materialwahl und Funktionalität. Alles wird von Anfang an in einem Gesamtkonzept gedacht.</p>" } }
       },
       "block_order": ["a1","a2","a3","a4"]
     },
+    "faq": {
+      "type": "faq",
+      "settings": { "label": "FAQ", "heading": "Häufige Fragen" },
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "Was kostet ein maßgefertigter Einbauschrank?", "answer": "<p>Die Kosten variieren je nach Größe, Material und Ausstattung. Maßgefertigte Einbauschränke beginnen bei ca. 1.500 €. Kontaktiere uns gerne für ein unverbindliches Angebot.</p>" } },
+        "f2": { "type": "faq", "settings": { "question": "Wie lange dauert die Fertigung und Montage?", "answer": "<p>Von der Auftragsbestätigung bis zur Montage rechnen wir für ein typisches Möbelstück mit 4–8 Wochen.</p>" } },
+        "f3": { "type": "faq", "settings": { "question": "Welche Materialien verwenden Sie?", "answer": "<p>Wir verarbeiten hochwertige Hölzer, Platten und Oberflächen – von geölter Eiche über Mattlack bis hin zu Furnier. Wir beraten dich gerne bei der Materialwahl.</p>" } },
+        "f4": { "type": "faq", "settings": { "question": "Liefern und montieren Sie auch?", "answer": "<p>Ja, unsere Monteure liefern und bauen alle Möbel fachgerecht vor Ort ein – sauber, termintreu und mit Sorgfalt.</p>" } }
+      },
+      "block_order": ["f1","f2","f3","f4"]
+    },
     "cta": {
       "type": "cta",
-      "settings": { "label": "Projekt im Kopf?", "title": "Lass uns dein Möbel besprechen.", "button_label": "Beratung anfragen", "button_url": "/pages/kontakt" }
+      "settings": { "label": "Projekt besprechen", "title": "Jetzt beraten lassen.", "button_label": "Kontakt aufnehmen", "button_url": "/pages/kontakt" }
     }
   },
-  "order": ["header","alt","cta"]
+  "order": ["header","alt","faq","cta"]
 }
