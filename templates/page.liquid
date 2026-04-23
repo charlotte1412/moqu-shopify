@@ -1,32 +1,29 @@
 {%- comment -%}
   Handle-basierter Auto-Router.
-  Erkennt automatisch an page.handle, welche Seite angezeigt werden soll,
-  und rendert das passende hartcodierte Layout (inkl. Bildern und Text).
-  Keine Template-Suffix-Zuweisung im Shopify-Admin nötig.
-
-  Für Rechtstexte (AGB/Datenschutz/Impressum) + unbekannte Handles → wird
-  der im Shopify-Admin eingegebene Body als Rich-Text gerendert.
+  Rendert je nach Page-Handle die passende editierbare Section.
+  Alle Sections sind im Theme-Editor voll bearbeitbar (Bilder, Texte, Blöcke).
+  Für unbekannte Handles → Rich-Text aus Pages-Admin (AGB/Datenschutz/Impressum).
 {%- endcomment -%}
 
 {%- case page.handle -%}
 
   {%- when 'moebelbau' -%}
-    {% render 'page-moebelbau' %}
+    {% section 'content-moebelbau' %}
 
   {%- when 'innenausbau' -%}
-    {% render 'page-innenausbau' %}
+    {% section 'content-innenausbau' %}
 
   {%- when 'kuechenbau' -%}
-    {% render 'page-kuechenbau' %}
+    {% section 'content-kuechenbau' %}
 
   {%- when 'ueber-uns' -%}
-    {% render 'page-ueber-uns' %}
+    {% section 'content-ueber-uns' %}
 
   {%- when 'projekte' -%}
-    {% render 'page-projekte' %}
+    {% section 'content-projekte' %}
 
   {%- when 'kontakt' -%}
-    {% render 'page-kontakt' %}
+    {% section 'content-kontakt' %}
 
   {%- else -%}
     {%- comment -%} Generische Seite (AGB, Datenschutz, Impressum, …) {%- endcomment -%}

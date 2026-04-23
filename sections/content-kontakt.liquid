@@ -1,16 +1,16 @@
+{%- comment -%} Kontakt page as static editable section. {%- endcomment -%}
+
 <div class="page-header">
-  <h1 class="page-title reveal">Kontakt</h1>
-  <p class="page-lead reveal reveal-d1">
-    Erzähl uns von deinem Projekt. Wir antworten innerhalb eines Werktags.
-  </p>
+  <h1 class="page-title reveal">{{ section.settings.title }}</h1>
+  {%- if section.settings.lead != blank -%}<p class="page-lead reveal reveal-d1">{{ section.settings.lead }}</p>{%- endif -%}
 </div>
 
 <section class="contact-section reveal">
-  <p class="contact-heading">Projektidee?<br>Kontaktiere uns.</p>
+  <p class="contact-heading">{{ section.settings.heading }}</p>
 
   {%- form 'contact' -%}
     {%- if form.posted_successfully? -%}
-      <div style="display:block; margin-bottom:24px; padding:14px 18px; border-radius:6px; font-size:15px; background:rgba(46,138,77,0.1); color:#2e8a4d; border:1px solid rgba(46,138,77,0.3);">Danke! Wir melden uns zeitnah bei dir.</div>
+      <div style="display:block; margin-bottom:24px; padding:14px 18px; border-radius:6px; font-size:15px; background:rgba(46,138,77,0.1); color:#2e8a4d; border:1px solid rgba(46,138,77,0.3);">{{ section.settings.success_message | default: 'Danke! Wir melden uns zeitnah.' }}</div>
     {%- endif -%}
     {%- if form.errors -%}
       <div style="display:block; margin-bottom:24px; padding:14px 18px; border-radius:6px; font-size:15px; background:rgba(201,59,26,0.08); color:#c93b1a; border:1px solid rgba(201,59,26,0.3);">{{ form.errors | default_errors }}</div>
@@ -55,3 +55,17 @@
   .form-consent label a { color: #1a1a18; text-decoration: underline; }
   .form-consent label a:hover { color: var(--accent,#c8772a); }
 </style>
+
+{% schema %}
+{
+  "name": "Kontakt-Inhalt",
+  "settings": [
+    { "type": "header", "content": "Seitenkopf" },
+    { "type": "text", "id": "title", "label": "Titel", "default": "Kontakt" },
+    { "type": "textarea", "id": "lead", "label": "Lead-Text", "default": "Erzähl uns von deinem Projekt. Wir antworten innerhalb eines Werktags." },
+    { "type": "header", "content": "Formular" },
+    { "type": "text", "id": "heading", "label": "Formular-Überschrift", "default": "Projektidee?<br>Kontaktiere uns." },
+    { "type": "text", "id": "success_message", "label": "Erfolgs-Nachricht", "default": "Danke! Wir melden uns zeitnah bei dir." }
+  ]
+}
+{% endschema %}
