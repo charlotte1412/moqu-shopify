@@ -6,5 +6,44 @@
     "theme_author": "MOQU",
     "theme_documentation_url": "",
     "theme_support_url": ""
+  },
+  {
+    "name": "Branding",
+    "settings": [
+      { "type": "image_picker", "id": "logo_image", "label": "Logo (optional)" },
+      { "type": "range", "id": "logo_max_height", "min": 16, "max": 80, "step": 2, "unit": "px", "default": 28, "label": "Logo-Höhe" },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "Farben",
+    "settings": [
+      { "type": "color", "id": "color_bg", "label": "Hintergrund", "default": "#fcfbf7" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#1a1a18" },
+      { "type": "color", "id": "color_accent", "label": "Akzent (Buttons, Links)", "default": "#c8772a" },
+      { "type": "color", "id": "color_accent_dark", "label": "Akzent Hover", "default": "#ad631e" }
+    ]
+  },
+  {
+    "name": "Firmendaten",
+    "settings": [
+      { "type": "text", "id": "company_name", "label": "Firmenname", "default": "MOQU" },
+      { "type": "textarea", "id": "company_description", "label": "Footer-Beschreibung", "default": "Individuelle Raum- und Einrichtungslösungen in Meisterqualität seit über 30 Jahren." },
+      { "type": "header", "content": "Adresse" },
+      { "type": "text", "id": "address_street", "label": "Straße", "default": "Halberstädter Chaussee 187" },
+      { "type": "text", "id": "address_zip", "label": "PLZ", "default": "39116" },
+      { "type": "text", "id": "address_city", "label": "Stadt", "default": "Magdeburg" },
+      { "type": "header", "content": "Kontakt" },
+      { "type": "text", "id": "contact_phone", "label": "Telefon", "default": "+49 3456 789 0" },
+      { "type": "text", "id": "contact_email", "label": "E-Mail", "default": "info@moqu-interior.de" }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_linkedin", "label": "LinkedIn" }
+    ]
   }
 ]

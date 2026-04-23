@@ -1,5 +1,11 @@
 <nav>
-  <a href="/" class="nav-logo">{{ shop.name | default: 'MOQU' }}</a>
+  <a href="/" class="nav-logo">
+    {% if settings.logo_image != blank %}
+      <img src="{{ settings.logo_image | image_url: width: 300 }}" alt="{{ settings.company_name | default: shop.name | escape }}" style="max-height: {{ settings.logo_max_height | default: 28 }}px; width: auto; display: block;">
+    {% else %}
+      {{ settings.company_name | default: shop.name | default: 'MOQU' }}
+    {% endif %}
+  </a>
   <button class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>

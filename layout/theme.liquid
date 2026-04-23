@@ -3,13 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fcfbf7">
+  <meta name="theme-color" content="{{ settings.color_bg | default: '#fcfbf7' }}">
   <link rel="canonical" href="{{ canonical_url }}">
 
-  <title>{{ page_title }}{% unless page_title contains shop.name %} – {{ shop.name }}{% endunless %}</title>
+  <title>{{ page_title }}{% unless page_title contains shop.name %} – {{ settings.company_name | default: shop.name }}{% endunless %}</title>
 
   {% if page_description %}
     <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% if settings.favicon != blank %}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
   {% endif %}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +21,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=MuseoModerno:wght@400;500;600;700;800;900&display=swap">
 
   <link rel="stylesheet" href="{{ 'shared.css' | asset_url }}">
+
+  <style>
+    :root {
+      --bg: {{ settings.color_bg | default: '#fcfbf7' }};
+      --text: {{ settings.color_text | default: '#1a1a18' }};
+      --accent: {{ settings.color_accent | default: '#c8772a' }};
+      --accent-dark: {{ settings.color_accent_dark | default: '#ad631e' }};
+    }
+    body { background: var(--bg); color: var(--text); }
+  </style>
 
   {{ content_for_header }}
 </head>
