@@ -1,103 +1,30 @@
-{%- comment -%} Full Innenausbau page with fallback-Content wenn keine Blocks gesetzt. {%- endcomment -%}
-
 <div class="page-header">
-  <h1 class="page-title reveal">{{ section.settings.title | default: 'Innenausbau' }}</h1>
-  {%- if section.settings.lead != blank -%}<p class="page-lead reveal reveal-d1">{{ section.settings.lead }}</p>{%- endif -%}
+  <h1 class="page-title reveal">Innenausbau</h1>
+  <p class="page-lead reveal reveal-d1">Raumkonzepte aus einer Hand — von der Wandverkleidung bis zum kompletten Interieur.<br><br>Wir realisieren ganzheitliche Innenausbauten, die Funktion, Ästhetik und handwerkliche Qualität zusammenbringen.</p>
 </div>
 
-{%- assign alt_count = 0 -%}
-{%- for block in section.blocks -%}{%- if block.type == 'alt-row' -%}{%- assign alt_count = alt_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
-
 <div class="alt-sections">
-{%- if alt_count > 0 -%}
-  {%- assign alt_i = 0 -%}
-  {%- for block in section.blocks -%}
-    {%- if block.type == 'alt-row' -%}
-      {%- assign alt_i = alt_i | plus: 1 -%}
-      {%- assign odd = alt_i | modulo: 2 -%}
-      <div class="alt-section{% if odd == 0 %} reverse{% endif %}" {{ block.shopify_attributes }}>
-        <div class="alt-text reveal">
-          <div class="alt-num">{{ alt_i | prepend: '0' | slice: -2, 2 }}</div>
-          {%- if block.settings.subtitle != blank -%}<div class="alt-subtitle">{{ block.settings.subtitle }}</div>{%- endif -%}
-          <h2 class="alt-heading">{{ block.settings.heading }}</h2>
-          <div class="alt-body">{{ block.settings.body }}</div>
-        </div>
-        <div class="alt-img reveal reveal-d2">
-          {%- if block.settings.image != blank -%}<img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />
-          {%- elsif block.settings.image_url != blank -%}<img src="{{ block.settings.image_url }}" alt="{{ block.settings.heading | escape }}" loading="lazy" />{%- endif -%}
-        </div>
-      </div>
-    {%- endif -%}
-  {%- endfor -%}
-{%- else -%}
   <div class="alt-section"><div class="alt-text reveal"><div class="alt-num">01</div><div class="alt-subtitle">Ganzheitlich denken, präzise planen.</div><h2 class="alt-heading">Raumplanung & Beratung</h2><p class="alt-body">Jeder Ausbau beginnt mit einem genauen Blick auf den Raum. Wir analysieren deine Räumlichkeiten, berücksichtigen bauliche Gegebenheiten und entwickeln ein ganzheitliches Konzept.</p></div><div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1697809899844-24bb7de99a2c?w=900&q=85" alt="Raumplanung" loading="lazy" /></div></div>
   <div class="alt-section reverse"><div class="alt-text reveal"><div class="alt-num">02</div><div class="alt-subtitle">Material trifft auf Handwerkskunst.</div><h2 class="alt-heading">Wand- & Deckenverkleidungen</h2><p class="alt-body">Hochwertige Verkleidungen verändern den Charakter eines Raumes grundlegend. Wir fertigen und montieren Verkleidungen aus Holz, Akustikpaneelen und individuellen Materialien.</p></div><div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1497219055242-93359eeed651?w=900&q=85" alt="Verkleidung" loading="lazy" /></div></div>
   <div class="alt-section"><div class="alt-text reveal"><div class="alt-num">03</div><div class="alt-subtitle">Jeden Zentimeter optimal nutzen.</div><h2 class="alt-heading">Einbaulösungen & Stauraum</h2><p class="alt-body">Maßgefertigte Einbauschränke, Nischen und Regalsysteme entstehen bei uns genau dort, wo sie gebraucht werden.</p></div><div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1683181181300-44c0c991a2cf?w=900&q=85" alt="Einbaulösung" loading="lazy" /></div></div>
   <div class="alt-section reverse"><div class="alt-text reveal"><div class="alt-num">04</div><div class="alt-subtitle">Ein Ansprechpartner. Alles aus einer Hand.</div><h2 class="alt-heading">Komplettausbau & Koordination</h2><p class="alt-body">Vom Rohbau bis zum fertigen Raum begleiten wir dich durch den gesamten Ausbauprozess.</p></div><div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1764076327046-fe35f955cba1?w=900&q=85" alt="Komplettausbau" loading="lazy" /></div></div>
   <div class="alt-section"><div class="alt-text reveal"><div class="alt-num">05</div><div class="alt-subtitle">Wärme und Charakter unter den Füßen.</div><h2 class="alt-heading">Parkett & Bodenbeläge</h2><p class="alt-body">Ein hochwertiger Boden prägt die gesamte Atmosphäre eines Raumes. Wir verlegen Parkett, Dielen und moderne Bodenbeläge.</p></div><div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1684069158042-de27cd720172?w=900&q=85" alt="Parkett" loading="lazy" /></div></div>
   <div class="alt-section reverse"><div class="alt-text reveal"><div class="alt-num">06</div><div class="alt-subtitle">Details, die den Unterschied machen.</div><h2 class="alt-heading">Türen & Zargen</h2><p class="alt-body">Türen sind mehr als funktionale Raumteiler. Wir liefern und montieren Innentüren, Schiebetüren und Zargen.</p></div><div class="alt-img reveal reveal-d2"><img src="https://images.unsplash.com/photo-1552836514-bbf70221e437?w=900&q=85" alt="Türen" loading="lazy" /></div></div>
-{%- endif -%}
 </div>
 
-{%- assign faq_count = 0 -%}
-{%- for block in section.blocks -%}{%- if block.type == 'faq' -%}{%- assign faq_count = faq_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
-
 <section class="faq-section">
-  {%- if section.settings.faq_label != blank -%}<p class="faq-label reveal">{{ section.settings.faq_label }}</p>{%- endif -%}
-  <h2 class="faq-heading reveal">{{ section.settings.faq_heading | default: 'Häufige Fragen' }}</h2>
+  <p class="faq-label reveal">FAQ</p>
+  <h2 class="faq-heading reveal">Häufige Fragen</h2>
   <div class="faq-list reveal">
-  {%- if faq_count > 0 -%}
-    {%- for block in section.blocks -%}{%- if block.type == 'faq' -%}
-      <div class="faq-item" {{ block.shopify_attributes }}><button class="faq-q" type="button" aria-expanded="false"><span>{{ block.settings.question }}</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">{{ block.settings.answer }}</div></div>
-    {%- endif -%}{%- endfor -%}
-  {%- else -%}
     <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>Was umfasst Innenausbau genau?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">Wir realisieren Wand- und Deckenverkleidungen, maßgefertigte Einbaulösungen, Türen und Zargen sowie Parkett- und Bodenarbeiten – für Privat und Gewerbe.</div></div>
     <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>Arbeiten Sie auch für Gewerbebetriebe?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">Ja, wir realisieren Innenausbau sowohl für Privathäuser als auch für Büros, Läden und Gastronomiebetriebe.</div></div>
     <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>Übernehmen Sie die Koordination aller Gewerke?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">Ja, wir begleiten dich durch den gesamten Ausbauprozess und koordinieren alle beteiligten Handwerker.</div></div>
     <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span>In welchem Umkreis sind Sie tätig?</span><svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-a">Wir sind hauptsächlich im Raum Magdeburg tätig. Bei größeren Projekten sprich uns gerne direkt an.</div></div>
-  {%- endif -%}
   </div>
 </section>
 <script>(function(){document.querySelectorAll('.faq-section .faq-item').forEach(function(item){var btn=item.querySelector('.faq-q');if(!btn||btn.dataset.faqBound)return;btn.dataset.faqBound='1';btn.addEventListener('click',function(){var open=item.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');});});})();</script>
 
 <section class="cta reveal">
-  <div>
-    {%- if section.settings.cta_label != blank -%}<p class="cta-label">{{ section.settings.cta_label }}</p>{%- endif -%}
-    <h2 class="cta-title">{{ section.settings.cta_title | default: 'Sprich mit uns über deinen Raum.' }}</h2>
-  </div>
-  <a href="{{ section.settings.cta_url | default: '/pages/kontakt' }}" class="btn-orange">{{ section.settings.cta_button | default: 'Kontakt aufnehmen' }} &nbsp;→</a>
+  <div><p class="cta-label">Innenausbau geplant?</p><h2 class="cta-title">Sprich mit uns über deinen Raum.</h2></div>
+  <a href="/pages/kontakt" class="btn-orange">Kontakt aufnehmen &nbsp;→</a>
 </section>
-
-{% schema %}
-{
-  "name": "Innenausbau-Inhalt",
-  "settings": [
-    { "type": "paragraph", "content": "Bearbeitbarer Content. Default-Blöcke werden angezeigt, bis du eigene hinzufügst." },
-    { "type": "header", "content": "Seitenkopf" },
-    { "type": "text", "id": "title", "label": "Titel", "default": "Innenausbau" },
-    { "type": "textarea", "id": "lead", "label": "Lead", "default": "Raumkonzepte aus einer Hand — von der Wandverkleidung bis zum kompletten Interieur." },
-    { "type": "header", "content": "FAQ" },
-    { "type": "text", "id": "faq_label", "label": "Eyebrow", "default": "FAQ" },
-    { "type": "text", "id": "faq_heading", "label": "Überschrift", "default": "Häufige Fragen" },
-    { "type": "header", "content": "CTA" },
-    { "type": "text", "id": "cta_label", "label": "Eyebrow", "default": "Innenausbau geplant?" },
-    { "type": "text", "id": "cta_title", "label": "Titel", "default": "Sprich mit uns über deinen Raum." },
-    { "type": "text", "id": "cta_button", "label": "Button", "default": "Kontakt aufnehmen" },
-    { "type": "url", "id": "cta_url", "label": "Ziel", "default": "/pages/kontakt" }
-  ],
-  "max_blocks": 30,
-  "blocks": [
-    { "type": "alt-row", "name": "Bild/Text-Block", "settings": [
-      { "type": "image_picker", "id": "image", "label": "Bild (hochladen)" },
-      { "type": "text", "id": "image_url", "label": "Bild-URL (Fallback)" },
-      { "type": "text", "id": "subtitle", "label": "Subtitle (orange)" },
-      { "type": "text", "id": "heading", "label": "Überschrift" },
-      { "type": "richtext", "id": "body", "label": "Text" }
-    ] },
-    { "type": "faq", "name": "FAQ-Frage", "settings": [
-      { "type": "text", "id": "question", "label": "Frage" },
-      { "type": "richtext", "id": "answer", "label": "Antwort" }
-    ] }
-  ]
-}
-{% endschema %}
